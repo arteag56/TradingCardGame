@@ -7,12 +7,12 @@
  */
 public class CreatureCard extends Card
 {
+    private int value; //not needed?
     private boolean isRare;
     private double attackHit;
     private double health;
     private String cardName;
     private int cardNum;
-    private enum Element{Fire, Water, Earth, Wind, Light, Dark, Non-Elemental};
 
     /**
      * Default constructor for objects of class Creature Card
@@ -35,6 +35,9 @@ public class CreatureCard extends Card
     /**
      * Gets the power of the card
      */
+    public int getCardValue() {
+        return value;
+    }
     
     public double getAttackHit() {
         return attackHit;

@@ -2,8 +2,8 @@ import java.util.*;
 /**
  * [Description]
  * 
- * @author (Michael Arteaga, [add names]) 
- * @version (Oct 1, 2014)
+ * @author (Michael Arteaga, Joseph Carbone) 
+ * @version (Oct 24, 2014)
  */
 public class Player
 {
@@ -15,8 +15,29 @@ public class Player
      * Constructor for objects of class Player
      */
     public Player() {
-        //reads file input
+     
+        try
+        {
+        String line;
+        Scanner scan = new Scanner (new File ("monsterdeck.txt"));
+        while (scan.hasNextLine())
+            {   line = scan.nextLine();
+                monsterDeck.add (line);
+            }
+        scan.close();
+        }
+        catch (FileNotFoundException fnfe)
+        {   System.err.println (fnfe);  }
     }
+
+        /** @return The list of words generated
+         *  by the constructor.
+         */
+        public List <String> getMonsterDeck()
+        {   return monsterDeck;  }
+        
+    
+    
     
     public void addMonsterDeck() {
         //reads input from file
@@ -27,7 +48,7 @@ public class Player
     }
     
     public List<Card> getHand() {
-        return currentHand; //comment change//Joe's change
+        return currentHand; 
     }
     
     public List<Card> getDeck() {

@@ -27,7 +27,7 @@ public class Player
     }
     
     public List<Card> getHand() {
-        return currentHand; //comment change
+        return currentHand; //comment change//Joe's change
     }
     
     public List<Card> getDeck() {

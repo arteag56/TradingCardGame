@@ -12,7 +12,7 @@ public class Card
     private int cardNum;
 
     /**
-     * Default contructor
+     * Default constructor
      */
     public Card () {
         cardName = "[no name]";

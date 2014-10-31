@@ -57,7 +57,7 @@ public class Card
                 System.out.println("\n" + nameOfFile + " was read successfully!");
             }
             catch(IOException e){
-                System.out.println(e.getMessage() + "\n");
+                System.out.println(e.getMessage() + "\n"); //this is a comment
                 attempt--;
                 if (attempt > 0) {
                     System.out.println(attempt + " attempts left.");

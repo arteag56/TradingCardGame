@@ -43,8 +43,27 @@ public class CreatureCard extends Card
         return attackHit;
     }
     
+    public void attack(int attack){
+        this.attackHit = attack;
+    }
+    }
     public double healthLeft() {
         return health;
+    }
+    
+    public void SetHealth(int Health){
+        this.health = Health;
+    }
+    
+    public void Hit(int HitTaken){
+    
+     healthLeft = healthLeft - HitTaken;
+     if (healthLeft < 0){
+         healthLeft == 0;
+     }
+     else(){
+     System.out.println("Health Remaining:" + healthLeft);
+    }
     }
     
     public boolean isRare() {
@@ -54,5 +73,8 @@ public class CreatureCard extends Card
     public String toString() {
         return super.toString() + 
                "Type: Monster";
+    }
+    
+    
     }
 }

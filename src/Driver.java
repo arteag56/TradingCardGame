@@ -13,6 +13,9 @@ public class Driver
         Player p1 = new Player();
         Player p2 = new Player();
         GameBoard game = new GameBoard(p1,p2);
+        Creature g = new Creature();
+        g.setAttack(50);
+        g.setHeath(100);
     }
     
 }

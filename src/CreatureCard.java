@@ -27,6 +27,7 @@ public class CreatureCard extends Card
     	System.out.println(monster2.toString());
     	
     	monster1.attacks(monster2);
+    	monster1.changeRare();
     	
     	System.out.println(monster1.toString());
     	System.out.println(monster2.toString());

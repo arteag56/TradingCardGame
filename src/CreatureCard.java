@@ -9,29 +9,50 @@ public class CreatureCard extends Card
 {
     private int value; //not needed?
     private boolean isRare;
-    private double attackHit;
-    private double health;
+    private int attack;
+    private int health;
     private String cardName;
     private int cardNum;
+    
+    public static void main(String[] args) {
+    	CreatureCard monster1 = new CreatureCard();
+    	CreatureCard monster2 = new CreatureCard();
+    	
+    	monster1.setName("Monster 1");
+    	monster2.setName("Monster 2");
+    	monster1.setNumber(20);
+    	monster2.setNumber(30);
+    	
+    	System.out.println(monster1.toString());
+    	System.out.println(monster2.toString());
+    	
+    	monster1.attacks(monster2);
+    	
+    	System.out.println(monster1.toString());
+    	System.out.println(monster2.toString());
+    }
 
-    /**
+	/**
      * Default constructor for objects of class Creature Card
      */
     public CreatureCard() {
         cardName = ""; //will change when can read from file
-        attackHit = 0;
-        health = 0;
+        attack = 10;
+        health = 100;
         isRare = false;
     }
     
-    public CreatureCard(double attackHit, double health, boolean isRare) {
+    public CreatureCard(int attack, int health, boolean isRare) {
         cardName = super.getName();
         this.cardNum = super.getCardNum();
-        this.attackHit = attackHit;
+        this.attack = attack;
         this.health = health;
         this.isRare = isRare;
     }
-
+    
+    public String getName() {
+    	return cardName;
+    }
     /**
      * Gets the power of the card
      */
@@ -39,42 +60,64 @@ public class CreatureCard extends Card
         return value;
     }
     
-    public double getAttackHit() {
-        return attackHit;
+    public int getAttackDamage() {
+        return attack;
     }
     
-    public void attack(int attack){
-        this.attackHit = attack;
-    }
-    }
-    public double healthLeft() {
+    public double getHealth() {
         return health;
     }
     
-    public void SetHealth(int Health){
-        this.health = Health;
+    public void setName(String newName) {
+    	cardName = newName;
     }
     
-    public void Hit(int HitTaken){
+    /**
+	 * @param i
+	 */
+	private void setNumber(int i) {
+		cardNum = i;
+	}
     
-     healthLeft = healthLeft - HitTaken;
-     if (healthLeft < 0){
-         healthLeft == 0;
-     }
-     else(){
-     System.out.println("Health Remaining:" + healthLeft);
-    }
+    public void setAttackDamage(int newAttack){
+        attack = newAttack;
     }
     
-    public boolean isRare() {
-        return false;
+    public void setHealth(int newHealth){
+        health = newHealth;
+    }
+    
+    public void takesHit(int HitTaken){
+    	health = health - HitTaken;
+    	if (health <= 0){
+    		health = 0;
+    		System.out.println("Bitch you dead");
+    	}
+    	else{
+    		System.out.println("Health Remaining:" + health);
+    	}
+    }
+    
+    /**
+	 * @param monster2
+	 */
+	private void attacks(CreatureCard monster2) {
+		//Write code here
+		//using takesHit() method changes the health of creature
+		
+	}
+    public boolean changeRare() {
+        //needs to change rarity so if true change to false and if its false change to true
+    	//return false IF rarity did not change, this is a sanity check. for Debugging
+    	return false;
     }
     
     public String toString() {
         return super.toString() + 
-               "Type: Monster";
+               " Type: Monster" +
+        		" Attack: " + attack +
+        		" Health: " + health +
+        		" Rare: " + isRare;
     }
     
-    
-    }
-}
+}//class CreatureCard()

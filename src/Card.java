@@ -34,6 +34,10 @@ public class Card
     public int getCardNum() {
         return cardNum;
     }
+    
+    public void setName(String newName) {
+    	cardName = newName;
+    }
 
     /**
      * Obtain the name of the file and open the file for reading. Attempt to 
@@ -74,6 +78,6 @@ public class Card
 
     public String toString () {
         return "Card name: " + cardName +
-        "Card number: " + cardNum;
+        		" Card number: " + cardNum;
     }
 }

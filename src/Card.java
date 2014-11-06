@@ -38,6 +38,10 @@ public class Card
     public void setName(String newName) {
     	cardName = newName;
     }
+    
+    public void setCardNumber(int i){
+        cardNum = i;
+    }
 
     /**
      * Obtain the name of the file and open the file for reading. Attempt to 

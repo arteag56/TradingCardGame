@@ -1,3 +1,5 @@
+package src;
+import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -44,17 +46,39 @@ public class GameBoardGUI
     {
         frame = new JFrame("GameBoard");
         Container contentPane = frame.getContentPane();
-        
+
         contentPane.setLayout(new BorderLayout());
         
-        JLabel label1 = new JLabel("I am a label.");
-        contentPane.add(label1, BorderLayout.NORTH);
         makeMenuBar(frame);
         
-        JTextField textField1 = new JTextField();
-        contentPane.add(textField1, BorderLayout.EAST);
+        //panel for the west side of the frame
+        JPanel west = new JPanel();
+        contentPane.add(west, BorderLayout.WEST);
+        west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
+        west.add(new JLabel("Current Player"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player1 Record"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player2 Record"));
+        west.add(new JTextField(10));
         
-        contentPane.setLayout(new FlowLayout());
+        
+        //panel for the south side of the frame
+        JPanel south = new JPanel();
+        contentPane.add(south, BorderLayout.SOUTH);
+        south.add(new JButton("Card #1"));
+        south.add(new JButton("Card #2"));
+        south.add(new JButton("Card #3"));
+        south.add(new JButton("Card #4"));
+        south.add(new JButton("Card #5"));
+        
+        
+        //panel for the north side of the frame
+         JPanel north = new JPanel();
+        contentPane.add(north, BorderLayout.NORTH);
+        
+        
+        
         
         
         
@@ -129,3 +153,4 @@ public class GameBoardGUI
         
     }
 }
+

@@ -1,44 +1,60 @@
 import java.util.Scanner;
 import java.io.*;
 /**
- * The card class will have attributes that each type of card should have
+ * The card class will have attributes that each type of card should have.
  * 
  * @author (Michael Arteaga, [add your names]) 
  * @version (Oct 1, 2014)
  */
 public class Card
 {
-    private String cardName;
-    private int cardNum;
+    protected String cardName;
+    protected int cardNum;
 
     /**
      * Default constructor
      */
     public Card () {
-        cardName = "[no name]";
+        cardName = null;
         cardNum = 0;
     }
 
     /**
-     * Contructor with card input
+     * Constructor with card input
      */
     public Card (String name, int number) {
         cardName = name;
         cardNum = number;
     }
-
+    
+    /**
+     * Gets the name of the card
+     * @return cardName
+     */
     public String getName() {
         return cardName;
     }
     
+    /**
+     * Gets the card number
+     * @return
+     */
     public int getCardNum() {
         return cardNum;
     }
     
+    /**
+     * Changes the name of the card
+     * @param newName
+     */
     public void setName(String newName) {
     	cardName = newName;
     }
     
+    /**
+     * Changes the card number
+     * @param i
+     */
     public void setCardNumber(int i){
         cardNum = i;
     }
@@ -76,12 +92,15 @@ public class Card
 
             }
 
-        }
+        }//while loop
         return scan;
     }
-
+    
+    /**
+     * Prints out card information
+     */
     public String toString () {
         return "Card name: " + cardName +
         		" Card number: " + cardNum;
     }
-}
+}//class Card

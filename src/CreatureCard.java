@@ -4,9 +4,8 @@
  * @author (Michael Arteaga, [add names])
  * @version (Oct 1, 2014)
  */
-public class CreatureCard extends Card
-{
-    private int value; //not needed?
+public class CreatureCard extends Card {
+	
     private boolean isRare;
     private int attack;
     private int health;
@@ -31,12 +30,14 @@ public class CreatureCard extends Card
      * Default constructor for objects of class Creature Card
      */
     public CreatureCard() {
-        cardName = ""; //will change when can read from file
+        cardName = null; //will change when can read from file
         attack = 10;
         health = 100;
         isRare = false;
     }
-
+    /**
+     * Creature card constructor with specific attributes.
+     */
     public CreatureCard(int attack, int health, boolean isRare) {
         cardName = super.getName();
         this.cardNum = super.getCardNum();
@@ -49,13 +50,6 @@ public class CreatureCard extends Card
         return cardName;
     }
 
-    /**
-     * Gets the power of the card
-     */
-    public int getCardValue() {
-        return value;
-    }
-
     public int getAttackDamage() {
         return attack;
     }
@@ -65,7 +59,6 @@ public class CreatureCard extends Card
     }
 
     public void setName(String newName) {
-        //cardName = newName;
         super.setName(newName);
     }
 
@@ -91,7 +84,7 @@ public class CreatureCard extends Card
             System.out.println("Bitch you dead");
         }
         else{
-            System.out.println("Health Remaining:" + health);
+            System.out.println(super.cardName + " health Remaining : " + health);
         }
     }
 
@@ -99,19 +92,15 @@ public class CreatureCard extends Card
      * @param monster2
      */
     private void attacks(CreatureCard monster2) {
-        //Write code here
-        //using takesHit() method changes the health of creature
         monster2.takesHit(getAttackDamage());
     }
 
     public boolean changeRare() {
-        //needs to change rarity so if true change to false and if its false change to true
-        //return false IF rarity did not change, this is a sanity check. for Debugging
-        if (isRare == false){
-            isRare = true;
+        if (isRare){
+            isRare = false;
         }
         else{
-            isRare = false;
+            isRare = true;
 
         }
         return true;

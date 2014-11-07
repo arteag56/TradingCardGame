@@ -1,3 +1,4 @@
+package src;
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
@@ -56,7 +57,11 @@ public class GameBoardGUI
         west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
         west.add(new JLabel("Current Player"));
         west.add(new JTextField(10));
+        west.add(new JLabel("Player1"));
+        west.add(new JTextField(10));
         west.add(new JLabel("Player1 Record"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player2"));
         west.add(new JTextField(10));
         west.add(new JLabel("Player2 Record"));
         west.add(new JTextField(10));
@@ -75,9 +80,16 @@ public class GameBoardGUI
         //panel for the north side of the frame
          JPanel north = new JPanel();
         contentPane.add(north, BorderLayout.NORTH);
+        north.add(new JLabel("Game Result"));
+        north.add(new JTextField(10));
         
-        
-        
+        //panel for the east side of the frame
+        JPanel east = new JPanel();
+        contentPane.add(east, BorderLayout.EAST);
+        east.setLayout(new FlowLayout());
+        //east.setLayout(new BoxLayout(east, BoxLayout.Y_AXIS));
+        east.add(new JButton("Deck - Face Down"));
+        east.add(new JButton("Deck - Face Up"));
         
         
         
@@ -152,4 +164,5 @@ public class GameBoardGUI
         
     }
 }
+
 

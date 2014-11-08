@@ -3,7 +3,7 @@ import java.io.*;
 /**
  * The card class will have attributes that each type of card should have.
  * 
- * @author (Michael Arteaga, [add your names]) 
+ * @author (Michael Arteaga, Eric Oliver [add your names]) 
  * @version (Oct 1, 2014)
  */
 public class Card
@@ -37,7 +37,7 @@ public class Card
     
     /**
      * Gets the card number
-     * @return
+     * @return cardNum
      */
     public int getCardNum() {
         return cardNum;

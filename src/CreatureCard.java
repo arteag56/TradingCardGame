@@ -1,7 +1,7 @@
 /**
  * [Description]
  *
- * @author (Michael Arteaga, [add names])
+ * @author (Michael Arteaga, Eric Oliver [add names])
  * @version (Oct 1, 2014)
  */
 public class CreatureCard extends Card {
@@ -45,18 +45,32 @@ public class CreatureCard extends Card {
         this.health = health;
         this.isRare = isRare;
     }
-
+    /**
+     * Gets the cards new name
+     *@return cardName
+     */
     public String getName() {
         return cardName;
     }
-
+    /**
+     * Gets the cards attack damage
+     * @return attack
+     */
     public int getAttackDamage() {
         return attack;
     }
-
+    
+    /**
+     * Gets the cards health value
+     * @return health
+     */
     public double getHealth() {
         return health;
     }
+    
+    /**
+     * @param newName
+     */
 
     public void setName(String newName) {
         super.setName(newName);
@@ -68,14 +82,27 @@ public class CreatureCard extends Card {
     private void setNumber(int i) {
         super.setCardNumber(i);
     }
-
-    public void setAttackDamage(int newAttack){
+    
+    /**
+     * Changes the attack damage
+     * @param newAttack
+     */
+     public void setAttackDamage(int newAttack){
         attack = newAttack;
     }
-
-    public void setHealth(int newHealth){
+    
+    /**
+     * Changes the health value
+     * @param newHealth
+     */
+     public void setHealth(int newHealth){
         health = newHealth;
     }
+    
+    /**
+     * Sets and uses the hit taken by given creature
+     * @param HitTaken
+     */
 
     public void takesHit(int HitTaken){
         health = health - HitTaken;
@@ -94,6 +121,10 @@ public class CreatureCard extends Card {
     private void attacks(CreatureCard monster2) {
         monster2.takesHit(getAttackDamage());
     }
+    
+    /**
+     * Tells if given card is rare
+     */
 
     public boolean changeRare() {
         if (isRare){
@@ -105,7 +136,11 @@ public class CreatureCard extends Card {
         }
         return true;
     }
-
+    
+    /**
+     * Gets values of card
+     * @return toString
+     */
     public String toString() {
         return super.toString() +
         " Type: Monster" +

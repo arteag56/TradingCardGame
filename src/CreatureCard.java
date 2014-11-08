@@ -49,62 +49,59 @@ public class CreatureCard extends Card {
      * Gets the cards new name
      *@return cardName
      */
-    public String getName() {
-        return cardName;
-    }
+    public String getName() { return cardName; }
+    
     /**
      * Gets the cards attack damage
      * @return attack
      */
-    public int getAttackDamage() {
-        return attack;
-    }
+    public int getAttackDamage() { return attack; }
     
     /**
      * Gets the cards health value
      * @return health
      */
-    public double getHealth() {
-        return health;
-    }
+    public double getHealth() { return health; }
     
     /**
      * @param newName
      */
 
-    public void setName(String newName) {
-        super.setName(newName);
-    }
+    public void setName(String newName) { super.setName(newName); }
 
     /**
      * @param i
      */
-    private void setNumber(int i) {
-        super.setCardNumber(i);
-    }
+    private void setNumber(int i) { super.setCardNumber(i); }
     
     /**
      * Changes the attack damage
      * @param newAttack
      */
-     public void setAttackDamage(int newAttack){
-        attack = newAttack;
-    }
+     public void setAttackDamage(int newAttack){ attack = newAttack; }
     
     /**
      * Changes the health value
      * @param newHealth
      */
-     public void setHealth(int newHealth){
-        health = newHealth;
-    }
+     public void setHealth(int newHealth){ health = newHealth; }
+     
+     /**
+      * Changes to opposite rarity of this Creature.
+      */
+     public boolean changeRare() {
+         if (isRare)
+             isRare = false;
+         else
+             isRare = true;
+         return true;
+     }
     
     /**
      * Sets and uses the hit taken by given creature
      * @param HitTaken
      */
-
-    public void takesHit(int HitTaken){
+     public void takesHit(int HitTaken){
         health = health - HitTaken;
         if (health <= 0){
             health = 0;
@@ -113,28 +110,13 @@ public class CreatureCard extends Card {
         else{
             System.out.println(super.cardName + " health Remaining : " + health);
         }
-    }
+     }
 
     /**
      * @param monster2
      */
     private void attacks(CreatureCard monster2) {
         monster2.takesHit(getAttackDamage());
-    }
-    
-    /**
-     * Tells if given card is rare
-     */
-
-    public boolean changeRare() {
-        if (isRare){
-            isRare = false;
-        }
-        else{
-            isRare = true;
-
-        }
-        return true;
     }
     
     /**

@@ -28,6 +28,12 @@ public class GameBoard
         gameResult = true;// fill in later 
         
     }
+    
+    public static void main(String args[]) {
+    	GameBoardGUI gui = new GameBoardGUI();
+    	Player p1 = new Player();
+    	Player p2 = new Player();
+    }
 
     /**
      *This method returns a boolean                         

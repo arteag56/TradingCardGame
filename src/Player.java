@@ -24,23 +24,23 @@ public class Player
         Scanner scan = new Scanner (new File ("monsterdeck.txt"));
         while (scan.hasNextLine())
             {   line = scan.nextLine();
-                monsterDeck.add (line);
+                ///monsterDeck.add (line);
             }
         scan.close();
         }
         catch (FileNotFoundException fnfe)
         {   System.err.println (fnfe);  }
     }
+    
+    public static void main(String args[]) {
+    	
+    }
 
         /** @return The list of words generated
          *  by the constructor.
          */
-        public List <String> getMonsterDeck()
-        {   return monsterDeck;  }
-        
-    
-    
-    
+    //public List <String> getMonsterDeck() { return monsterDeck; }
+     
     public void addMonsterDeck() {
         //reads input from file
     }

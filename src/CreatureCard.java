@@ -1,7 +1,7 @@
 /**
  * [Description]
  *
- * @author (Michael Arteaga, [add names])
+ * @author (Michael Arteaga, Eric Oliver[add names])
  * @version (Oct 1, 2014)
  */
 public class CreatureCard extends Card

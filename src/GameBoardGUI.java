@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
@@ -85,12 +87,22 @@ public class GameBoardGUI
         //panel for the east side of the frame
         JPanel east = new JPanel();
         contentPane.add(east, BorderLayout.EAST);
-        east.setLayout(new FlowLayout());
-        //east.setLayout(new BoxLayout(east, BoxLayout.Y_AXIS));
-        east.add(new JButton("Deck - Face Down"));
-        east.add(new JButton("Deck - Face Up"));
+        east.setLayout(new BoxLayout(east, BoxLayout.Y_AXIS));
+        //east.add(new JButton("Deck - Face Down"));
+        //east.add(new JButton("Deck - Face Up"));
+        JButton deck1 = new JButton("Hi");
+        deck1.setAlignmentY(-10000);
+        east.add(deck1);
         
-        
+        //panel for the center of the frame 
+        JPanel center = new JPanel();
+        contentPane.add(center, BorderLayout.CENTER);
+        int align = FlowLayout.CENTER;
+        center.setLayout(new FlowLayout(align));
+        center.add(new JButton("Active Playing Card #1"));
+        center.add(new JButton("Active Playing Card #2"));
+        center.add(new JButton("Active Playing Card #3"));
+        center.add(new JButton("Active Playing Card #4"));
         
         frame.pack();
         frame.setVisible(true);
@@ -163,5 +175,3 @@ public class GameBoardGUI
         
     }
 }
-
-

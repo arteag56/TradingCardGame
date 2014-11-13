@@ -55,17 +55,18 @@ public class GameBoardGUI
         //panel for the west side of the frame
         JPanel west = new JPanel();
         contentPane.add(west, BorderLayout.WEST);
-        west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
+        //west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
+        west.setLayout(new GridLayout(9,1));
         west.add(new JLabel("Current Player"));
         west.add(new JTextField(10));
+        west.add(new JLabel(""));
+        west.add(new JLabel(""));
+        west.add(new JLabel(""));
         west.add(new JLabel("Player1"));
         west.add(new JTextField(10));
         west.add(new JLabel("Player1 Record"));
         west.add(new JTextField(10));
-        west.add(new JLabel("Player2"));
-        west.add(new JTextField(10));
-        west.add(new JLabel("Player2 Record"));
-        west.add(new JTextField(10));
+        
         
         
         //panel for the south side of the frame
@@ -87,22 +88,40 @@ public class GameBoardGUI
         //panel for the east side of the frame
         JPanel east = new JPanel();
         contentPane.add(east, BorderLayout.EAST);
-        east.setLayout(new BoxLayout(east, BoxLayout.Y_AXIS));
-        //east.add(new JButton("Deck - Face Down"));
-        //east.add(new JButton("Deck - Face Up"));
-        JButton deck1 = new JButton("Hi");
-        deck1.setAlignmentY(-10000);
-        east.add(deck1);
+        //east.setLayout(new BoxLayout(east, BoxLayout.Y_AXIS));
+        east.setLayout(new GridLayout(9,1));
+        east.add(new JLabel("Player2"));
+        east.add(new JTextField(10));
+        east.add(new JLabel("Player2 Record"));
+        east.add(new JTextField(10));
+        east.add(new JLabel(""));
+        east.add(new JLabel(""));
+        east.add(new JLabel(""));
+        east.add(new JButton("Deck - Face Down"));
+        east.add(new JButton("Deck - Face Up"));
+        
         
         //panel for the center of the frame 
         JPanel center = new JPanel();
         contentPane.add(center, BorderLayout.CENTER);
-        int align = FlowLayout.CENTER;
-        center.setLayout(new FlowLayout(align));
+        //int align = FlowLayout.CENTER;
+        //center.setLayout(new FlowLayout(align));
+        center.setLayout(new GridLayout(3,5));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
         center.add(new JButton("Active Playing Card #1"));
         center.add(new JButton("Active Playing Card #2"));
         center.add(new JButton("Active Playing Card #3"));
         center.add(new JButton("Active Playing Card #4"));
+        center.add(new JButton("Active Playing Card #5"));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
+        center.add(new JLabel(""));
         
         frame.pack();
         frame.setVisible(true);

@@ -1,5 +1,3 @@
-package src;
-
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
@@ -79,7 +77,7 @@ public class GameBoardGUI
         
         
         //panel for the north side of the frame
-         JPanel north = new JPanel();
+        JPanel north = new JPanel();
         contentPane.add(north, BorderLayout.NORTH);
         north.add(new JLabel("Game Result"));
         north.add(new JTextField(10));
@@ -94,18 +92,55 @@ public class GameBoardGUI
         deck1.setAlignmentY(-10000);
         east.add(deck1);
         
+        
         //panel for the center of the frame 
-        JPanel center = new JPanel();
+        Panel center = new Panel();
         contentPane.add(center, BorderLayout.CENTER);
-        int align = FlowLayout.CENTER;
-        center.setLayout(new FlowLayout(align));
+       
+        //int align = FlowLayout.CENTER;
+        //center.setLayout(new FlowLayout(align));
+        
         center.add(new JButton("Active Playing Card #1"));
         center.add(new JButton("Active Playing Card #2"));
         center.add(new JButton("Active Playing Card #3"));
         center.add(new JButton("Active Playing Card #4"));
+
         
         frame.pack();
         frame.setVisible(true);
+    }
+    
+    public void makeCenterFrame() {
+    	frame = new JFrame("Center");
+        Container contentPane = frame.getContentPane();
+
+        contentPane.setLayout(new BorderLayout());
+        
+        JPanel west = new JPanel();
+        contentPane.add(west, BorderLayout.WEST);
+        west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
+        west.add(new JLabel("Current Player"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player1"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player1 Record"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player2"));
+        west.add(new JTextField(10));
+        west.add(new JLabel("Player2 Record"));
+        west.add(new JTextField(10));
+        
+        
+        //panel for the south side of the frame
+        JPanel south = new JPanel();
+        contentPane.add(south, BorderLayout.SOUTH);
+        south.add(new JButton("Card #1"));
+        south.add(new JButton("Card #2"));
+        south.add(new JButton("Card #3"));
+        south.add(new JButton("Card #4"));
+        south.add(new JButton("Card #5"));
+        
+        
     }
     
     /**

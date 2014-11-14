@@ -6,12 +6,11 @@
  */
 public class CreatureCard extends Card
 {
-    private int value; //not needed?
     private boolean isRare;
     private int attack;
     private int health;
     private String cardName;
-    private int cardNum;
+    private int cardNum; //change to key?
     public static void main(String[] args) {
         CreatureCard monster1 = new CreatureCard();
         CreatureCard monster2 = new CreatureCard();
@@ -91,7 +90,7 @@ public class CreatureCard extends Card
         health = health - HitTaken;
         if (health <= 0){
             health = 0;
-            System.out.println("Bitch you dead");
+            System.out.println("Die Mothafucker");
         }
         else{
             System.out.println("Health Remaining:" + health);
@@ -102,22 +101,8 @@ public class CreatureCard extends Card
      * @param monster2
      */
     private void attacks(CreatureCard monster2) {
-        //Write code here
-        //using takesHit() method changes the health of creature
+        
         monster2.takesHit(getAttackDamage());
-    }
-
-    public boolean changeRare() {
-        //needs to change rarity so if true change to false and if its false change to true
-        //return false IF rarity did not change, this is a sanity check. for Debugging
-        if (isRare == false){
-            isRare = true;
-        }
-        else{
-            isRare = false;
-
-        }
-        return true;
     }
     
     public void useMagic( Card c, CreatureCard alien ){

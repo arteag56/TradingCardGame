@@ -51,13 +51,6 @@ public class CreatureCard extends Card
         return cardName;
     }
 
-    /**
-     * Gets the power of the card
-     */
-    public int getCardValue() {
-        return value;
-    }
-
     public int getAttackDamage() {
         return attack;
     }
@@ -101,7 +94,6 @@ public class CreatureCard extends Card
      * @param monster2
      */
     private void attacks(CreatureCard monster2) {
-        
         monster2.takesHit(getAttackDamage());
     }
     

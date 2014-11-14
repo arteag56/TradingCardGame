@@ -49,7 +49,7 @@ public class CreatureCard extends Card
     }
 
     public String getName() {
-        return cardName;
+        return super.cardName;
     }
 
     public int getAttackDamage() {
@@ -126,10 +126,11 @@ public class CreatureCard extends Card
 
     public String toString() {
         return super.toString() +
-        " Type: Monster" +
-        " Attack: " + attack +
-        " Health: " + health +
+        " Type: Monster" + "\n" +
+        " Attack: " + attack + "\n" +
+        " Health: " + health + "\n" +
         " Rare: " + isRare;
+    
     }
 }//class CreatureCard()
 

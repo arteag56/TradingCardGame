@@ -17,6 +17,7 @@ public class Player
      * Constructor for objects of class Player
      */
     public Player() {
+<<<<<<< Updated upstream
      
         try
         {
@@ -35,15 +36,32 @@ public class Player
     public static void main(String args[]) {
     	
     }
+=======
+    	
+    }
+     
+        
+>>>>>>> Stashed changes
 
         /** @return The list of words generated
          *  by the constructor.
          */
+<<<<<<< Updated upstream
     //public List <String> getMonsterDeck() { return monsterDeck; }
      
+=======
+   public List<CreatureCard> getMonsterDeck() {
+	   return monsterDeck;  
+	}
+        
+    
+    
+    
+>>>>>>> Stashed changes
     public void addMonsterDeck() {
-        //reads input from file
+
     }
+    
     
     public void addMagicDeck() {
         //reads input from file

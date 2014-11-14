@@ -17,6 +17,7 @@ public class Card
     public Card () {
         cardName = null;
         cardNum = 0;
+       
     }
 
     /**
@@ -25,6 +26,7 @@ public class Card
     public Card (String name, int number) {
         cardName = name;
         cardNum = number;
+     
     }
     
     /**
@@ -43,6 +45,7 @@ public class Card
         return cardNum;
     }
     
+
     /**
      * Changes the name of the card
      * @param newName
@@ -58,6 +61,7 @@ public class Card
     public void setCardNumber(int i){
         cardNum = i;
     }
+
 
     /**
      * Obtain the name of the file and open the file for reading. Attempt to 
@@ -100,7 +104,7 @@ public class Card
      * Prints out card information
      */
     public String toString () {
-        return "Card name: " + cardName +
-        		" Card number: " + cardNum;
+        return "Card name: " + cardName + "\n" +
+        		" Card number: "+"\n" + cardNum;
     }
 }//class Card

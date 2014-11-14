@@ -24,7 +24,8 @@ public class CreatureCard extends Card
         System.out.println(monster2.toString());
         //monster1.attacks(monster2);
         //monster1.changeRare();
-        monster1.useMagic(special, monster2);
+        monster1.useMagicOffense(special, monster2);
+        monster1.useMagicDefense(special, monster2);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
     }
@@ -97,6 +98,9 @@ public class CreatureCard extends Card
         monster2.takesHit(getAttackDamage());
     }
     
+    /**
+     * Increases the attack damage of the attacking monster.
+     */
     public void useMagic( Card c, CreatureCard alien ){
         int killer = attack;
         
@@ -105,6 +109,19 @@ public class CreatureCard extends Card
             alien.takesHit(killer);
         }
     
+    }
+    
+        /**
+     * Decreases the damage to current defending creature.
+     * @param d @param unknown
+     */ 
+    public void useMagicDefense( Card d, CreatureCard unknown){
+        int defender = unknown.getAttackDamage();
+        
+        if(isRare == true && d instanceof MagicCard){
+           defender = defender / 2;
+           takesHit(defender);
+        }
     }
 
     public String toString() {

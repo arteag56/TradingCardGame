@@ -92,6 +92,24 @@ public class GameBoardGUI implements ActionListener
 		//int align = FlowLayout.CENTER;
 		//center.setLayout(new FlowLayout(align));
 		center.setLayout(new GridLayout(3,5));
+		//center.add(new JButton("Active Playing Card #1"));
+		JButton button1 = new JButton();
+		center.add(button1);
+		JLabel label1 = new JLabel("Hello World");
+		label1.setVisible(false);
+		center.add(label1);
+		button1.addActionListener(new ActionListener() 
+		{
+		    public void actionPerformed(ActionEvent arg0)
+		    {
+		        button1.setVisible(false);
+		        label1.setVisible(true);
+		    }
+		});
+		center.add(new JButton(card.toString()));
+		center.add(new JButton("Active Playing Card #3"));
+		center.add(new JButton("Active Playing Card #4"));
+		center.add(new JButton("Active Playing Card #5"));
 		center.add(new JLabel(""));
 		center.add(new JLabel(""));
 		center.add(new JLabel(""));
@@ -102,11 +120,7 @@ public class GameBoardGUI implements ActionListener
 		center.add(new JButton("Active Playing Card #3"));
 		center.add(new JButton("Active Playing Card #4"));
 		center.add(new JButton("Active Playing Card #5"));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
+		
 		frame.pack();
 		frame.setVisible(true);
 	}

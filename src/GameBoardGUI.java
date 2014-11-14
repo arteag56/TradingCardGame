@@ -93,18 +93,17 @@ public class GameBoardGUI implements ActionListener
 		//center.setLayout(new FlowLayout(align));
 		center.setLayout(new GridLayout(3,5));
 		//center.add(new JButton("Active Playing Card #1"));
-		JButton button1 = new JButton();
+		final JButton button1 = new JButton(card.getName());
 		center.add(button1);
-		JLabel label1 = new JLabel("Hello World");
-		label1.setVisible(false);
-		center.add(label1);
-		button1.addActionListener(new ActionListener() 
+		button1.setToolTipText(card.toString());
+		button1.addMouseListener(new MouseAdapter() 
 		{
-		    public void actionPerformed(ActionEvent arg0)
+		    public void mouseEntered(MouseEvent e)
 		    {
-		        button1.setVisible(false);
-		        label1.setVisible(true);
+		        button1.getToolTipText();
+		        //label1.setVisible(true);
 		    }
+		    
 		});
 		center.add(new JButton(card.toString()));
 		center.add(new JButton("Active Playing Card #3"));
@@ -123,6 +122,7 @@ public class GameBoardGUI implements ActionListener
 		
 		frame.pack();
 		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	/**
 	 *

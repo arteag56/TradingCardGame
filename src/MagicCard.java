@@ -15,6 +15,7 @@ public class MagicCard extends Card
      * Constructor for objects of class MagicCard
      */
     public MagicCard() {
+    	super();//default constructor -- must be changed
         cardName = super.getName();
         offense = false;
     }

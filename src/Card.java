@@ -11,6 +11,9 @@ public class Card
     protected String cardName;
     protected int cardNum;
 
+    public static void main(String[] args) {
+    	openFile();
+    }
     /**
      * Default constructor
      */
@@ -67,7 +70,7 @@ public class Card
      * Obtain the name of the file and open the file for reading. Attempt to 
      * recover from the typical I/O exceptions with a limited number of retries (3).
      */
-    public Scanner openFile() {
+    public static Scanner openFile() {
         String nameOfFile; 
         Scanner scan = null;
         boolean success = false;

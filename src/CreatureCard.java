@@ -18,7 +18,7 @@ public class CreatureCard extends Card
         CreatureCard monster1 = new CreatureCard();
         CreatureCard monster2 = new CreatureCard();
         MagicCard special = new MagicCard();
-        special.setName("Enhancement");
+        special.setName("Magie");
         monster1.setName("Monster 1");
         monster2.setName("Monster 2");
         monster1.setNumber(20);
@@ -30,6 +30,7 @@ public class CreatureCard extends Card
         monster1.useMagicDefense(special, monster2);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
+        System.out.println(special.toString());
     }
 
     /**
@@ -128,10 +129,10 @@ public class CreatureCard extends Card
 
     public String toString() {
         return super.toString() +
-        " Type: Monster" + "\n" +
-        " Attack: " + attack + "\n" +
-        " Health: " + health + "\n" +
-        " Rare: " + isRare;
+        "\n  Type: Monster" +
+        "\n  Attack: " + attack +
+        "\n  Health: " + health +
+        "\n  Rare: " + isRare;
     
     }
 }//class CreatureCard()

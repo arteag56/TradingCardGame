@@ -41,18 +41,18 @@ public class MagicCard extends Card
     public String getInfo() {
     	String result;
     	if (offense) {
-    		result = "Offense";
+    		result = "offense";
     	}
     	else {
-    		result = "Defense";
+    		result = "defense";
     	}
     	return result;
     }
     
     public String toString() {
         return super.toString() + 
-        		"\n  Type: Enhancement" + 
-        		"\n  " + getInfo();
+        		"\n  Type: Enhancement" +
+        		"\n  Action: Enhance " + getInfo();
     }
     
 }

@@ -9,12 +9,14 @@ public class MagicCard extends Card
 {
     private int value;
     private String cardName;
+    private boolean offense; //Magic type: Offense or Defense?
 
     /**
      * Constructor for objects of class MagicCard
      */
     public MagicCard() {
         cardName = super.getName();
+        offense = false;
     }
 
     /**
@@ -23,10 +25,34 @@ public class MagicCard extends Card
     public String getMagicName() {
         return cardName;
     }
+    public boolean isOffense() {
+    	return offense;
+    }
+    
+    public void changeType() {
+    	if (offense) {
+    		offense = false;
+    	}
+    	else {
+    		offense = true;
+    	}
+    }
+    
+    public String getInfo() {
+    	String result;
+    	if (offense) {
+    		result = "Offense";
+    	}
+    	else {
+    		result = "Defense";
+    	}
+    	return result;
+    }
     
     public String toString() {
-        return super.toString() +
-                "Type: Enhancement";
+        return super.toString() + 
+        		"\n  Type: Enhancement" + 
+        		"\n  " + getInfo();
     }
     
 }

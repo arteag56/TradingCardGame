@@ -104,7 +104,7 @@ public class Card
      * Prints out card information
      */
     public String toString () {
-        return "Card name: " + cardName + "\n" +
-        		" Card number: "+"\n" + cardNum;
+        return "Card name: " + cardName +
+        		"\nCard number: " + cardNum;
     }
 }//class Card

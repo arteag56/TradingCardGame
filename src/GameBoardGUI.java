@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,6 +16,17 @@ public class GameBoardGUI implements ActionListener
 	private JFrame frame;
 	private JTextField textField1, textField2, textField3, textField4, textField5;
 	private Card card;
+	final JButton cardInHand1 = new JButton("Card #1");
+	final JButton cardInHand2 = new JButton("Card #2");
+	final JButton cardInHand3 = new JButton("Card #3");
+	final JButton cardInHand4 = new JButton("Card #4");
+	final JButton cardInHand5 = new JButton("Card #5");
+	final JButton activePlayingCard1 = new JButton("Active Playing Card #1");
+	final JButton activePlayingCard2 = new JButton("Active Playing Card #2");
+	final JButton activePlayingCard3 = new JButton("Active Playing Card #3");
+	final JButton activePlayingCard4 = new JButton("Active Playing Card #4");
+	final JButton activePlayingCard5 = new JButton("Active Playing Card #5");
+	
 	/**
 	 * Constructor for objects of class GameBoardGUI
 	 */
@@ -25,6 +38,7 @@ public class GameBoardGUI implements ActionListener
 		JTextField();
 		makeFrame();
 	}
+	
 	/**
 	 * This is my JText Field
 	 */
@@ -36,6 +50,7 @@ public class GameBoardGUI implements ActionListener
 		textField4 = new JTextField();
 		textField5 = new JTextField();
 	}
+	
 	/**
 	 *
 	 */
@@ -48,7 +63,6 @@ public class GameBoardGUI implements ActionListener
 		//panel for the west side of the frame
 		JPanel west = new JPanel();
 		contentPane.add(west, BorderLayout.WEST);
-		//west.setLayout(new BoxLayout(west, BoxLayout.Y_AXIS));
 		west.setLayout(new GridLayout(9,1));
 		west.add(new JLabel("Current Player"));
 		west.add(new JTextField(10));
@@ -62,20 +76,32 @@ public class GameBoardGUI implements ActionListener
 		//panel for the south side of the frame
 		JPanel south = new JPanel();
 		contentPane.add(south, BorderLayout.SOUTH);
-		south.add(new JButton("Card #1"));
-		south.add(new JButton("Card #2"));
-		south.add(new JButton("Card #3"));
-		south.add(new JButton("Card #4"));
-		south.add(new JButton("Card #5"));
+		final JButton cardInHand1 = new JButton("Card #1");
+		final JButton cardInHand2 = new JButton("Card #2");
+		final JButton cardInHand3 = new JButton("Card #3");
+		final JButton cardInHand4 = new JButton("Card #4");
+		final JButton cardInHand5 = new JButton("Card #5");
+		south.add(cardInHand1);
+		south.add(cardInHand2);
+		south.add(cardInHand3);
+		south.add(cardInHand4);
+		south.add(cardInHand5);
+		
+		infoCard(cardInHand1);
+		infoCard(cardInHand2);
+		infoCard(cardInHand3);
+		infoCard(cardInHand4);
+		infoCard(cardInHand5);
+		
 		//panel for the north side of the frame
 		JPanel north = new JPanel();
 		contentPane.add(north, BorderLayout.NORTH);
 		north.add(new JLabel("Game Result"));
 		north.add(new JTextField(10));
+		
 		//panel for the east side of the frame
 		JPanel east = new JPanel();
 		contentPane.add(east, BorderLayout.EAST);
-		//east.setLayout(new BoxLayout(east, BoxLayout.Y_AXIS));
 		east.setLayout(new GridLayout(9,1));
 		east.add(new JLabel("Player2"));
 		east.add(new JTextField(10));
@@ -84,46 +110,111 @@ public class GameBoardGUI implements ActionListener
 		east.add(new JLabel(""));
 		east.add(new JLabel(""));
 		east.add(new JLabel(""));
-		east.add(new JButton("Deck - Face Down"));
-		east.add(new JButton("Deck - Face Up"));
+		JButton deckFaceDown = new JButton("Deck - Face Down");
+		east.add(deckFaceDown);
+		
 		//panel for the center of the frame
 		JPanel center = new JPanel();
 		contentPane.add(center, BorderLayout.CENTER);
-		//int align = FlowLayout.CENTER;
-		//center.setLayout(new FlowLayout(align));
 		center.setLayout(new GridLayout(3,5));
-		//center.add(new JButton("Active Playing Card #1"));
-		final JButton button1 = new JButton(card.getName());
-		center.add(button1);
-		button1.setToolTipText(card.toString());
-		button1.addMouseListener(new MouseAdapter() 
+		final JButton activePlayingCard6 = new JButton("Active Playing Card #6");
+		final JButton activePlayingCard7 = new JButton("Active Playing Card #7");
+		final JButton activePlayingCard8 = new JButton("Active Playing Card #8");
+		final JButton activePlayingCard9 = new JButton("Active Playing Card #9");
+		final JButton activePlayingCard10 = new JButton("Active Playing Card #10");
+		center.add(activePlayingCard1);
+		center.add(activePlayingCard2);
+		center.add(activePlayingCard3);
+		center.add(activePlayingCard4);
+		center.add(activePlayingCard5);
+		center.add(new JLabel(""));
+		center.add(new JLabel(""));
+		center.add(new JLabel(""));
+		center.add(new JLabel(""));
+		center.add(new JLabel(""));
+		center.add(activePlayingCard6);
+		center.add(activePlayingCard7);
+		center.add(activePlayingCard8);
+		center.add(activePlayingCard9);
+		center.add(activePlayingCard10);
+		
+		activePlayingCard1.setVisible(false);
+		activePlayingCard2.setVisible(false);
+		activePlayingCard3.setVisible(false);
+		activePlayingCard4.setVisible(false);
+		activePlayingCard5.setVisible(false);
+		activePlayingCard6.setVisible(false);
+		activePlayingCard7.setVisible(false);
+		activePlayingCard8.setVisible(false);
+		activePlayingCard9.setVisible(false);
+		activePlayingCard10.setVisible(false);
+		
+		
+		activePlayingCard1.setToolTipText(card.toString());
+		activePlayingCard1.addMouseListener(new MouseAdapter() 
 		{
 		    public void mouseEntered(MouseEvent e)
 		    {
-		        button1.getToolTipText();
+		        activePlayingCard1.getToolTipText();
 		        //label1.setVisible(true);
 		    }
 		    
 		});
-		center.add(new JButton(card.toString()));
-		center.add(new JButton("Active Playing Card #3"));
-		center.add(new JButton("Active Playing Card #4"));
-		center.add(new JButton("Active Playing Card #5"));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JLabel(""));
-		center.add(new JButton("Active Playing Card #1"));
-		center.add(new JButton("Active Playing Card #2"));
-		center.add(new JButton("Active Playing Card #3"));
-		center.add(new JButton("Active Playing Card #4"));
-		center.add(new JButton("Active Playing Card #5"));
+		
+		transferValue(cardInHand1, activePlayingCard1);
+		transferValue(cardInHand2, activePlayingCard2);
+		transferValue(cardInHand3, activePlayingCard3);
+		transferValue(cardInHand4, activePlayingCard4);
+		transferValue(cardInHand5, activePlayingCard5);
+		
+		deckFaceDown.addActionListener(new ActionListener()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        JButton cardInHand6 = new JButton("Card #6");
+		        south.add(cardInHand6);
+		        cardInHand6.setVisible(true);
+		    }
+		});
+		
+		
 		
 		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
+	
+	/**
+	 * 
+	 */
+	public void transferValue(JButton hand, JButton field)
+	{
+	    hand.addActionListener(new ActionListener()
+		{
+		    public void actionPerformed(ActionEvent e)
+		    {
+		        hand.setVisible(false);
+		        field.setVisible(true);
+		    }
+		});
+	}
+	
+	/**
+	 * 
+	 */
+	public void infoCard(JButton infoHand)
+	{
+	    infoHand.setToolTipText("Info about card");
+		infoHand.addMouseListener(new MouseAdapter()
+		{
+		    public void mouseEntered(MouseEvent e)
+		    {
+		        infoHand.getToolTipText();
+		    }
+		    
+		});
+	}
+	
 	/**
 	 *
 	 */
@@ -131,6 +222,7 @@ public class GameBoardGUI implements ActionListener
 	{
 		System.out.println("Menu item: " + event.getActionCommand());
 	}
+	
 	/**
 	 * Create the main Frame's menu bar.
 	 */
@@ -160,19 +252,25 @@ public class GameBoardGUI implements ActionListener
 		});
 		fileMenu.add(quitItem);
 	}
+	
 	/**
 	 *
 	 */
 	public static void main(String[] args)
 	{
 		GameBoardGUI x = new GameBoardGUI();
+		
+		
+		
 	}
+	
 	/**
 	 *
 	 */
 	public void openFile()
 	{
 	}
+	
 	/**
 	 *
 	 */

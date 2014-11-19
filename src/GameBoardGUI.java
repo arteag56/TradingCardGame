@@ -26,6 +26,7 @@ public class GameBoardGUI implements ActionListener
     final JButton activePlayingCard3 = new JButton("Active Playing Card #3");
     final JButton activePlayingCard4 = new JButton("Active Playing Card #4");
     final JButton activePlayingCard5 = new JButton("Active Playing Card #5");
+    private int cardInHandCount = 5;
     
     
     /**
@@ -100,9 +101,7 @@ public class GameBoardGUI implements ActionListener
         //panel for the north side of the frame
         JPanel north = new JPanel();
         contentPane.add(north, BorderLayout.NORTH);
-        north.add(new JLabel("Game Result"));
-        north.add(new JTextField(10));
-        
+       
         //panel for the east side of the frame
         JPanel east = new JPanel();
         contentPane.add(east, BorderLayout.EAST);
@@ -114,8 +113,40 @@ public class GameBoardGUI implements ActionListener
         east.add(new JLabel(""));
         east.add(new JLabel(""));
         east.add(new JLabel(""));
-        JButton deckFaceDown = new JButton("Deck - Face Down");
-        east.add(deckFaceDown);
+        JButton deck = new JButton("Deck");
+        east.add(deck);
+        JButton attackButton = new JButton("Attack!");
+        east.add(attackButton);
+        
+        deck.addActionListener(new ActionListener()
+        {
+            int i = 6;
+            
+            public void actionPerformed(ActionEvent e)
+            {
+                JButton newCard = new JButton("Card #" + i);
+                south.add(newCard);
+                newCard.setVisible(true);
+                south.revalidate();
+                cardInHandCount = cardInHandCount + 1; 
+                i++;
+                if (cardInHandCount == 5)
+                {
+                    deck.setEnabled(false);
+                }
+            }
+        });
+        
+        attackButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                //GameBoard.Player1
+            }
+        });
+        
+        
+        
         
         //panel for the center of the frame
         JPanel center = new JPanel();
@@ -160,7 +191,6 @@ public class GameBoardGUI implements ActionListener
             public void mouseEntered(MouseEvent e)
             {
                 activePlayingCard1.getToolTipText();
-                //label1.setVisible(true);
             }
             
         });
@@ -188,9 +218,9 @@ public class GameBoardGUI implements ActionListener
         {
             public void actionPerformed(ActionEvent e)
             {
-                hand.setVisible(true);
+                hand.setVisible(false);
                 field.setVisible(true);
-                //hand.
+                cardInHandCount = cardInHandCount - 1;
             }
         });
     }
@@ -272,7 +302,8 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     * 
+     * This does nothing at the moment, but I want it left in here
+     * because I may need it in the future, not sure yet. Thanks.
      */
     public void replenishCard()
     {
@@ -287,5 +318,17 @@ public class GameBoardGUI implements ActionListener
             }
         };
     }
+    
+    /**
+     * 
+     */
+    public void displayWinner()
+    {
+        String message = "(Insert Player Here) is the WINNER!";
+        JOptionPane optionPane = new JOptionPane();
+        optionPane.setMessage(message);
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        JDialog dialog = optionPane.createDialog(null, "Width 100");
+        dialog.setVisible(true);
+    }
 }
-

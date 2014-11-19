@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 
@@ -8,28 +10,64 @@ import java.util.*;
  */
 public class Deck {
 	
-	public HashMap <Integer, Set <String>>  deck, deck2;
+	public Set<String> temp;
+	public HashMap <Integer, Set <String>>  allCards;
+	public Stack<Integer> deck;
+	public ArrayList<Integer> hand;
 
-	  public HashMap<Integer, Set<String>> monsterDeck()
-	  {  return deck = new HashMap <Integer, Set <String>> ();  }
+	public void allCards(){
+	 try
+     {
+     String line;
+     int key=0;
+     Scanner scan = new Scanner (new File ("MonsterDeckTest.txt"));
+     while(scan.hasNextLine())
+     {key++;       	
+     	for(int i=0;i<4;i++)
+         {   line = scan.nextLine();
+             temp.add(line);
+         }
+     	allCards.put(key, temp);
+     	temp.clear();
+     }
+     scan.close();
+     }
+     catch (FileNotFoundException fnfe)
+     {   System.err.println (fnfe);  }
+	} 
 	  
-	  public HashMap<Integer, Set<String>> magicDeck(){
-		  return deck2= new HashMap <Integer, Set<String>>();
+	  
+
+
+	  private int addDeck (int cardNumber)
+	  {return deck.push(cardNumber); 
+	   
 	  }
-
-	  /** Associate the given alias with the given card */
-	  public int addMonster (int cardNumber, Set <String> card)
-	  // Add this entry to the map
-	  { 
-	      deck.put(cardNumber,card);
-	      
-	      return cardNumber;
-	    }
 	  
-	  public int addMagic(int cardNumber, Set <String> card)
-	  {deck2.put(cardNumber,card);
-	  return cardNumber;
+	  public int addHand(int cardNumber)
+	  {hand.add(cardNumber);
+	  return cardNumber;	  
+	  }
 	  
+	  public int next()
+	  {return deck.pop();
+	  }
+	  
+	  public int remove(int cardNumber)
+	  {return hand.remove(cardNumber);
+	  }
+	  
+	  public Set<String> attributes(int key)
+	  {return allCards.get(key);
+	  }
+	  
+	  public void main()
+	  {allCards();
+	  addDeck(1);
+	  int key=next();
+	  System.out.println(attributes(key));
+	  
+		  
 	  }
 
 }

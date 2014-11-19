@@ -12,8 +12,8 @@ public class CreatureCard extends Card
     private boolean isRare;
     private int attack;
     private int health;
-    private String cardName;
-    private int cardNum; //change to key?
+    private Type type;
+    
     public static void main(String[] args) {
         CreatureCard monster1 = new CreatureCard();
         CreatureCard monster2 = new CreatureCard();
@@ -23,14 +23,19 @@ public class CreatureCard extends Card
         monster2.setName("Monster 2");
         monster1.setNumber(20);
         monster2.setNumber(30);
+        //monster2.Type.FIRE;
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
         monster1.attacks(monster2);
-        monster1.useMagicOffense(special, monster2);
-        monster1.useMagicDefense(special, monster2);
+        monster1.useMagic(special, monster2);
+        monster1.useMagic(special, monster2);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
         System.out.println(special.toString());
+    }
+    
+    public enum Type {
+    	FIRE, GRASS, WATER
     }
 
     /**
@@ -41,59 +46,72 @@ public class CreatureCard extends Card
         attack = 10;
         health = 100;
         isRare = false;
+        type = null;
     }
     /**
      * CreatureCard constructor with specific detail
      * @param attack @param health @param isRare
      */
-    public CreatureCard(int attack, int health, boolean isRare) {
+    public CreatureCard(int attack, int health, boolean isRare, Type t) {
         cardName = super.getName();
         this.cardNum = super.getCardNum();
         this.attack = attack;
         this.health = health;
         this.isRare = isRare;
+        type = t;
     }
     
-    public String getName() { //Accessor Method
+    public String getName() { //Accessor Methods
         return super.cardName;
     }
 
-    public int getAttackDamage() { //Accessor Method
+    public int getAttackDamage() {
         return attack;
     }
 
-    public double getHealth() { //Accessor Method
+    public double getHealth() {
         return health;
     }
+    
+    public Type getType() {
+    	return type;
+    }
+    
+    public void setType(Type t) { //Mutator Methods
+    	type = t;
+    }
 
-    public void setName(String newName) { //Mutator Method
+    public void setName(String newName) {
         super.setName(newName);
     }
 
-    private void setNumber(int i) { //Mutator Method
+    private void setNumber(int i) {
         super.setCardNumber(i);
     }
 
-    public void setAttackDamage(int newAttack){ //Mutator Method
+    public void setAttackDamage(int newAttack){
         attack = newAttack;
     }
 
-    public void setHealth(int newHealth){ //Mutator Method
+    public void setHealth(int newHealth){
         health = newHealth;
     }
 
     /**
      * This CreatureCard takes a hit against it's health.
      * @param hitTaken
+     * @
      */
-    public void takesHit(int hitTaken){
+    public boolean takesHit(int hitTaken){
         health = health - hitTaken;
         if (health <= 0){
             health = 0;
             System.out.println("Die Mothafucker");
+            return true;
         }
         else{
             System.out.println("Health Remaining: " + health);
+            return false;
         }
     }
 
@@ -110,21 +128,18 @@ public class CreatureCard extends Card
      * another monster.
      * @param c @param monster
      */
-    public void useMagicOffense(Card c, CreatureCard monster){
+    public void useMagic(Card c, CreatureCard monster){
         if (isRare && c instanceof MagicCard){
-            monster.takesHit(attack + 20);
+        	MagicCard card = (MagicCard) c;
+        	if (card.isOffense()) {
+        		monster.takesHit(attack + 20);
+        	}
+        	else {
+        		takesHit((monster.getAttackDamage())/2);
+        	}
+            
         }
     
-    }
-    
-   /**
-     * Decreases the damage to current defending creature.
-     * @param c @param monster
-     */ 
-    public void useMagicDefense(Card c, CreatureCard monster){
-        if(isRare && c instanceof MagicCard){
-           takesHit((monster.getAttackDamage())/2);
-        }
     }
 
     public String toString() {

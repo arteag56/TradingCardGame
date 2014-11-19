@@ -11,25 +11,19 @@ public class GameBoard
     private Player player1;
     private Player player2;
     private String currentPlayer;
-    //private Card deck; //each player holds their own deck
-    private Card inPlayField; //should be ArrayList? Maybe? idk 
     private boolean gameResult;
 
     /**
      * Constructor for objects of class Board
      */
-    public GameBoard(Player player1Name, Player player2Name)//, Card deckName)
+    public GameBoard(Player player1, Player player2)
     {
-        player1 = player1Name;
-        player2 = player2Name;
-        currentPlayer = ""; 
-        //deck = deckName;
-        inPlayField = null; //fill in later
-        gameResult = true;// fill in later 
-        
+        this.player1 = player1;
+        this.player2 = player2;
     }
     
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
     	GameBoardGUI gui = new GameBoardGUI();
     	Player p1 = new Player();
     	Player p2 = new Player();
@@ -40,9 +34,16 @@ public class GameBoard
      *keeps track of who wins the game and 
      *the record of the players 
      */
-    public boolean gameResultTracker()
-    {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
-        return false;
+    public String gameResult()
+    {       
+    	String result = null;
+        //player has a health of 5, once a creature of his is killed
+    	//it loses a heart. it reaches 0 game over other player wins.
+    	//if (player1.getHealth() == 0)
+    	//{
+    		
+    	//}
+    	return result;
     }
     
     /**
@@ -50,7 +51,7 @@ public class GameBoard
      */
     public void playerturn()
     {
-        
+        //return p1Turn;
     }
     
     /**

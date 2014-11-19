@@ -26,6 +26,7 @@ public class MagicCard extends Card
     public String getMagicName() {
         return cardName;
     }
+    
     public boolean isOffense() {
     	return offense;
     }

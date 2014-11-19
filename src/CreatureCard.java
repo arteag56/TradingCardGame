@@ -4,26 +4,25 @@
  * type that is strong against one another and can use MagicCard to enhance their
  * attack power or help defend themselves against an attack on them.
  *
- * @author (Michael Arteaga, Eric Oliver[add names])
- * @version (Oct 1, 2014)
+ * @author (Michael Arteaga, Joseph Carbone, Peter Cipolone, Eric Oliver)
+ * @version (Nov 19, 2014)
  */
 public class CreatureCard extends Card
 {
-    private boolean isRare;
+	private boolean isRare;
     private int attack;
     private int health;
-    private Type type;
+    private String type;
     
     public static void main(String[] args) {
-        CreatureCard monster1 = new CreatureCard();
-        CreatureCard monster2 = new CreatureCard();
+        CreatureCard monster1 = new CreatureCard("Monster1",1,30,100,true,"FIRE");
+        CreatureCard monster2 = new CreatureCard("Monster1",1,30,100,false,"GRASS");
         MagicCard special = new MagicCard();
         special.setName("Magie");
         monster1.setName("Monster 1");
         monster2.setName("Monster 2");
         monster1.setNumber(20);
         monster2.setNumber(30);
-        //monster2.Type.FIRE;
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
         monster1.attacks(monster2);
@@ -34,35 +33,27 @@ public class CreatureCard extends Card
         System.out.println(special.toString());
     }
     
-    public enum Type {
-    	FIRE, GRASS, WATER
-    }
 
     /**
      * Default constructor for objects of class Creature Card
      */
     public CreatureCard() {
-        cardName = ""; //will change when can read from file
+        cardName = "[default]"; //will change when can read from file
         attack = 10;
         health = 100;
         isRare = false;
-        type = null;
+        type = "Fire";
     }
     /**
      * CreatureCard constructor with specific detail
      * @param attack @param health @param isRare
      */
-    public CreatureCard(int attack, int health, boolean isRare, Type t) {
-        cardName = super.getName();
-        this.cardNum = super.getCardNum();
+    public CreatureCard(String name, int num, int attack, int health, boolean isRare, String type) {
+        super(name,num);
         this.attack = attack;
         this.health = health;
         this.isRare = isRare;
-        type = t;
-    }
-    
-    public String getName() { //Accessor Methods
-        return super.cardName;
+        this.type = type;
     }
 
     public int getAttackDamage() {
@@ -73,11 +64,11 @@ public class CreatureCard extends Card
         return health;
     }
     
-    public Type getType() {
+    public String getType() {
     	return type;
     }
     
-    public void setType(Type t) { //Mutator Methods
+    public void setType(String t) { //Mutator Methods
     	type = t;
     }
 
@@ -120,6 +111,13 @@ public class CreatureCard extends Card
      * @param monster2
      */
     private void attacks(CreatureCard monster2) {
+    	if (type.equals("FIRE") && monster2.getType().equals("GRASS") ||
+    		type.equals("WATER") && monster2.getType().equals("FIRE") ||
+    		type.equals("GRASS") && monster2.getType().equals("WATER")) {
+    		
+    		monster2.takesHit(getAttackDamage()*3);
+    		return;
+    	}
         monster2.takesHit(getAttackDamage());
     }
     
@@ -137,9 +135,7 @@ public class CreatureCard extends Card
         	else {
         		takesHit((monster.getAttackDamage())/2);
         	}
-            
         }
-    
     }
 
     public String toString() {

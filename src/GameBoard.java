@@ -1,8 +1,7 @@
-
 /**
  * [Description]
  * 
- * @author (Michael Arteaga, Peter Cipolone, 
+ * @author (Michael Arteaga, Joseph Carbone, Peter Cipolone, Eric Oliver) 
  * @version (Oct 1, 2014)
  */
 public class GameBoard

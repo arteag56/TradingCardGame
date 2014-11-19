@@ -1,10 +1,10 @@
 import java.util.Scanner;
 import java.io.*;
 /**
- * The card class will have attributes that each type of card should have.
+ * Card class is a superclass for all cards used in the GameBoard
  * 
- * @author (Michael Arteaga, Eric Oliver [add your names]) 
- * @version (Oct 1, 2014)
+ * @author (Michael Arteaga, Joseph Carbone, Peter Cipolone, Eric Oliver) 
+ * @version (Nov 19, 2014)
  */
 public class Card
 {

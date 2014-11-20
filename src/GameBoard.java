@@ -1,3 +1,4 @@
+import java.util.Random;
 /**
  * [Description]
  * 
@@ -11,6 +12,7 @@ public class GameBoard
     private Player player2;
     private String currentPlayer;
     private boolean gameResult;
+    
 
     /**
      * Constructor for objects of class Board
@@ -23,9 +25,11 @@ public class GameBoard
     
     public static void main(String args[]) 
     {
-    	GameBoardGUI gui = new GameBoardGUI();
+    	//GameBoardGUI gui = new GameBoardGUI();
     	Player p1 = new Player();
     	Player p2 = new Player();
+    	GameBoard game = new GameBoard(p1,p2);
+    	System.out.println(game.pickRandomTurn());
     }
 
     /**
@@ -40,17 +44,24 @@ public class GameBoard
     	//it loses a heart. it reaches 0 game over other player wins.
     	//if (player1.getHealth() == 0)
     	//{
-    		
+    	//	result = player1.getName();
     	//}
-    	return result;
+    	//	else {
+    	//		result = player2.getName();
+    	//	}
+    	return result + " wins!";
     }
     
     /**
      * 
      */
-    public void playerturn()
+    public static String pickRandomTurn()
     {
-        //return p1Turn;
+    	Random playerTurn = null;
+    	if (playerTurn.nextInt(2) == 0) {
+    		return "Player 1's turn";
+    	}
+    	return "Player 2's turn";
     }
     
     /**

@@ -101,6 +101,14 @@ public class GameBoardGUI implements ActionListener
         //panel for the north side of the frame
         JPanel north = new JPanel();
         contentPane.add(north, BorderLayout.NORTH);
+        JLabel player1Health = new JLabel("Player 1 Health");
+        north.add(player1Health);
+        JTextField playerOneHealth = new JTextField(10);
+        north.add(playerOneHealth);
+        JLabel player2Health = new JLabel("Player 2 Health");
+        north.add(player2Health);
+        JTextField playerTwoHealth = new JTextField(10);
+        north.add(playerTwoHealth);
        
         //panel for the east side of the frame
         JPanel east = new JPanel();
@@ -259,6 +267,9 @@ public class GameBoardGUI implements ActionListener
         //create the file menu
         JMenu fileMenu = new JMenu("File");
         menubar.add(fileMenu);
+        JMenu helpMenu = new JMenu("Help");
+        menubar.add(helpMenu);
+        JMenuItem getHelp = new JMenuItem("Get Help");
         JMenuItem openItem = new JMenuItem("Open");
         openItem.addActionListener(new ActionListener()
         {
@@ -277,6 +288,22 @@ public class GameBoardGUI implements ActionListener
             }
         });
         fileMenu.add(quitItem);
+        
+        getHelp.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                String message = "This is for the player to learn how to play the game." +
+                                    "They read the rules here.";
+                JOptionPane optionPane = new JOptionPane();
+                optionPane.setMessage(message);
+                optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+                JDialog dialog = optionPane.createDialog(null, "Rules of the Game");
+                dialog.setVisible(true);
+            }
+        });
+        
+        helpMenu.add(getHelp);
     }
     
     /**
@@ -299,6 +326,7 @@ public class GameBoardGUI implements ActionListener
      */
     public void quit()
     {
+        System.exit(0);
     }
     
     /**

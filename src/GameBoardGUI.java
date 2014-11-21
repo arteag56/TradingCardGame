@@ -1,9 +1,9 @@
-package src;
-
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
+import java.awt.Desktop;
 /**
  * Write a description of class GameBoardGUI here.
  *
@@ -27,6 +27,10 @@ public class GameBoardGUI implements ActionListener
     final JButton activePlayingCard4 = new JButton("Active Playing Card #4");
     final JButton activePlayingCard5 = new JButton("Active Playing Card #5");
     private int cardInHandCount = 5;
+    private JButton deck = new JButton("Deck");
+    private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
+    private GameBoard game;
+
     
     
     /**
@@ -34,7 +38,8 @@ public class GameBoardGUI implements ActionListener
      */
     public GameBoardGUI()
     {
-        card = new CreatureCard(20,100,false);
+        game = new GameBoard();
+        card = new CreatureCard("Monster1",1,30,10,true,"FIRE");
         card.setName("Boo");
         card.setCardNumber(1);
         JTextField();
@@ -67,7 +72,8 @@ public class GameBoardGUI implements ActionListener
         contentPane.add(west, BorderLayout.WEST);
         west.setLayout(new GridLayout(9,1));
         west.add(new JLabel("Current Player"));
-        west.add(new JTextField(10));
+        JTextField currentPlayer = new JTextField(10);
+        west.add(currentPlayer);
         west.add(new JLabel(""));
         west.add(new JLabel(""));
         west.add(new JLabel(""));
@@ -120,11 +126,32 @@ public class GameBoardGUI implements ActionListener
         east.add(new JTextField(10));
         east.add(new JLabel(""));
         east.add(new JLabel(""));
-        east.add(new JLabel(""));
-        JButton deck = new JButton("Deck");
+        
+        JToggleButton endTurn = new JToggleButton("End Turn");
+        east.add(endTurn);
+        endTurn.addItemListener(new ItemListener()
+        {
+          public void itemStateChanged(ItemEvent e) 
+          {
+             //I want to use a toggle button to switch back and 
+             //forth between players. 
+             //This currently does not work
+              if(true)
+             {
+               currentPlayer.setText(game.getPlayer1Name());
+             } 
+             else if (e.getStateChange()==ItemEvent.DESELECTED)
+             {
+               currentPlayer.setText(game.getPlayer1Name());
+             }
+          }
+        });
+        
+        
         east.add(deck);
         JButton attackButton = new JButton("Attack!");
         east.add(attackButton);
+        deck.setEnabled(false);
         
         deck.addActionListener(new ActionListener()
         {
@@ -229,6 +256,10 @@ public class GameBoardGUI implements ActionListener
                 hand.setVisible(false);
                 field.setVisible(true);
                 cardInHandCount = cardInHandCount - 1;
+                if (cardInHandCount < 5)
+                {
+                    deck.setEnabled(true);
+                }
             }
         });
     }
@@ -275,7 +306,13 @@ public class GameBoardGUI implements ActionListener
         {
             public void actionPerformed(ActionEvent e)
             {
-                openFile();
+                
+                
+                    openFile();
+                
+                
+                
+                
             }
         });
         fileMenu.add(openItem);
@@ -319,6 +356,17 @@ public class GameBoardGUI implements ActionListener
      */
     public void openFile()
     {
+        //try
+        {
+            //String appData = System.getenv("APPDATA");
+            //File appDataDir = new File(appData);
+            //File textureDir = new File(appDataDir, "texture");
+            //Desktop.getDesktop().open(textureDir);
+        }
+        //catch(FileNotFoundException fnfe)
+        {
+            //return;  
+        }
     }
     
     /**

@@ -10,6 +10,7 @@ import java.util.*;
 public class Player
 {
 	Deck deck = new Deck();
+	String name;
 	List<MagicCard> magicDeck = new ArrayList<MagicCard>();
 	List<CreatureCard> monsterDeck = new ArrayList<CreatureCard>();
 	List<Card> currentHand = new ArrayList<Card>();
@@ -18,21 +19,17 @@ public class Player
 	 * Constructor for objects of class Player
 	 */
 	public Player() {
-		try {
-			String line;
-			Scanner scan = new Scanner (new File ("monsterdeck.txt"));
-			while (scan.hasNextLine()) {   
-				line = scan.nextLine();
-				//monsterDeck.add (line);
-			}
-			scan.close();
-		}
-		catch (FileNotFoundException fnfe)
-		{   System.err.println (fnfe);  }
+		name = "Peter";
+	}
+	public Player(String name) {
+		this.name = name;
 	}
 
 	public static void main(String args[]) {
 
+	}
+	public String getName() {
+		return name;
 	}
 
 	/** @return The list of words generated
@@ -58,5 +55,4 @@ public class Player
 		}
 		return deck;
 	}
-
 }

@@ -17,18 +17,16 @@ public class GameBoard
     /**
      * Constructor for objects of class Board
      */
-    public GameBoard(Player player1, Player player2)
+    public GameBoard()
     {
-        this.player1 = player1;
-        this.player2 = player2;
+        player1 = new Player("Peter");
+        player2 = new Player("Joe");
     }
     
     public static void main(String args[]) 
     {
     	//GameBoardGUI gui = new GameBoardGUI();
-    	Player p1 = new Player();
-    	Player p2 = new Player();
-    	GameBoard game = new GameBoard(p1,p2);
+    	GameBoard game = new GameBoard();
     	System.out.println(game.pickRandomTurn());
     }
 
@@ -62,6 +60,10 @@ public class GameBoard
     		return "Player 1's turn";
     	}
     	return "Player 2's turn";
+    }
+    
+    public String getPlayer1Name() {
+    	return player1.getName();
     }
     
     /**

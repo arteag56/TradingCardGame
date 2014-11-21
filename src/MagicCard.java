@@ -7,8 +7,6 @@
  */
 public class MagicCard extends Card
 {
-    private int value;
-    private String cardName;
     private boolean offense; //Magic type: is this card for offense?
 
     /**

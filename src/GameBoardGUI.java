@@ -1,3 +1,7 @@
+package src;
+
+
+
 import java.awt.BorderLayout;
 import java.awt.*;
 import java.awt.event.*;
@@ -78,9 +82,14 @@ public class GameBoardGUI implements ActionListener
         west.add(new JLabel(""));
         west.add(new JLabel(""));
         west.add(new JLabel("Player1"));
-        west.add(new JTextField(10));
+        JTextField Player1 = new JTextField(10);
+        west.add(Player1);
+        Player1.setText(game.getPlayer1Name());
         west.add(new JLabel("Player1 Record"));
-        west.add(new JTextField(10));
+        JTextField Player1Record = new JTextField(10);
+        west.add(Player1Record);
+        Player1Record.setText("0-0");
+        
         //panel for the south side of the frame
         JPanel south = new JPanel();
         contentPane.add(south, BorderLayout.SOUTH);
@@ -111,36 +120,45 @@ public class GameBoardGUI implements ActionListener
         north.add(player1Health);
         JTextField playerOneHealth = new JTextField(10);
         north.add(playerOneHealth);
+        playerOneHealth.setText("100");
         JLabel player2Health = new JLabel("Player 2 Health");
         north.add(player2Health);
         JTextField playerTwoHealth = new JTextField(10);
         north.add(playerTwoHealth);
+        playerTwoHealth.setText("100");
        
         //panel for the east side of the frame
         JPanel east = new JPanel();
         contentPane.add(east, BorderLayout.EAST);
         east.setLayout(new GridLayout(9,1));
         east.add(new JLabel("Player2"));
-        east.add(new JTextField(10));
+        JTextField Player2 = new JTextField(10);
+        east.add(Player2);
+        Player2.setText(game.getPlayer2Name());
         east.add(new JLabel("Player2 Record"));
-        east.add(new JTextField(10));
+        JTextField Player2Record = new JTextField(10);
+        east.add(Player2Record);
+        Player2Record.setText("0-0");
         east.add(new JLabel(""));
         east.add(new JLabel(""));
         
-        JToggleButton endTurn = new JToggleButton("End Turn");
+        JButton endTurn = new JButton("End Turn");
         east.add(endTurn);
-        endTurn.addItemListener(new ItemListener()
+        currentPlayer.setText(game.pickRandomTurn()); //Does not work properly 
+        endTurn.addActionListener(new ActionListener()
         {
-          public void itemStateChanged(ItemEvent e) 
+          public void actionPerformed(ActionEvent e) 
           {
-             //I want to use a toggle button to switch back and 
+             //I want to use a button to switch back and 
              //forth between players. 
              //This currently does not work
-              if(true)
+             
+             if(currentPlayer.getText().equals(game.getPlayer1Name()))
              {
-               currentPlayer.setText(game.getPlayer1Name());
+               currentPlayer.setText(game.getPlayer2Name());
              } 
-             else if (e.getStateChange()==ItemEvent.DESELECTED)
+             
+             if(currentPlayer.getText().equals(game.getPlayer2Name()))
              {
                currentPlayer.setText(game.getPlayer1Name());
              }

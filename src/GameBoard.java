@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Random;
 /**
  * [Description]
@@ -53,17 +55,22 @@ public class GameBoard
     /**
      * 
      */
-    public static String pickRandomTurn()
+    public String pickRandomTurn()
     {
-    	Random playerTurn = null;
+    	Random playerTurn = new Random();
     	if (playerTurn.nextInt(2) == 0) {
-    		return "Player 1's turn";
+    		return player1 + "";
     	}
-    	return "Player 2's turn";
+    	return player2 + "";
     }
     
     public String getPlayer1Name() {
     	return player1.getName();
+    }
+    
+    public String getPlayer2Name()
+    {
+        return player2.getName();
     }
     
     /**

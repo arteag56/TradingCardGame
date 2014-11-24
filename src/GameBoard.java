@@ -10,7 +10,7 @@ public class GameBoard
      // instance variables - replace the example below with your own
     private Player player1;
     private Player player2;
-    private int currentPlayer;
+    private int currentPlayer = 0;
     private boolean gameResult;
     private int turn;
     private Random random;
@@ -95,6 +95,16 @@ public class GameBoard
     {
         return 0;
     }
+    
+    public String nextTurn() {
+    	currentPlayer = currentPlayer % 2; 
+    	if (currentPlayer == 0) {
+    		return player1.getName();
+    	}
+    	return player2.getName();
+    }
+    
+    
     
     /**
      * 

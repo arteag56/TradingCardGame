@@ -32,7 +32,6 @@ public class GameBoard
     public GameBoard() {
         player1 = new Player("Peter");
         player2 = new Player("Joe");
-        //System.out.println(whoStartsGame());
         turn = 0;
         
     }
@@ -40,7 +39,6 @@ public class GameBoard
     public GameBoard(String name1, String name2) {
     	player1 = new Player(name1);
         player2 = new Player(name2);
-        //System.out.println(whoStartsGame());
         turn = 0;
     }
 

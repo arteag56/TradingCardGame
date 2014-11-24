@@ -18,6 +18,12 @@ public class GameBoard
     
     public static void main(String args[]) {
     	GameBoard game = new GameBoard();
+    	System.out.println(game.whoStartsGame());
+    	System.out.println(game.nextTurn());
+    	System.out.println(game.nextTurn());
+    	System.out.println(game.nextTurn());
+    	System.out.println(game.nextTurn());
+    	System.out.println(game.nextTurn());
     }
 
     /**
@@ -97,11 +103,14 @@ public class GameBoard
     }
     
     public String nextTurn() {
-    	currentPlayer = currentPlayer % 2; 
-    	if (currentPlayer == 0) {
+    	currentPlayer++; 
+    	if (currentPlayer % 2 == 0) {
     		return player1.getName();
     	}
-    	return player2.getName();
+    	else {
+    		return player2.getName();
+    	}
+    	
     }
     
     

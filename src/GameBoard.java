@@ -14,6 +14,7 @@ public class GameBoard
     private boolean gameResult;
     private int turn;
     private Random random;
+    //needs field
     
     public static void main(String args[]) {
     	GameBoard game = new GameBoard();

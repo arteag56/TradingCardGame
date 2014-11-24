@@ -22,6 +22,13 @@ public class Deck {
 	public ArrayList<Integer> getHand() {
 		return hand;
 	}
+	public Card drawCard(){
+		//draws and returns a Card
+		return null;
+	}
+	public void shufflesDeck() {
+		
+	}
 	public void allCards(){
 		try
 		{

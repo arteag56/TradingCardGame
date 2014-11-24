@@ -1,5 +1,3 @@
-package src;
-
 import java.util.Random;
 /**
  * [Description]
@@ -12,24 +10,31 @@ public class GameBoard
      // instance variables - replace the example below with your own
     private Player player1;
     private Player player2;
-    private String currentPlayer;
+    private int currentPlayer;
     private boolean gameResult;
+    private int turn;
+    private Random random;
     
+    public static void main(String args[]) {
+    	GameBoard game = new GameBoard();
+    }
 
     /**
      * Constructor for objects of class Board
      */
-    public GameBoard()
-    {
+    public GameBoard() {
         player1 = new Player("Peter");
         player2 = new Player("Joe");
+        System.out.println(whoStartsGame());
+        turn = 0;
+        
     }
     
-    public static void main(String args[]) 
-    {
-    	//GameBoardGUI gui = new GameBoardGUI();
-    	GameBoard game = new GameBoard();
-    	System.out.println(game.pickRandomTurn());
+    public GameBoard(String name1, String name2) {
+    	player1 = new Player(name1);
+        player2 = new Player(name2);
+        System.out.println(whoStartsGame());
+        turn = 0;
     }
 
     /**
@@ -55,13 +60,14 @@ public class GameBoard
     /**
      * 
      */
-    public String pickRandomTurn()
+    public String whoStartsGame()
     {
-    	Random playerTurn = new Random();
-    	if (playerTurn.nextInt(2) == 0) {
-    		return player1 + "";
+    	random = new Random();
+    	currentPlayer = random.nextInt(2);
+    	if (currentPlayer == 0) {
+    		return player1.getName();
     	}
-    	return player2 + "";
+    	return player2.getName();
     }
     
     public String getPlayer1Name() {

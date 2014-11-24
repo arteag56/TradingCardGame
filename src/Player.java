@@ -9,28 +9,52 @@ import java.util.*;
  */
 public class Player
 {
-	Deck deck = new Deck();
-	String name;
-	List<MagicCard> magicDeck = new ArrayList<MagicCard>();
-	List<CreatureCard> monsterDeck = new ArrayList<CreatureCard>();
-	List<Card> currentHand = new ArrayList<Card>();
+	private String name;
+	private int health = 5;
+	private boolean completedMove;
+	private Deck deck = new Deck();
+	private Hand hand = new Hand();
+	
+	private List<MagicCard> magicDeck = new ArrayList<MagicCard>();
+	private List<CreatureCard> monsterDeck = new ArrayList<CreatureCard>();
+	private List<Card> currentHand = new ArrayList<Card>();
+	
 
+	public static void main(String args[]) {
+		Player mike = new Player("Mike");
+		
+	}
+	
 	/**
 	 * Constructor for objects of class Player
 	 */
-	public Player() {
-		name = "Peter";
+	public Player() {				// default constructor
+		name = "[default]";	
 	}
-	public Player(String name) {
+	public Player(String name) {	//constructor
 		this.name = name;
 	}
-
-	public static void main(String args[]) {
-
-	}
+	
 	public String getName() {
 		return name;
 	}
+	
+	public int loseAPoint(){
+		return health--;
+	}
+	private Hand getHand() {
+		return hand;
+	}
+	public boolean makesMove() {
+		//draws 1 card
+		//picks a creature to put on board
+		//picks a Magic card to use offensely
+		//attacks
+		//picks a magic card to put on board
+		completedMove = true;
+		return false;
+	}
+	
 
 	/** @return The list of words generated
 	 *  by the constructor.
@@ -40,9 +64,9 @@ public class Player
 		return monsterDeck;  
 	}
 
-	public List<Card> getHand() {
-		return currentHand; 
-	}
+	//public List<Card> getHand() {
+	//	return currentHand; 
+	//}
 
 	public List<Card> getDeck() {
 		List<Card> deck = new ArrayList<Card>();

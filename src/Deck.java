@@ -10,11 +10,18 @@ import java.util.*;
  */
 public class Deck {
 
-	public Set<String> temp;
-	public HashMap <Integer, Set <String>>  allCards;
-	public Stack<Integer> deck;
-	public ArrayList<Integer> hand;
+	private Set<String> temp;
+	private HashMap <Integer, Set <String>>  allCards;
+	private Stack<Integer> deck;
+	private ArrayList<Integer> hand;
 
+	public static void main(String[] args) {
+		//create main
+	}
+	
+	public ArrayList<Integer> getHand() {
+		return hand;
+	}
 	public void allCards(){
 		try
 		{

@@ -144,24 +144,12 @@ public class GameBoardGUI implements ActionListener
         
         JButton endTurn = new JButton("End Turn");
         east.add(endTurn);
-        currentPlayer.setText(game.pickRandomTurn()); //Does not work properly 
+        currentPlayer.setText(game.whoStartsGame()); //Does not work properly 
         endTurn.addActionListener(new ActionListener()
         {
           public void actionPerformed(ActionEvent e) 
           {
-             //I want to use a button to switch back and 
-             //forth between players. 
-             //This currently does not work
-             
-             if(currentPlayer.getText().equals(game.getPlayer1Name()))
-             {
-               currentPlayer.setText(game.getPlayer2Name());
-             } 
-             
-             if(currentPlayer.getText().equals(game.getPlayer2Name()))
-             {
-               currentPlayer.setText(game.getPlayer1Name());
-             }
+               currentPlayer.setText(game.nextTurn());
           }
         });
         

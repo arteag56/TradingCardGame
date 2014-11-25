@@ -19,11 +19,6 @@ public class GameBoard
     public static void main(String args[]) {
     	GameBoard game = new GameBoard();
     	System.out.println(game.whoStartsGame());
-    	System.out.println(game.nextTurn());
-    	System.out.println(game.nextTurn());
-    	System.out.println(game.nextTurn());
-    	System.out.println(game.nextTurn());
-    	System.out.println(game.nextTurn());
     }
 
     /**
@@ -43,9 +38,9 @@ public class GameBoard
     }
 
     /**
-     *This method returns a boolean                         
-     *keeps track of who wins the game and 
-     *the record of the players 
+     * This method keeps track of who wins the game 
+     * and the record of the players
+     * @return result - the winner 
      */
     public String gameResult()
     {       
@@ -95,9 +90,13 @@ public class GameBoard
     /**
      * 
      */
-    public int displayPlayerHealth()
+    public int displayPlayerHealth(int n)
     {
-        return 0;
+        if (n == 1) {
+        	return player1.getHealth();
+        }
+        return player2.getHealth();
+        
     }
     
     public String nextTurn() {

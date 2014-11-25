@@ -78,4 +78,11 @@ public class Player
 		}
 		return deck;
 	}
+
+	/**
+	 * @return
+	 */
+	public int getHealth() {
+		return health;
+	}
 }

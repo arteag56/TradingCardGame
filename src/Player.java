@@ -80,7 +80,8 @@ public class Player
 	}
 
 	/**
-	 * @return
+	 * The player's health
+	 * @return health
 	 */
 	public int getHealth() {
 		return health;

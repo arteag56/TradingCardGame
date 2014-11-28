@@ -12,11 +12,11 @@ public class CreatureCard extends Card
 	private boolean isRare;
     private int attack;
     private int health;
-    private String type;
+    private String element;
     
     public static void main(String[] args) {
-        CreatureCard monster1 = new CreatureCard("Monster1",1,30,100,true,"FIRE");
-        CreatureCard monster2 = new CreatureCard("Monster1",1,30,100,false,"GRASS");
+        CreatureCard monster1 = new CreatureCard(1,"Monster1",30,100,"FIRE",true);
+        CreatureCard monster2 = new CreatureCard(2,"Monster1",30,100,"GRASS", false);
         MagicCard special = new MagicCard();
         special.setName("Magie");
         monster1.setName("Monster 1");
@@ -42,18 +42,18 @@ public class CreatureCard extends Card
         attack = 10;
         health = 100;
         isRare = false;
-        type = "Fire";
+        element = "FIRE";
     }
     /**
      * CreatureCard constructor with specific detail
      * @param attack @param health @param isRare
      */
-    public CreatureCard(String name, int num, int attack, int health, boolean isRare, String type) {
-        super(name,num);
+    public CreatureCard(int num, String name, int attack, int health, String element, boolean isRare) {
+        super(num,name);
         this.attack = attack;
         this.health = health;
         this.isRare = isRare;
-        this.type = type;
+        this.element = element;
     }
 
     public int getAttackDamage() {
@@ -64,12 +64,12 @@ public class CreatureCard extends Card
         return health;
     }
     
-    public String getType() {
-    	return type;
+    public String getElement() {
+    	return element;
     }
     
-    public void setType(String t) { //Mutator Methods
-    	type = t;
+    public void setElement(String t) { //Mutator Methods
+    	element = t;
     }
 
     public void setName(String newName) {
@@ -111,9 +111,9 @@ public class CreatureCard extends Card
      * @param monster2
      */
     private void attacks(CreatureCard monster2) {
-    	if (type.equals("FIRE") && monster2.getType().equals("GRASS") ||
-    		type.equals("WATER") && monster2.getType().equals("FIRE") ||
-    		type.equals("GRASS") && monster2.getType().equals("WATER")) {
+    	if (element.equals("FIRE") && monster2.getElement().equals("GRASS") ||
+    		element.equals("WATER") && monster2.getElement().equals("FIRE") ||
+    		element.equals("GRASS") && monster2.getElement().equals("WATER")) {
     		
     		monster2.takesHit(getAttackDamage()*3);
     		return;
@@ -143,6 +143,7 @@ public class CreatureCard extends Card
         "\n  Type: Monster" +
         "\n  Attack: " + attack +
         "\n  Health: " + health +
+        "\n  Element: " + element +
         "\n  Rare: " + isRare;
     
     }

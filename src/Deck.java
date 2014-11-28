@@ -48,10 +48,7 @@ public class Deck {
 		}
 		catch (FileNotFoundException fnfe)
 		{   System.err.println (fnfe);  }
-	} 
-
-
-
+	}
 
 	private int addDeck (int cardNumber)
 	{return deck.push(cardNumber); 

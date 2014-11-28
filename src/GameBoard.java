@@ -1,4 +1,6 @@
 import java.util.Random;
+//1,1,Monster,10,100,true
+
 /**
  * [Description]
  * 

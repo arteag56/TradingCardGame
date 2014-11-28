@@ -13,12 +13,12 @@ public class MagicCard extends Card
      * Constructor for objects of class MagicCard
      */
     public MagicCard() {
-    	super("[Default]", 50);
+    	super(50, "[Default]");
         offense = false;
     }
     
-    public MagicCard(String name, int num, boolean isOffense) {
-    	super(name, num);
+    public MagicCard(int num, String name, boolean isOffense) {
+    	super(num, name);
     	offense = isOffense;
     }
     

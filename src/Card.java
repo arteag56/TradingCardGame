@@ -26,7 +26,7 @@ public class Card
     /**
      * Constructor with card input
      */
-    public Card (String name, int number) {
+    public Card (int number, String name) {
         cardName = name;
         cardNum = number;
      

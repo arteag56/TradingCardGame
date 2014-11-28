@@ -1,0 +1,2 @@
+1,0,Monster,30,100,FIRE,false
+1,10,Mikeachu,10,100,WATER,true

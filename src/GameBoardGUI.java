@@ -1,6 +1,3 @@
-package src;
-
-
 
 import java.awt.BorderLayout;
 import java.awt.*;
@@ -43,7 +40,7 @@ public class GameBoardGUI implements ActionListener
     public GameBoardGUI()
     {
         game = new GameBoard();
-        card = new CreatureCard("Monster1",1,30,10,true,"FIRE");
+        card = new CreatureCard(1,"Monster1",30,100,"FIRE",true);
         card.setName("Boo");
         card.setCardNumber(1);
         JTextField();

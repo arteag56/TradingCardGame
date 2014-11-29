@@ -57,6 +57,11 @@ public class Hand {
         return scan;
     }
 	
+    public void addAll() {
+    	Scanner scan = openFile();
+    	
+    }
+    
 	public Map<Hashtable<Integer, Integer>, Card> viewHand() {
 		return null;
 	}

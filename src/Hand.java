@@ -8,8 +8,8 @@ import java.util.*;
  */
 public class Hand {
 	private Scanner scan;
-	private Map<Hashtable<Integer, Integer>, Card> hand = new TreeMap <Hashtable<Integer, Integer>, Card> ();
-
+	//private Map<Hashtable<Integer, Integer>, Card> hand = new TreeMap <Hashtable<Integer, Integer>, Card> ();
+	private Map<String, Card> hand = new TreeMap <String, Card> ();
 	/**
 	 * @param args
 	 */
@@ -59,6 +59,13 @@ public class Hand {
 	
     public void addAll() {
     	Scanner scan = openFile();
+    	ArrayList<String> list = new ArrayList<String>();
+    	while (scan.hasNextLine()) {
+    		list.add(scan.nextLine());
+    		
+    		list.remove(0);
+    	}
+    	System.out.println(list);
     	
     }
     
@@ -70,31 +77,33 @@ public class Hand {
 		
 	}
 	public void addAllCards(){
-		ArrayList<String> list = new ArrayList<String>();
-		Scanner scan = openFile();
-		//scan.useDelimiter(",");
-		
-		while (scan.hasNextLine()) {
-			Scanner scanny = scan;
-			//System.out.println(scan.nextLine());
-			scanny.useDelimiter(",");
-			while(scanny.hasNext()) {
-				list.add(scanny.next());
-				//System.out.println(list);
-			}
-			System.out.println(list);
-			boolean rare = false;
-			if (list.get(6).equals("true")) {
-				rare = true;
-			}
-			CreatureCard c = new CreatureCard(Integer.parseInt(list.get(1)), list.get(2), Integer.parseInt(list.get(3)),Integer.parseInt(list.get(4)), list.get(5), rare);
-			Hashtable<Integer,Integer> key = new Hashtable<Integer,Integer>();
-			key.put(Integer.parseInt(list.get(0)), Integer.parseInt(list.get(1)));
-			//hand.put(key, c);
-			System.out.println(c + "\n" + key);
-		}
-		
-	}
+        ArrayList<String> list = new ArrayList<String>();
+        Scanner scan = openFile();
+        //scan.useDelimiter(",");
+        
+        while (scan.hasNextLine()) {
+            Scanner scanny = scan;
+            //System.out.println(scan.nextLine());
+            scanny.useDelimiter(",");
+            while(scanny.hasNext()) {
+                list.add(scanny.next());
+                //System.out.println(list);
+                if (list.size() == 7) {
+                	boolean rare = false;
+                    if (list.get(6).equals("true")) {
+                        rare = true;
+                    }
+                    CreatureCard c = new CreatureCard(Integer.parseInt(list.get(1)), list.get(2), Integer.parseInt(list.get(3)),Integer.parseInt(list.get(4)), list.get(5), rare);
+                    hand.put(list.get(0) + c.getCardNum(), c);
+                    //list.clear();
+                }
+                //System.out.println(list);
+            }
+            System.out.println(list);
+            System.out.println(hand);
+        }
+        
+    }
 	public Card removeCard() {
 		return null;
 	}

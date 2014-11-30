@@ -1,2 +1,4 @@
-C,0,Monster,30,100,FIRE,false
-C,10,Mikeachu,10,100,WATER,true
+C,5,Monster,30,100,FIRE,false,
+C,10,Mikeachu,10,100,WATER,true,
+C,33,Jowee,60,80, FIRE, false,
+C,18,Petah,20,100, GRASS,tRue

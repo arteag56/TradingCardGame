@@ -7,7 +7,7 @@ import java.util.*;
  *
  */
 public class Hand {
-	private Map<String, Card> hand = new TreeMap<String, Card>();
+	//private Map<String, Card> hand = new TreeMap<String, Card>();
 	private Map<String, Card> deck = new TreeMap<String, Card>();
 
 	/**
@@ -16,7 +16,7 @@ public class Hand {
 	public static void main(String[] args) {
 		Hand hand = new Hand();
 		hand.createDeck();
-
+		hand.getDeck();
 	}
 
 	/**
@@ -76,16 +76,21 @@ public class Hand {
 			}
 		}
 		//System.out.println(list); Sanity check
-		System.out.println(deck);
+		//System.out.println(deck);
 
 	}
 	
-	public boolean addCardToDeck(String type, Card c) {
-		if (type.equals("C") || type.equals("C")) {
+	public Map<String, Card> getDeck(){
+		System.out.println(deck);
+		return deck;
+	}
+	
+	public boolean addCard(String type, Card c) {
+		if (type.trim().equals("C") || type.trim().equals("C")) {
 			deck.put(type + c.getCardNum(), c);
 			return true;
 		}
-		else if (type.equals("M") || type.equals("m")) {
+		else if (type.trim().equals("M") || type.trim().equals("m")) {
 			deck.put(type + c.getCardNum(), c);
 			return true;
 		}
@@ -93,10 +98,6 @@ public class Hand {
 			return false;
 		}
 		
-	}
-
-	public Map<String, Card> viewHand() {
-		return hand; //needs toString
 	}
 
 	public Card pickCard() {
@@ -107,9 +108,13 @@ public class Hand {
 		removeCard(randomKey);
 		return value;
 	}
-
+	
 	public Card removeCard(String key) {
 		return deck.remove(key);
+	}
+	
+	public String toString() {
+		return null;
 	}
 
 }

@@ -11,7 +11,7 @@ public class Player
 	private String name;
 	private int health = 5;
 	private boolean completedMove;
-	private Deck deck = new Deck();
+	//private Deck deck = new Deck();
 	private Hand hand = new Hand();
 	
 	private List<MagicCard> magicDeck = new ArrayList<MagicCard>();
@@ -41,11 +41,11 @@ public class Player
 	public int loseAPoint(){
 		return health--;
 	}
-	private Hand getHand() {
-		return hand;
+	private Map<String, Card> getHand() {
+		return hand.viewHand();
 	}
 	public boolean makesMove() {
-		//draws 1 card
+		hand.pickCard();
 		//picks a creature to put on board
 		//picks a Magic card to use offensely
 		//attacks

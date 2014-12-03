@@ -11,9 +11,6 @@ public class Card
     protected String cardName;
     protected int cardNum;
 
-    public static void main(String[] args) {
-    	openFile();
-    }
     /**
      * Default constructor
      */

@@ -8,7 +8,7 @@ import java.util.*;
 public class Deck {
 	public CreatureCard tempCreature;
 	public MagicCard tempMagic;
-	//public HashMap <String, Card> allCards;
+	public HashMap <String, Card> allCards;
 	public Stack<Card> deck;
 	public ArrayList<Card> hand;
 	public String playerName = "";

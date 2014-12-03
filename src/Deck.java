@@ -1,84 +1,83 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
-
-
-
 /**
  * @author Joe Carbone
  *
  */
 public class Deck {
+	public CreatureCard tempCreature;
+	public MagicCard tempMagic;
+	//public HashMap <String, Card> allCards;
+	public Stack<Card> deck;
+	public ArrayList<Card> hand;
+	public String playerName = "";
 
-	private Set<String> temp;
-	private HashMap <Integer, Set <String>>  allCards;
-	private Stack<Integer> deck;
-	private ArrayList<Integer> hand;
-
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		//create main
 	}
-	
-	public ArrayList<Integer> getHand() {
+	public ArrayList<Card> getHand() 
+	{
+		while(hand.size()<5)
+		{drawCard();}
 		return hand;
 	}
-	public Card drawCard(){
-		//draws and returns a Card
-		return null;
+	public Card drawCard()
+	{
+		hand.add(deck.peek());
+		return deck.pop();
 	}
-	public void shufflesDeck() {
-		
+	public void shufflesDeck() 
+	{
+		Collections.shuffle(deck);
 	}
-	public void allCards(){
+	public void allCards()
+	{
 		try
 		{
 			String line;
-			int key=0;
+
 			Scanner scan = new Scanner (new File ("MonsterDeckTest.txt"));
+			playerName=scan.nextLine();
 			while(scan.hasNextLine())
-			{key++;       	
-			for(int i=0;i<4;i++)
-			{   line = scan.nextLine();
-			temp.add(line);
-			}
-			allCards.put(key, temp);
-			temp.clear();
+			{
+				for(int i=0;i<4;i++)
+				{ line = scan.nextLine();
+				temp.add(line);
+				}
+				deck.push(temp);
+				temp.clear();
 			}
 			scan.close();
 		}
 		catch (FileNotFoundException fnfe)
-		{   System.err.println (fnfe);  }
+		{ System.err.println (fnfe); }
+	}
+	private Card addDeck (Card newCard)
+	{
+		return deck.push(newCard);
 	}
 
-	private int addDeck (int cardNumber)
-	{return deck.push(cardNumber); 
-
+	public Card next()
+	{
+		return deck.pop();
 	}
-
-	public int addHand(int cardNumber)
-	{hand.add(cardNumber);
-	return cardNumber;	  
+	public Card remove(String cardNumber)
+	{
+		Card temp=null;//=allcards.value(cardNumber);
+		hand.remove(temp);
+		return temp;
 	}
-
-	public int next()
-	{return deck.pop();
-	}
-
-	public int remove(int cardNumber)
-	{return hand.remove(cardNumber);
-	}
-
 	public Set<String> attributes(int key)
-	{return allCards.get(key);
+	{
+		return allCards.get(key);
 	}
-
 	public void main()
-	{allCards();
-	addDeck(1);
-	int key=next();
-	System.out.println(attributes(key));
-
-
+	{
+		allCards();
+		addDeck(1);
+		int key=next();
+		System.out.println(attributes(key));
 	}
-
 }

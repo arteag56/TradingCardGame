@@ -53,14 +53,14 @@ public class GameBoard
     	String result = null;
         //player has a health of 5, once a creature of his is killed
     	//it loses a heart. it reaches 0 game over other player wins.
-    	//if (player1.getHealth() == 0)
-    	//{
-    	//	result = player1.getName();
-    	//}
-    	//	else {
-    	//		result = player2.getName();
-    	//	}
-    	return result + " wins!";
+    	if (player1.getHealth() == 0)
+    	{
+    		result = player1.getName();
+    	}
+    		else {
+    			result = player2.getName();
+    		}
+    	return result;
     }
     
     /**

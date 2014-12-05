@@ -67,9 +67,16 @@ public class Player{
 		if(result instanceof MagicCard)
 			playedMagic=true;
 		return result;}
+	
 	public void newTurn(){
 		playedMonster=false;
 		playedMagic=false;}
+	
+	public boolean getPlayedMonster()
+	{return playedMonster;}
+	
+	public boolean PlayedMagic()
+	{return playedMagic;}
 	
 
 	

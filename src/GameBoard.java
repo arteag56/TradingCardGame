@@ -18,6 +18,8 @@ public class GameBoard
     private boolean gameResult;
     private int turn;
     private Random random;
+    
+
     //needs field
     
     public static void main(String args[]) {
@@ -83,12 +85,12 @@ public class GameBoard
         return player2.getName();
     }
     
-    public Deck getPlayer1Deck()
+    public Map getPlayer1Deck()
     {
         return player1.getDeck();
     }
     
-     public Deck getPlayer2Deck()
+     public Map getPlayer2Deck()
     {
         return player2.getDeck();
     }
@@ -103,6 +105,16 @@ public class GameBoard
         return player2.getHand();
     }
     
+    public void player1NewTurn()
+    {
+        player1.newTurn();
+    }
+    
+     public void player2NewTurn()
+    {
+        player2.newTurn();
+    }
+    
     /**
      * 
      */
@@ -110,6 +122,10 @@ public class GameBoard
     {
         return null;
     }
+    
+    public boolean completedMove() {
+		return(player1.playedMonster()&&player1.playedMagic()||player2.playedMonster()&&player2.playedMagic());
+	}
     
     /**
      * 

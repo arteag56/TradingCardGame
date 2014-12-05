@@ -146,7 +146,18 @@ public class GameBoardGUI implements ActionListener
           public void actionPerformed(ActionEvent e) 
           {
                currentPlayer.setText(game.nextTurn());
-               switchDecks();
+               
+               if (currentPlayer.getText().equals(game.getPlayer1Name()))
+               {
+                   game.getPlayer1Deck();
+                   game.getPlayer1Hand();
+               }
+               
+               if (currentPlayer.getText().equals(game.getPlayer2Name()))
+               {
+                   game.getPlayer2Deck();
+                   game.getPlayer2Hand();
+               }
           }
         });
         
@@ -403,7 +414,8 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     * 
+     * This does not do anythhing at the moment, but it might in the future
+     * so please leave it alone
      */
     public void switchDecks()
     {

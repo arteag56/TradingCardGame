@@ -14,7 +14,6 @@ public class Player{
 	private List<Card> currentHand;
 	private boolean playedMonster,playedMagic;
 
-
 	/**
 	 * Constructor for objects of class Player
 	 */
@@ -35,26 +34,7 @@ public class Player{
 	public String getName() {
 		return name;
 	}
-	public int loseAPoint(){
-		return health--;
-	}
-	public List<Card> getHand() {
-		while(currentHand.size()<5)
-			draw();
-		return currentHand;
-	}
-	
-	public boolean completedMove() {
-		return(playedMonster&&playedMagic);
-	}
-	/** @return The list of words generated
-	 * by the constructor.
-	 */
 
-	public Map<String,Card> getDeck() {						//////////////
-		return deck.getDeck();
-
-	}
 	/**
 	 * The player's health
 	 * @return health
@@ -62,14 +42,41 @@ public class Player{
 	public int getHealth() {
 		return health;
 	}
+
+	public void loseAPoint(){
+		health--;
+	}
+
+	public List<Card> getHand() {
+		return currentHand;
+	}
+
+	public boolean completedMove() {
+		return(playedMonster&&playedMagic);
+	}
+	/** @return The list of words generated
+	 * by the constructor.
+	 */
+
+	public Map<String,Card> getDeck() {	
+		return deck.getDeck();
+
+	}
+
 	public Card draw(){
-		while(currentHand.size()<5){
-		Card result=deck.pickCard();
-		currentHand.add(result);
-		return result;}
-		return currentHand.get(4);}
-		
-	
+		while (currentHand.size() < 5) {
+			if (deck.getDeck().isEmpty()) {
+				System.out.println("Deck is out of cards");
+			}
+			else {
+				Card result = deck.pickCard();
+				currentHand.add(result);
+			}
+		}
+		return currentHand.get(4);
+	}
+
+
 	public Card remove(int key){
 		Card result= currentHand.get(key);
 		currentHand.remove(key);
@@ -78,14 +85,14 @@ public class Player{
 		if(result instanceof MagicCard)
 			playedMagic=true;
 		return result;}
-	
+
 	public void newTurn(){
 		playedMonster=false;
 		playedMagic=false;}
-	
+
 	public boolean playedMonster()
 	{return playedMonster;}
-	
+
 	public boolean playedMagic()
 	{return playedMagic;}
 	
@@ -102,5 +109,4 @@ public class Player{
 		System.out.println("Completed Turn: "+p.completedMove());
 	}
 
-	
 }

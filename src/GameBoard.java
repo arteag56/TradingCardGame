@@ -18,7 +18,7 @@ public class GameBoard
     private boolean gameResult;
     private int turn;
     private Random random;
-    
+    private Player thisPlayer;
 
     //needs field
     
@@ -43,6 +43,8 @@ public class GameBoard
         turn = 0;
     }
 
+    
+    
     /**
      * This method keeps track of who wins the game 
      * and the record of the players
@@ -71,9 +73,20 @@ public class GameBoard
     	random = new Random();
     	currentPlayer = random.nextInt(2);
     	if (currentPlayer == 0) {
+    	    thisPlayer = player1;
     		return player1.getName();
     	}
+    	thisPlayer = player2;
     	return player2.getName();
+    }
+    
+    public Player thisPlayer(String x)
+    {
+       if(x.equals(getPlayer1Name()))
+       {
+           return thisPlayer = player1;
+       }
+       return thisPlayer = player2;
     }
     
     public String getPlayer1Name() {
@@ -127,6 +140,8 @@ public class GameBoard
 		return(player1.playedMonster()&&player1.playedMagic()||player2.playedMonster()&&player2.playedMagic());
 	}
     
+	
+	
     /**
      * 
      */
@@ -150,7 +165,10 @@ public class GameBoard
     	
     }
     
-    
+    public List<Card> cardValues()
+    {
+        return player1.getHand();
+    }
     
     /**
      * 

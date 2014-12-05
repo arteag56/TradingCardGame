@@ -80,13 +80,20 @@ public class GameBoard
     	return player2.getName();
     }
     
-    public Player thisPlayer(String x)
+    public void thisPlayer(String x)
     {
        if(x.equals(getPlayer1Name()))
        {
-           return thisPlayer = player1;
+            thisPlayer = player1;
+            return;
        }
-       return thisPlayer = player2;
+       
+        thisPlayer = player2;
+    }
+    
+    public Player getThisPlayer()
+    {
+        return thisPlayer;
     }
     
     public String getPlayer1Name() {

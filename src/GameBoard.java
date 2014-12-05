@@ -1,6 +1,6 @@
 package src;
 
-import java.util.Random;
+import java.util.*;
 //1,1,Monster,10,100,true
 
 /**
@@ -91,6 +91,16 @@ public class GameBoard
      public Deck getPlayer2Deck()
     {
         return player2.getDeck();
+    }
+    
+    public List<Card> getPlayer1Hand()
+    {
+        return player1.getHand();
+    }
+    
+    public List<Card> getPlayer2Hand()
+    {
+        return player2.getHand();
     }
     
     /**

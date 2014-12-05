@@ -50,7 +50,7 @@ public class Deck {
 				}
 
 			}
-			inputRead.close();
+			
 		}// while loop
 		return scan;
 	}

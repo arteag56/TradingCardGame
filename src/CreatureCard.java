@@ -21,8 +21,8 @@ public class CreatureCard extends Card
         special.setName("Magie");
         monster1.setName("Monster 1");
         monster2.setName("Monster 2");
-        monster1.setNumber(20);
-        monster2.setNumber(30);
+        monster1.setCardNumber(20);
+        monster2.setCardNumber(30);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
         monster1.attacks(monster2);
@@ -70,14 +70,6 @@ public class CreatureCard extends Card
     
     public void setElement(String t) { //Mutator Methods
     	element = t;
-    }
-
-    public void setName(String newName) {
-        super.setName(newName);
-    }
-
-    private void setNumber(int i) {
-        super.setCardNumber(i);
     }
 
     public void setAttackDamage(int newAttack){

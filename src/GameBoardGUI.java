@@ -17,27 +17,26 @@ public class GameBoardGUI implements ActionListener
 {
     // instance variables - replace the example below with your own
     private JFrame frame;
-    private JTextField textField1, textField2, textField3, textField4, textField5;
-    private Card card;
-    final JButton cardInHand1 = new JButton("Card #1");
-    final JButton cardInHand2 = new JButton("Card #2");
-    final JButton cardInHand3 = new JButton("Card #3");
-    final JButton cardInHand4 = new JButton("Card #4");
-    final JButton cardInHand5 = new JButton("Card #5");
-    final JButton activePlayingCard1 = new JButton("Active Playing Card #1");
-    final JButton activePlayingCard2 = new JButton("Active Playing Card #2");
-    final JButton activePlayingCard3 = new JButton("Active Playing Card #3");
-    final JButton activePlayingCard4 = new JButton("Active Playing Card #4");
-    final JButton activePlayingCard5 = new JButton("Active Playing Card #5");
-    final JButton activePlayingCard6 = new JButton("Active Playing Card #6");
-    final JButton activePlayingCard7 = new JButton("Active Playing Card #7");
-    final JButton activePlayingCard8 = new JButton("Active Playing Card #8");
-    final JButton activePlayingCard9 = new JButton("Active Playing Card #9");
-    final JButton activePlayingCard10 = new JButton("Active Playing Card #10");
-    private int cardInHandCount = 5;
-    private JButton deck = new JButton("Deck");
-    private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
     private GameBoard game;
+    private Card card;
+     JButton cardInHand1;
+    JButton cardInHand2;
+    JButton cardInHand3;
+    JButton cardInHand4;
+    JButton cardInHand5;
+    JButton activePlayingCard1;
+    JButton activePlayingCard2;
+    JButton activePlayingCard3;
+    JButton activePlayingCard4;
+    JButton activePlayingCard5;
+    JButton activePlayingCard6;
+    JButton activePlayingCard7;
+    JButton activePlayingCard8;
+    JButton activePlayingCard9;
+    JButton activePlayingCard10;
+    private JButton deck;
+    private int cardInHandCount = 5;
+    private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
     private JTextField currentPlayer = new JTextField(10);
     
     
@@ -51,6 +50,22 @@ public class GameBoardGUI implements ActionListener
         card = new CreatureCard(1,"Monster1",30,100,"FIRE",true);
         card.setName("Boo");
         card.setCardNumber(1);
+         final JButton cardInHand1 = new JButton(game.getThisPlayer().getHand().get(0).getName());
+    final JButton cardInHand2 = new JButton(game.getThisPlayer().getHand().get(1).getName());
+    final JButton cardInHand3 = new JButton(game.getThisPlayer().getHand().get(2).getName());
+    final JButton cardInHand4 = new JButton(game.getThisPlayer().getHand().get(3).getName());
+    final JButton cardInHand5 = new JButton(game.getThisPlayer().getHand().get(4).getName());
+    final JButton activePlayingCard1 = new JButton("Active Playing Card #1");
+    final JButton activePlayingCard2 = new JButton("Active Playing Card #2");
+    final JButton activePlayingCard3 = new JButton("Active Playing Card #3");
+    final JButton activePlayingCard4 = new JButton("Active Playing Card #4");
+    final JButton activePlayingCard5 = new JButton("Active Playing Card #5");
+    final JButton activePlayingCard6 = new JButton("Active Playing Card #6");
+    final JButton activePlayingCard7 = new JButton("Active Playing Card #7");
+    final JButton activePlayingCard8 = new JButton("Active Playing Card #8");
+    final JButton activePlayingCard9 = new JButton("Active Playing Card #9");
+    final JButton activePlayingCard10 = new JButton("Active Playing Card #10");
+     JButton deck = new JButton("Deck");
         
         makeFrame();
     }

@@ -97,7 +97,7 @@ public class CreatureCard extends Card
         health = health - hitTaken;
         if (health <= 0){
             health = 0;
-            System.out.println("Die Mothafucker");
+            System.out.println("Dead");
             return true;
         }
         else{

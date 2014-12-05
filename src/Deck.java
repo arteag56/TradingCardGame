@@ -13,15 +13,6 @@ import java.util.*;
 public class Deck {
 	private Map<String, Card> deck = new TreeMap<String, Card>();
 
-	/**
-	 * Tests Deck class
-	 */
-	public static void main(String[] args) {
-		Deck deck = new Deck(true);						//puts cards in map
-		System.out.println(deck.pickCard().toString()); //gets a random card
-		//System.out.println(deck.toString());				//random card should not display
-	}
-
 	public Deck(boolean fillDeck) {
 		if (fillDeck) {
 			createDeck();
@@ -157,5 +148,14 @@ public class Deck {
 			return "Deck is empty";
 		}
 		return deck.toString();
+	}
+	
+	/**
+	 * Tests Deck class
+	 */
+	public static void main(String[] args) {
+		Deck deck = new Deck(true);						//puts cards in map
+		System.out.println(deck.pickCard().toString()); //gets a random card
+		//System.out.println(deck.toString());				//random card should not display
 	}
 }//class Deck

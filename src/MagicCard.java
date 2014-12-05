@@ -1,43 +1,29 @@
 /**
  * This MagicCard class will enhance a CreatureCard's attack
- * or defense against another CreatureCard object.
+ * or defend against another CreatureCard object's attack.
  * 
  * @author (Michael Arteaga, Joseph Carbone, Peter Cipolone, Eric Oliver)
- * @version (Nov 19, 2014)
+ * @version (Dec 5, 2014)
  */
 public class MagicCard extends Card
 {
     private boolean offense; //Magic type: is this card for offense?
 
-    /**
-     * Constructor for objects of class MagicCard
-     */
-    public MagicCard() {
+    public MagicCard() {			//default constructor
     	super(50, "[Default]");
         offense = false;
     }
     
-    public MagicCard(int num, String name, boolean isOffense) {
+    public MagicCard(int num, String name, boolean isOffense) { //custom constructor
     	super(num, name);
     	offense = isOffense;
     }
     
-    public boolean isOffense() {
+    public boolean isOffense() { 		//Accessors methods
     	return offense;
     }
-    
-    public void changeType() {
-    	if (offense) {
-    		offense = false;
-    	}
-    	else {
-    		offense = true;
-    	}
-    }
-    /**
-     * Returns whether the Magic card is either offense or defense.
-     */
-    public String getInfo() {
+
+    public String getEnhanceType() { 
     	String result;
     	if (offense) {
     		result = "offense";
@@ -48,10 +34,18 @@ public class MagicCard extends Card
     	return result;
     }
     
+    private void changeType() { 	//used for testing
+    	if (offense) {
+    		offense = false;
+    	}
+    	else {
+    		offense = true;
+    	}
+    }
+    
     public String toString() {
         return super.toString() + 
         		"\n  Type: Enhancement" +
-        		"\n  Action: Enhance " + getInfo();
+        		"\n  Action: Enhance " + getEnhanceType();
     }
-    
-}
+}//Class MagicCard

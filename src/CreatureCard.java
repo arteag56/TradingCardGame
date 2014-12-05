@@ -110,7 +110,7 @@ public class CreatureCard extends Card
      * This CreatureCard attacks another CreatureCard
      * @param monster2
      */
-    private void attacks(CreatureCard monster2) {
+    public void attacks(CreatureCard monster2) {
     	if (element.equals("FIRE") && monster2.getElement().equals("GRASS") ||
     		element.equals("WATER") && monster2.getElement().equals("FIRE") ||
     		element.equals("GRASS") && monster2.getElement().equals("WATER")) {

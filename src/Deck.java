@@ -3,7 +3,11 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * @author Joe Carbone
+ * Deck object holds a Map of Card with each having a unique key. Deck can draw a card,
+ * remove a card, return elements in the deck assuming it read the input from a file.
+ * 
+ * @author (Michael Arteaga, Joseph Carbone, Peter Cipolone, Eric Oliver)
+ * @version (Dec 5, 2014)
  *
  */
 public class Deck {
@@ -154,4 +158,4 @@ public class Deck {
 		}
 		return deck.toString();
 	}
-}
+}//class Deck

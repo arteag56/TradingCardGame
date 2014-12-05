@@ -61,44 +61,6 @@ public class Card
     public void setCardNumber(int i){
         cardNum = i;
     }
-
-
-    /**
-     * Obtain the name of the file and open the file for reading. Attempt to 
-     * recover from the typical I/O exceptions with a limited number of retries (3).
-     */
-    public static Scanner openFile() {
-        String nameOfFile; 
-        Scanner scan = null;
-        boolean success = false;
-        int attempt = 3;
-
-        while (attempt > 0 && !success) {
-
-            System.out.println("Enter Name of File: ");
-            Scanner inputRead = new Scanner(System.in);
-            nameOfFile = inputRead.next();
-
-            try{
-                scan = new Scanner(new File(nameOfFile));
-                success = true;
-                System.out.println("\n" + nameOfFile + " was read successfully!");
-            }
-            catch(IOException e){
-                System.out.println(e.getMessage() + "\n");
-                attempt--;
-                if (attempt > 0) {
-                    System.out.println(attempt + " attempts left.");
-                }
-                else {
-                    System.out.println("You failure.");
-                }
-
-            }
-
-        }//while loop
-        return scan;
-    }
     
     /**
      * Prints out card information

@@ -1,3 +1,5 @@
+package src;
+
 import java.io.*;
 import java.util.*;
 /**
@@ -11,12 +13,13 @@ public class Player
 	private String name;
 	private int health = 5;
 	private boolean completedMove;
-	private Deck deck = new Deck();
-	private ArrayList<Card> hand = new ArrayList<Card>();
+	//private Deck deck = new Deck();
+	
 	
 	private List<MagicCard> magicDeck = new ArrayList<MagicCard>();
 	private List<CreatureCard> monsterDeck = new ArrayList<CreatureCard>();
 	private List<Card> currentHand = new ArrayList<Card>();
+	private ArrayList<Card> card = new ArrayList<>();
 	
 
 	public static void main(String args[]) {
@@ -41,11 +44,11 @@ public class Player
 	public int loseAPoint(){
 		return health--;
 	}
-	private Map<String, Card> getHand() {
-		return hand.viewHand();
+	private ArrayList<Card> getHand() {
+		return card;
 	}
 	public boolean makesMove() {
-		hand.pickCard();
+		//hand.pickCard();
 		//picks a creature to put on board
 		//picks a Magic card to use offensely
 		//attacks

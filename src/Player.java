@@ -11,8 +11,8 @@ public class Player
 	private String name;
 	private int health = 5;
 	private boolean completedMove;
-	//private Deck deck = new Deck();
-	private Hand hand = new Hand();
+	private Deck deck = new Deck();
+	private ArrayList<Card> hand = new ArrayList<Card>();
 	
 	private List<MagicCard> magicDeck = new ArrayList<MagicCard>();
 	private List<CreatureCard> monsterDeck = new ArrayList<CreatureCard>();

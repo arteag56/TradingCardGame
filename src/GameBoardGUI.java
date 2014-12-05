@@ -59,7 +59,8 @@ public class GameBoardGUI implements ActionListener
     
     
     /**
-     *
+     * This method makes the frame and adds all the components.
+     * Implements buttons that only exist in this class
      */
     public void makeFrame()
     {
@@ -256,7 +257,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     * 
+     * Transfers the value from the hand onto the playing field 
      */
     public void transferValue(JButton hand, JButton field)
     {
@@ -276,7 +277,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     * 
+     * gives information about the card in question 
      */
     public void infoCard(JButton infoHand)
     {
@@ -292,7 +293,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     *
+     * Implements the menu item
      */
     public void actionPerformed(ActionEvent event)
     {
@@ -357,7 +358,8 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     *
+     * opens the directory for searching for a file
+     * currently does not work
      */
     public void openFile()
     {
@@ -375,7 +377,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     *
+     * this method quits the program
      */
     public void quit()
     {
@@ -401,7 +403,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     * 
+     * message box displaying the winner 
      */
     public void displayWinner()
     {

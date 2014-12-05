@@ -7,18 +7,22 @@ import java.util.*;
  *
  */
 public class Deck {
-	//private Map<String, Card> hand = new TreeMap<String, Card>();
 	private Map<String, Card> deck = new TreeMap<String, Card>();
 
 	/**
-	 * @param args
+	 * Tests Deck class
 	 */
 	public static void main(String[] args) {
-		Deck deck = new Deck();
-		deck.createDeck();
-		deck.getDeck();
+		Deck deck = new Deck(true);						//puts cards in map
+		System.out.println(deck.pickCard().toString()); //gets a random card
+		//System.out.println(deck.toString());				//random card should not display
 	}
-
+	
+	public Deck(boolean fillDeck) {
+		if (fillDeck) {
+			createDeck();
+		}
+	}
 	/**
 	 * Obtain the name of the file and open the file for reading. Attempt to
 	 * recover from the typical I/O exceptions with a limited number of retries
@@ -51,18 +55,22 @@ public class Deck {
 				}
 
 			}
-
+			inputRead.close();
 		}// while loop
 		return scan;
 	}
 	
+	/**
+	 * Fills the deck with card of both Creature and Magic.
+	 */
 	public void createDeck() {
 		ArrayList<String> list = new ArrayList<String>();
 		Scanner scan = openFile();
 		scan.useDelimiter(",");
 		while (scan.hasNext()) {
 			list.add(scan.next());
-			if (list.size() == 7) {
+			
+			if (list.size() == 7 && list.get(0).trim().equals("C")) {
 				boolean rare = false;
 				if (list.get(6).trim().toLowerCase().equals("true")) {
 					rare = true;
@@ -74,18 +82,30 @@ public class Deck {
 				deck.put(list.get(0).trim() + c.getCardNum(), c);
 				list.clear();
 			}
+			if (list.size() == 4 && list.get(0).trim().equals("M")) {
+				boolean isOffence = false;
+				if (list.get(3).trim().toLowerCase().equals("true")) {
+					isOffence = true;
+				}
+				MagicCard m = new MagicCard(
+						Integer.parseInt(list.get(1).trim()), list.get(2), isOffence);
+				deck.put(list.get(0).trim() + m.getCardNum(), m);
+				list.clear();
+			}
+			
 		}
-		//System.out.println(list); Sanity check
-		//System.out.println(deck);
-
 	}
 	
 	public Map<String, Card> getDeck(){
-		System.out.println(deck);
 		return deck;
 	}
-	
-	public boolean addCard(String type, Card c) {
+	/**
+	 * Adds a card to the Map. 
+	 * @param type - "M" for MagicCard "C" for CreatureCard
+	 * @param c - a Card object
+	 * @return
+	 */
+	private boolean addCard(String type, Card c) {
 		if (type.trim().equals("C") || type.trim().equals("C")) {
 			deck.put(type + c.getCardNum(), c);
 			return true;
@@ -100,6 +120,12 @@ public class Deck {
 		
 	}
 
+	/**
+	 * Picks a random card and removes it from the Deck.
+	 * PreCondition: Deck must have at least one card
+	 * 
+	 * @return Card - the card removed
+	 */
 	public Card pickCard() {
 		Random random = new Random();
 		List<String> keys = new ArrayList<String>(deck.keySet());
@@ -109,12 +135,23 @@ public class Deck {
 		return value;
 	}
 	
-	public Card removeCard(String key) {
+	/**
+	 * Removes the card from this Map using a key.
+	 * 
+	 * @param key - removes the Card with this key
+	 * @return Card - the card removed
+	 */
+	private Card removeCard(String key) {
 		return deck.remove(key);
 	}
 	
+	/**
+	 * Deck's toString
+	 */
 	public String toString() {
-		return null;
+		if (deck.isEmpty()) {
+			return "Deck is empty";
+		}
+		return deck.toString();
 	}
-
 }

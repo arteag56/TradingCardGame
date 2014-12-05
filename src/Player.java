@@ -1,4 +1,3 @@
-import java.io.*;
 import java.util.*;
 /**
  * [Description]
@@ -9,9 +8,10 @@ import java.util.*;
 public class Player{
 	private String name;
 	private int health = 5;
-	private boolean completedMove;
+	//private boolean completedMove;
 	private Deck deck = new Deck();
 	private List<Card> currentHand = new ArrayList<Card>();
+	private boolean playedMonster=false,playedMagic=false;
 
 
 	/**
@@ -19,6 +19,7 @@ public class Player{
 	 */
 	public Player() { // default constructor
 		name = "[default]";
+		
 	}
 	public Player(String name) { //constructor
 		this.name = name;
@@ -30,16 +31,13 @@ public class Player{
 		return health--;
 	}
 	public List<Card> getHand() {
+		while(currentHand.size()<5)
+			draw();
 		return currentHand;
 	}
-	public boolean makesMove() {
-		//hand.pickCard();
-		//picks a creature to put on board
-		//picks a Magic card to use offensely
-		//attacks
-		//picks a magic card to put on board
-		completedMove = true;
-		return false;
+	
+	public boolean completedMove() {
+		return(playedMonster&&playedMagic);
 	}
 	/** @return The list of words generated
 	 * by the constructor.
@@ -56,4 +54,23 @@ public class Player{
 	public int getHealth() {
 		return health;
 	}
+	public Card draw(){
+		Card result=deck.pickCard();
+		currentHand.add(result);
+		return result;}
+	
+	public Card remove(int key){
+		Card result= currentHand.get(key);
+		currentHand.remove(key);
+		if(result instanceof CreatureCard)
+			playedMonster=true;
+		if(result instanceof MagicCard)
+			playedMagic=true;
+		return result;}
+	public void newTurn(){
+		playedMonster=false;
+		playedMagic=false;}
+	
+
+	
 }

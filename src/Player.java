@@ -1,51 +1,36 @@
-package src;
-
 import java.io.*;
 import java.util.*;
 /**
  * [Description]
- * 
- * @author (Michael Arteaga, Joseph Carbone) 
+ *
+ * @author (Michael Arteaga, Joseph Carbone)
  * @version (Oct 24, 2014)
  */
-public class Player
-{
+public class Player{
 	private String name;
 	private int health = 5;
 	private boolean completedMove;
-	//private Deck deck = new Deck();
-	
-	
-	private List<MagicCard> magicDeck = new ArrayList<MagicCard>();
-	private List<CreatureCard> monsterDeck = new ArrayList<CreatureCard>();
+	private Deck deck = new Deck();
 	private List<Card> currentHand = new ArrayList<Card>();
-	private ArrayList<Card> card = new ArrayList<>();
-	
 
-	public static void main(String args[]) {
-		Player mike = new Player("Mike");
-		
-	}
-	
+
 	/**
 	 * Constructor for objects of class Player
 	 */
-	public Player() {				// default constructor
-		name = "[default]";	
+	public Player() { // default constructor
+		name = "[default]";
 	}
-	public Player(String name) {	//constructor
+	public Player(String name) { //constructor
 		this.name = name;
 	}
-	
 	public String getName() {
 		return name;
 	}
-	
 	public int loseAPoint(){
 		return health--;
 	}
-	private ArrayList<Card> getHand() {
-		return card;
+	public List<Card> getHand() {
+		return currentHand;
 	}
 	public boolean makesMove() {
 		//hand.pickCard();
@@ -56,32 +41,14 @@ public class Player
 		completedMove = true;
 		return false;
 	}
-	
-
 	/** @return The list of words generated
-	 *  by the constructor.
+	 * by the constructor.
 	 */
 
-	public List<CreatureCard> getMonsterDeck() {
-		return monsterDeck;  
+	public Map<String,Card> getDeck() {						//////////////
+		return deck.getDeck();
+
 	}
-
-	//public List<Card> getHand() {
-	//	return currentHand; 
-	//}
-
-	public List<Card> getDeck() {
-		List<Card> deck = new ArrayList<Card>();
-		for (Card s: monsterDeck) {
-			deck.add(s);
-		}
-
-		for (Card s: magicDeck) {
-			deck.add(s);
-		}
-		return deck;
-	}
-
 	/**
 	 * The player's health
 	 * @return health

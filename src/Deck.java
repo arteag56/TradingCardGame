@@ -17,7 +17,7 @@ public class Deck {
 		System.out.println(deck.pickCard().toString()); //gets a random card
 		//System.out.println(deck.toString());				//random card should not display
 	}
-	
+
 	public Deck(boolean fillDeck) {
 		if (fillDeck) {
 			createDeck();
@@ -59,7 +59,7 @@ public class Deck {
 		}// while loop
 		return scan;
 	}
-	
+
 	/**
 	 * Fills the deck with card of both Creature and Magic.
 	 */
@@ -69,7 +69,7 @@ public class Deck {
 		scan.useDelimiter(",");
 		while (scan.hasNext()) {
 			list.add(scan.next());
-			
+
 			if (list.size() == 7 && list.get(0).trim().equals("C")) {
 				boolean rare = false;
 				if (list.get(6).trim().toLowerCase().equals("true")) {
@@ -92,10 +92,10 @@ public class Deck {
 				deck.put(list.get(0).trim() + m.getCardNum(), m);
 				list.clear();
 			}
-			
+
 		}
 	}
-	
+
 	public Map<String, Card> getDeck(){
 		return deck;
 	}
@@ -117,7 +117,7 @@ public class Deck {
 		else {
 			return false;
 		}
-		
+
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class Deck {
 		removeCard(randomKey);
 		return value;
 	}
-	
+
 	/**
 	 * Removes the card from this Map using a key.
 	 * 
@@ -144,7 +144,7 @@ public class Deck {
 	private Card removeCard(String key) {
 		return deck.remove(key);
 	}
-	
+
 	/**
 	 * Deck's toString
 	 */

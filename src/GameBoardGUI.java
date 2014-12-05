@@ -39,7 +39,7 @@ public class GameBoardGUI implements ActionListener
     private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
     private GameBoard game;
     private JTextField currentPlayer = new JTextField(10);
-
+    
     
     
     /**
@@ -150,12 +150,15 @@ public class GameBoardGUI implements ActionListener
                
                if (currentPlayer.getText().equals(game.getPlayer1Name()))
                {
+                   
+                   game.player1NewTurn();
                    game.getPlayer1Deck();
                    game.getPlayer1Hand();
                }
                
                if (currentPlayer.getText().equals(game.getPlayer2Name()))
                {
+                   game.player2NewTurn();
                    game.getPlayer2Deck();
                    game.getPlayer2Hand();
                }
@@ -407,7 +410,16 @@ public class GameBoardGUI implements ActionListener
      */
     public void displayWinner()
     {
-        String message = "(Insert Player Here) is the WINNER!";
+        String message;
+        if(game.gameResult().equals(game.getPlayer1Name()))
+        {
+             message = game.getPlayer2Name() + " is the WINNER!";
+        }
+        else
+        {
+            message = game.getPlayer1Name() + " is the WINNER!";
+        }
+        
         JOptionPane optionPane = new JOptionPane();
         optionPane.setMessage(message);
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);

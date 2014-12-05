@@ -26,8 +26,8 @@ public class CreatureCard extends Card
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
         monster1.attacks(monster2);
-        monster1.useMagic(special, monster2);
-        monster1.useMagic(special, monster2);
+        monster1.useMagicDefense(special, monster2);
+        monster1.useMagicOffense(special, monster2);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
         System.out.println(special.toString());
@@ -126,18 +126,26 @@ public class CreatureCard extends Card
      * another monster.
      * @param c @param monster
      */
-    public void useMagic(Card c, CreatureCard monster){
+    public void useMagicOffense(Card c, CreatureCard monster){
         if (isRare && c instanceof MagicCard){
         	MagicCard card = (MagicCard) c;
-        	if (card.isOffense()) {
+        	if (!card.isOffense()) {
         		monster.takesHit(attack + 20);
         	}
-        	else {
-        		takesHit((monster.getAttackDamage())/2);
-        	}
+        	
         }
     }
 
+    public void useMagicDefense(Card d, CreatureCard monster){
+        
+        if(isRare && d instanceof MagicCard){
+            MagicCard card = (MagicCard) d;
+            if(!card.isOffense()){
+                takesHit((monster.getAttackDamage())/2);
+            }
+        }
+        
+    }
     public String toString() {
         return super.toString() +
         "\n  Type: Monster" +

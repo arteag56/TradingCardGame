@@ -34,7 +34,9 @@ public class MagicCard extends Card
     		offense = true;
     	}
     }
-    
+    /**
+     * Returns whether the Magic card is either offense or defense.
+     */
     public String getInfo() {
     	String result;
     	if (offense) {

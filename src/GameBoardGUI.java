@@ -141,7 +141,7 @@ public class GameBoardGUI implements ActionListener
         
         JButton endTurn = new JButton("End Turn");
         east.add(endTurn);
-        currentPlayer.setText(game.whoStartsGame()); //Does not work properly 
+        currentPlayer.setText(game.whoStartsGame()); 
         endTurn.addActionListener(new ActionListener()
         {
           public void actionPerformed(ActionEvent e) 
@@ -150,7 +150,7 @@ public class GameBoardGUI implements ActionListener
                
                if (currentPlayer.getText().equals(game.getPlayer1Name()))
                {
-                   
+                   game.thisPlayer(currentPlayer.getText());
                    game.player1NewTurn();
                    game.getPlayer1Deck();
                    game.getPlayer1Hand();
@@ -158,6 +158,7 @@ public class GameBoardGUI implements ActionListener
                
                if (currentPlayer.getText().equals(game.getPlayer2Name()))
                {
+                   game.thisPlayer(currentPlayer.getText());
                    game.player2NewTurn();
                    game.getPlayer2Deck();
                    game.getPlayer2Hand();

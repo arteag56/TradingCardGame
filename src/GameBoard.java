@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Random;
 //1,1,Monster,10,100,true
 
@@ -79,6 +81,16 @@ public class GameBoard
     public String getPlayer2Name()
     {
         return player2.getName();
+    }
+    
+    public Deck getPlayer1Deck()
+    {
+        return player1.getDeck();
+    }
+    
+     public Deck getPlayer2Deck()
+    {
+        return player2.getDeck();
     }
     
     /**

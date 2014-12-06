@@ -236,16 +236,30 @@ public class GameBoardGUI implements ActionListener
         activePlayingCard9.setVisible(false);
         activePlayingCard10.setVisible(false);
         
-        transferValue(cardInHand1, activePlayingCard1);
-        transferValue(cardInHand2, activePlayingCard2);
-        transferValue(cardInHand3, activePlayingCard3);
-        transferValue(cardInHand4, activePlayingCard4);
-        transferValue(cardInHand5, activePlayingCard5);
+        if(currentPlayer.getText().equals(game.getPlayer1Name()))
+        {
+            transferValue(cardInHand1, activePlayingCard1);
+            transferValue(cardInHand2, activePlayingCard2);
+            transferValue(cardInHand3, activePlayingCard3);
+            transferValue(cardInHand4, activePlayingCard4);
+            transferValue(cardInHand5, activePlayingCard5);
+        }
+        else
+        {
+            transferValue(cardInHand1, activePlayingCard6);
+            transferValue(cardInHand2, activePlayingCard7);
+            transferValue(cardInHand3, activePlayingCard8);
+            transferValue(cardInHand4, activePlayingCard9);
+            transferValue(cardInHand5, activePlayingCard10);
+        }
+        
         
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
+    
+    
     
     /**
      * Transfers the value from the hand onto the playing field

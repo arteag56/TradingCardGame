@@ -145,6 +145,11 @@ public class GameBoardGUI implements ActionListener
                     
                     game.thisPlayer(currentPlayer.getText());
                     game.getThisPlayer().getHand();
+                    cardInHand1.setVisible(true);
+                    cardInHand2.setVisible(true);
+                    cardInHand3.setVisible(true);
+                    cardInHand4.setVisible(true);
+                    cardInHand5.setVisible(true);
                     
                 }
                 if (currentPlayer.getText().equals(game.getPlayer2Name()))
@@ -155,6 +160,11 @@ public class GameBoardGUI implements ActionListener
                     game.getPlayer2Hand();
                     game.thisPlayer(currentPlayer.getText());
                     game.getThisPlayer().getHand();
+                    cardInHand1.setVisible(true);
+                    cardInHand2.setVisible(true);
+                    cardInHand3.setVisible(true);
+                    cardInHand4.setVisible(true);
+                    cardInHand5.setVisible(true);
                     
                     transferValue(cardInHand1, activePlayingCard6);
                     transferValue(cardInHand2, activePlayingCard7);
@@ -182,7 +192,7 @@ public class GameBoardGUI implements ActionListener
             {
                 //DOES NOT WORK - NOT SURE WHY
                    
-                JButton newCard = new JButton(game.getThisPlayer().draw());
+                JButton newCard = new JButton(game.getThisPlayer().draw().getName());
                 //This line does not work
                     south.add(newCard);
                     newCard.setVisible(true);
@@ -268,6 +278,8 @@ public class GameBoardGUI implements ActionListener
             transferValue(cardInHand3, activePlayingCard3);
             transferValue(cardInHand4, activePlayingCard4);
             transferValue(cardInHand5, activePlayingCard5);
+            
+            
         
         frame.pack();
         frame.setVisible(true);
@@ -287,6 +299,7 @@ public class GameBoardGUI implements ActionListener
             {
                 hand.setVisible(false);
                 field.setVisible(true);
+                
                 cardInHandCount = cardInHandCount - 1;
                 if (cardInHandCount < 5)
                 {

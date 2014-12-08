@@ -44,11 +44,11 @@ public class GameBoardGUI implements ActionListener
         whoStarts= game.whoStartsGame();
         
         
-        final JButton activePlayingCard6 = new JButton("Active Playing Card #6");
-        final JButton activePlayingCard7 = new JButton("Active Playing Card #7");
-        final JButton activePlayingCard8 = new JButton("Active Playing Card #8");
-        final JButton activePlayingCard9 = new JButton("Active Playing Card #9");
-        final JButton activePlayingCard10 = new JButton("Active Playing Card #10");
+        activePlayingCard6 = new JButton("Active Playing Card #6");
+        activePlayingCard7 = new JButton("Active Playing Card #7");
+        activePlayingCard8 = new JButton("Active Playing Card #8");
+        activePlayingCard9 = new JButton("Active Playing Card #9");
+        activePlayingCard10 = new JButton("Active Playing Card #10");
         deck = new JButton("Deck");
         makeFrame();
     }
@@ -82,6 +82,7 @@ public class GameBoardGUI implements ActionListener
         //panel for the south side of the frame
         final JPanel south = new JPanel();
         contentPane.add(south, BorderLayout.SOUTH);
+        
         final JButton cardInHand1 = new JButton(game.getThisPlayer().getHand().get(0).getName());
         final JButton cardInHand2 = new JButton(game.getThisPlayer().getHand().get(1).getName());
         final JButton cardInHand3 = new JButton(game.getThisPlayer().getHand().get(2).getName());
@@ -139,8 +140,12 @@ public class GameBoardGUI implements ActionListener
                     game.player1NewTurn();
                     game.getPlayer1Deck();
                     game.getPlayer1Hand();
+                    //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
+                    //they also need to be set visible
+                    
                     game.thisPlayer(currentPlayer.getText());
                     game.getThisPlayer().getHand();
+                    
                 }
                 if (currentPlayer.getText().equals(game.getPlayer2Name()))
                 {
@@ -150,7 +155,16 @@ public class GameBoardGUI implements ActionListener
                     game.getPlayer2Hand();
                     game.thisPlayer(currentPlayer.getText());
                     game.getThisPlayer().getHand();
+                    
+                    transferValue(cardInHand1, activePlayingCard6);
+                    transferValue(cardInHand2, activePlayingCard7);
+                    transferValue(cardInHand3, activePlayingCard8);
+                    transferValue(cardInHand4, activePlayingCard9);
+                    transferValue(cardInHand5, activePlayingCard10);
                 }
+                
+                
+         
                 
             }
         });
@@ -167,10 +181,9 @@ public class GameBoardGUI implements ActionListener
             public void actionPerformed(ActionEvent e)
             {
                 //DOES NOT WORK - NOT SURE WHY
-                    JButton newCard;
-                    newCard = new JButton();
-                    newCard.setText(game.getThisPlayer().getDeck().get(6).getName()); //This line does not work
-                    
+                   
+                final JButton newCard = new JButton(game.getThisPlayer().getDeck().get(6).getName());
+                //This line does not work
                     south.add(newCard);
                     newCard.setVisible(true);
                     south.revalidate();
@@ -236,23 +249,29 @@ public class GameBoardGUI implements ActionListener
         activePlayingCard9.setVisible(false);
         activePlayingCard10.setVisible(false);
         
-        if(currentPlayer.getText().equals(game.getPlayer1Name()))
+           //    if(currentPlayer.getText().equals(game.getPlayer1Name()))
         {
+        //    transferValue(cardInHand1, activePlayingCard1);
+          //  transferValue(cardInHand2, activePlayingCard2);
+        //    transferValue(cardInHand3, activePlayingCard3);
+        //    transferValue(cardInHand4, activePlayingCard4);
+        //    transferValue(cardInHand5, activePlayingCard5);
+        }
+        //else
+        {
+        //    transferValue(cardInHand1, activePlayingCard6);
+        //    transferValue(cardInHand2, activePlayingCard7);
+        //    transferValue(cardInHand3, activePlayingCard8);
+        //    transferValue(cardInHand4, activePlayingCard9);
+        //    transferValue(cardInHand5, activePlayingCard10);
+        }
+        
+        
             transferValue(cardInHand1, activePlayingCard1);
             transferValue(cardInHand2, activePlayingCard2);
             transferValue(cardInHand3, activePlayingCard3);
             transferValue(cardInHand4, activePlayingCard4);
             transferValue(cardInHand5, activePlayingCard5);
-        }
-        else
-        {
-            transferValue(cardInHand1, activePlayingCard6);
-            transferValue(cardInHand2, activePlayingCard7);
-            transferValue(cardInHand3, activePlayingCard8);
-            transferValue(cardInHand4, activePlayingCard9);
-            transferValue(cardInHand5, activePlayingCard10);
-        }
-        
         
         frame.pack();
         frame.setVisible(true);

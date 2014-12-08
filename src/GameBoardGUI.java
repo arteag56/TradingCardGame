@@ -182,7 +182,7 @@ public class GameBoardGUI implements ActionListener
             {
                 //DOES NOT WORK - NOT SURE WHY
                    
-                final JButton newCard = new JButton(game.getThisPlayer().getDeck().get(6).getName());
+                JButton newCard = new JButton(game.getThisPlayer().draw());
                 //This line does not work
                     south.add(newCard);
                     newCard.setVisible(true);
@@ -228,11 +228,7 @@ public class GameBoardGUI implements ActionListener
         center.add(new JLabel(""));
         center.add(new JLabel(""));
         center.add(new JLabel(""));
-        final JButton activePlayingCard6 = new JButton("activePlayingCard6");
-        final JButton activePlayingCard7 = new JButton("activePlayingCard7");
-        final JButton activePlayingCard8 = new JButton("activePlayingCard8");
-        final JButton activePlayingCard9 = new JButton("activePlayingCard9");
-        final JButton activePlayingCard10 = new JButton("activePlayingCard10");
+  
         center.add(activePlayingCard6);
         center.add(activePlayingCard7);
         center.add(activePlayingCard8);
@@ -243,11 +239,11 @@ public class GameBoardGUI implements ActionListener
         activePlayingCard3.setVisible(false);
         activePlayingCard4.setVisible(false);
         activePlayingCard5.setVisible(false);
-        activePlayingCard6.setVisible(false);
-        activePlayingCard7.setVisible(false);
-        activePlayingCard8.setVisible(false);
-        activePlayingCard9.setVisible(false);
-        activePlayingCard10.setVisible(false);
+        activePlayingCard6.setVisible(true);
+        activePlayingCard7.setVisible(true);
+        activePlayingCard8.setVisible(true);
+        activePlayingCard9.setVisible(true);
+        activePlayingCard10.setVisible(true);
         
            //    if(currentPlayer.getText().equals(game.getPlayer1Name()))
         {

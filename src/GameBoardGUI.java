@@ -54,11 +54,11 @@ public class GameBoardGUI implements ActionListener
         activePlayingCard3 = new JButton(cardInHand3.getText());
         activePlayingCard4 = new JButton(cardInHand4.getText());
         activePlayingCard5 = new JButton(cardInHand5.getText());
-        activePlayingCard6 = new JButton("Active Playing Card #6");
-        activePlayingCard7 = new JButton("Active Playing Card #7");
-        activePlayingCard8 = new JButton("Active Playing Card #8");
-        activePlayingCard9 = new JButton("Active Playing Card #9");
-        activePlayingCard10 = new JButton("Active Playing Card #10");
+        activePlayingCard6 = new JButton(cardInHand1.getText());
+        activePlayingCard7 = new JButton(cardInHand2.getText());
+        activePlayingCard8 = new JButton(cardInHand3.getText());
+        activePlayingCard9 = new JButton(cardInHand4.getText());
+        activePlayingCard10 = new JButton(cardInHand5.getText());
         deck = new JButton("Deck");
         endTurn = new JButton("End Turn");
         attackButton = new JButton("Attack!");
@@ -95,6 +95,23 @@ public class GameBoardGUI implements ActionListener
         JTextField Player1Record = new JTextField(10);
         west.add(Player1Record);
         Player1Record.setText("0-0");
+        //THIS IS USED TO START THE GAME PLAYING AND THE CARD TRANSFERING
+        if(currentPlayer.getText().equals(game.getPlayer1Name()))
+        {
+            transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+            transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
+            transferValue(cardInHand3, activePlayingCard8);
+            transferValue(cardInHand4, activePlayingCard9);
+            transferValue(cardInHand5, activePlayingCard10); 
+        }
+        else
+        {
+            transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+            transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
+            transferValue(cardInHand3, activePlayingCard3);
+            transferValue(cardInHand4, activePlayingCard4);
+            transferValue(cardInHand5, activePlayingCard5);
+        }
         
         
         //panel for the south side of the frame
@@ -153,17 +170,40 @@ public class GameBoardGUI implements ActionListener
                     game.player1NewTurn();
                     game.getPlayer1Deck();
                     game.getPlayer1Hand();
-                    //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
-                    //they also need to be set visible
-                    
-                    game.thisPlayer(currentPlayer.getText());
-                    game.getThisPlayer().getHand();
                     cardInHand1.setVisible(true);
                     cardInHand2.setVisible(true);
                     cardInHand3.setVisible(true);
                     cardInHand4.setVisible(true);
                     cardInHand5.setVisible(true);
+                    if(activePlayingCard1.isSelected() == true)
+                    {
+                        activePlayingCard1.setVisible(true);
+                    }
+                    if(activePlayingCard2.isSelected() == true)
+                    {
+                        activePlayingCard2.setVisible(true);
+                    }
+                    if(activePlayingCard3.isSelected() == true)
+                    {
+                        activePlayingCard3.setVisible(true);
+                    }
+                    if(activePlayingCard4.isSelected() == true)
+                    {
+                        activePlayingCard4.setVisible(true);
+                    }
+                    if(activePlayingCard5.isSelected() == true)
+                    {
+                        activePlayingCard5.setVisible(true);
+                    }
+                    transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
+                    transferValue(cardInHand3, activePlayingCard8);
+                    transferValue(cardInHand4, activePlayingCard9);
+                    transferValue(cardInHand5, activePlayingCard10);   
                     
+                    
+                    
+                    //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
                 }
                 if (currentPlayer.getText().equals(game.getPlayer2Name()))
                 {
@@ -171,19 +211,36 @@ public class GameBoardGUI implements ActionListener
                     game.player2NewTurn();
                     game.getPlayer2Deck();
                     game.getPlayer2Hand();
-                    game.thisPlayer(currentPlayer.getText());
-                    game.getThisPlayer().getHand();
                     cardInHand1.setVisible(true);
                     cardInHand2.setVisible(true);
                     cardInHand3.setVisible(true);
                     cardInHand4.setVisible(true);
                     cardInHand5.setVisible(true);
-                    
-                    transferValue(cardInHand1, activePlayingCard6);
-                    transferValue(cardInHand2, activePlayingCard7);
-                    transferValue(cardInHand3, activePlayingCard8);
-                    transferValue(cardInHand4, activePlayingCard9);
-                    transferValue(cardInHand5, activePlayingCard10);
+                    if(activePlayingCard6.isSelected() == true)
+                    {
+                        activePlayingCard6.setVisible(true);
+                    }
+                    if(activePlayingCard7.isSelected() == true)
+                    {
+                        activePlayingCard7.setVisible(true);
+                    }
+                    if(activePlayingCard8.isSelected() == true)
+                    {
+                        activePlayingCard8.setVisible(true);
+                    }
+                    if(activePlayingCard9.isSelected() == true)
+                    {
+                        activePlayingCard9.setVisible(true);
+                    }
+                    if(activePlayingCard10.isSelected() == true)
+                    {
+                        activePlayingCard10.setVisible(true);
+                    }
+                    transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
+                    transferValue(cardInHand3, activePlayingCard3);
+                    transferValue(cardInHand4, activePlayingCard4);
+                    transferValue(cardInHand5, activePlayingCard5);
                 }
             }
         });
@@ -191,18 +248,14 @@ public class GameBoardGUI implements ActionListener
         deck.setEnabled(false);
         deck.addActionListener(new ActionListener()
         {
-            //int i = 5;
             public void actionPerformed(ActionEvent e)
             {
                 //DOES NOT WORK - NOT SURE WHY
-                   
-                JButton newCard = new JButton(game.getThisPlayer().draw().getName());
-                //This line does not work
-                    south.add(newCard);
-                    newCard.setVisible(true);
-                    south.revalidate();
-                    cardInHandCount = cardInHandCount + 1;
-                    
+                JButton newCard = new JButton(game.getThisPlayer().draw().getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
+                south.add(newCard);
+                newCard.setVisible(true);
+                south.revalidate();
+                cardInHandCount = cardInHandCount + 1;
                 if (cardInHandCount == 5)
                 {
                     deck.setEnabled(false);
@@ -214,7 +267,7 @@ public class GameBoardGUI implements ActionListener
         {
             public void actionPerformed(ActionEvent e)
             {
-                //GameBoard.Player1
+                //STILL NEEDS TO BE IMPLEMENTED
             }
         });
         
@@ -256,12 +309,16 @@ public class GameBoardGUI implements ActionListener
         
    
         //various functions for switching values and giving information
-        transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-        transferValue(cardInHand2, activePlayingCard2);
-        transferValue(cardInHand3, activePlayingCard3);
-        transferValue(cardInHand4, activePlayingCard4);
-        transferValue(cardInHand5, activePlayingCard5);
-            
+        //transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+        //transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
+        //transferValue(cardInHand3, activePlayingCard3);
+        //transferValue(cardInHand4, activePlayingCard4);
+        //transferValue(cardInHand5, activePlayingCard5);
+        //transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+        //transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
+        //transferValue(cardInHand3, activePlayingCard8);
+        //transferValue(cardInHand4, activePlayingCard9);
+        //transferValue(cardInHand5, activePlayingCard10);    
             
         
         frame.pack();

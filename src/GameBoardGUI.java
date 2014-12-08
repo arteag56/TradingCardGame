@@ -175,6 +175,12 @@ public class GameBoardGUI implements ActionListener
                     cardInHand3.setVisible(true);
                     cardInHand4.setVisible(true);
                     cardInHand5.setVisible(true);
+                    
+                    transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
+                    transferValue(cardInHand3, activePlayingCard8);
+                    transferValue(cardInHand4, activePlayingCard9);
+                    transferValue(cardInHand5, activePlayingCard10);   
                     if(activePlayingCard1.isSelected() == true)
                     {
                         activePlayingCard1.setVisible(true);
@@ -195,14 +201,6 @@ public class GameBoardGUI implements ActionListener
                     {
                         activePlayingCard5.setVisible(true);
                     }
-                    transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-                    transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
-                    transferValue(cardInHand3, activePlayingCard8);
-                    transferValue(cardInHand4, activePlayingCard9);
-                    transferValue(cardInHand5, activePlayingCard10);   
-                    
-                    
-                    
                     //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
                 }
                 if (currentPlayer.getText().equals(game.getPlayer2Name()))
@@ -216,6 +214,12 @@ public class GameBoardGUI implements ActionListener
                     cardInHand3.setVisible(true);
                     cardInHand4.setVisible(true);
                     cardInHand5.setVisible(true);
+                    
+                    transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
+                    transferValue(cardInHand3, activePlayingCard3);
+                    transferValue(cardInHand4, activePlayingCard4);
+                    transferValue(cardInHand5, activePlayingCard5);
                     if(activePlayingCard6.isSelected() == true)
                     {
                         activePlayingCard6.setVisible(true);
@@ -236,11 +240,6 @@ public class GameBoardGUI implements ActionListener
                     {
                         activePlayingCard10.setVisible(true);
                     }
-                    transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-                    transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
-                    transferValue(cardInHand3, activePlayingCard3);
-                    transferValue(cardInHand4, activePlayingCard4);
-                    transferValue(cardInHand5, activePlayingCard5);
                 }
             }
         });
@@ -306,21 +305,7 @@ public class GameBoardGUI implements ActionListener
         activePlayingCard8.setVisible(false);
         activePlayingCard9.setVisible(false);
         activePlayingCard10.setVisible(false);
-        
-   
-        //various functions for switching values and giving information
-        //transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-        //transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
-        //transferValue(cardInHand3, activePlayingCard3);
-        //transferValue(cardInHand4, activePlayingCard4);
-        //transferValue(cardInHand5, activePlayingCard5);
-        //transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-        //transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
-        //transferValue(cardInHand3, activePlayingCard8);
-        //transferValue(cardInHand4, activePlayingCard9);
-        //transferValue(cardInHand5, activePlayingCard10);    
-            
-        
+  
         frame.pack();
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -65,15 +65,6 @@ public class Player{
 		return(playedMonster&&playedMagic);
 	}
 	
-	
-	/**
-	 * Shows the cards this player has in their deck
-	 * @return deck
-	 */
-	private Map<String,Card> getDeck() {						
-		return deck.getDeck();
-
-	}
 	/**
 	 * Draws a card from the deck to their hands.
 	 * @return Card - from the deck
@@ -83,6 +74,15 @@ public class Player{
 			return null;
 		}
 		return deck.pickCard();
+	}
+	
+	/**
+	 * Shows the cards this player has in their deck
+	 * @return deck
+	 */
+	private Map<String,Card> getDeck() {						
+		return deck.getDeck();
+
 	}
 		
 	public Card remove(String name){

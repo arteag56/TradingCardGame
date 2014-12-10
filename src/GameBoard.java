@@ -87,14 +87,7 @@ public class GameBoard
     {
         return player2.getName();
     }
-    public Map getPlayer1Deck()
-    {
-        return player1.getDeck();
-    }
-    public Map getPlayer2Deck()
-    {
-        return player2.getDeck();
-    }
+    
     public List<Card> getPlayer1Hand()
     {
         return player1.getHand();

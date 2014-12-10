@@ -140,6 +140,14 @@ public class GameBoard
 			return player2.getName();
 		}
 	}
+	
+	 public void changeTurn()
+         {
+         if(getThisPlayer().playedTurn() == true){
+            nextTurn();
+            }
+         	
+         }
 	public List<Card> cardValues()
 	{
 		return player1.getHand();

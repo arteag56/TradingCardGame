@@ -3,8 +3,11 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.awt.Desktop;
+import java.util.List;
 /**
- * Write a description of class GameBoardGUI here.
+ * This class is the GUI for our program. It's job is to take the information from the user and execute it. 
+ * All the components (labels, textfields, buttons) are created and executed in this class.
+ * All methods are called from the GameBoard class; this is how the GUI grabs methods from all the other classes. 
  *
  * @author (Peter Cipolone)
  * @version (October 31, 2014)
@@ -38,7 +41,7 @@ public class GameBoardGUI implements ActionListener
     public String whoStarts;
     
     /**
-     * Constructor for objects of class GameBoardGUI
+     * Default constructor for the GameBoardGUI class
      */
     public GameBoardGUI()
     {
@@ -131,6 +134,7 @@ public class GameBoardGUI implements ActionListener
         infoCard(cardInHand5,4);
         
         
+        
         //panel for the north side of the frame
         JPanel north = new JPanel();
         contentPane.add(north, BorderLayout.NORTH);
@@ -170,80 +174,69 @@ public class GameBoardGUI implements ActionListener
                 {
                     game.thisPlayer(currentPlayer.getText());
                     JButton newCard = new JButton();
+                     game.getPlayer1Hand().clear();
                     south.remove(cardInHand1);
                     south.remove(cardInHand2);
                     south.remove(cardInHand3);
                     south.remove(cardInHand4);
                     south.remove(cardInHand5);
+                    
                     south.revalidate();
                     game.player1NewTurn();
                     //game.getPlayer1Deck();
                     for(Card card: game.getThisPlayer().getHand())
                     {
+                          
+                          
                            newCard = new JButton(card.getName());
                            south.add(newCard);
                            newCard.setVisible(true);
                            south.revalidate();
+                          
+                          
                     }
-                    
-                    //cardInHand1.setVisible(true);
-                    //cardInHand2.setVisible(true);
-                    //cardInHand3.setVisible(true);
-                    //cardInHand4.setVisible(true);
-                    //cardInHand5.setVisible(true);
                     
                     transferValue(newCard, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
                     transferValue(newCard, activePlayingCard7); //FOR PLAYER1
                     transferValue(newCard, activePlayingCard8);
                     transferValue(newCard, activePlayingCard9);
                     transferValue(newCard, activePlayingCard10);   
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
+                    
+                    
+                  
                 }
                 else
                 {
                     game.thisPlayer(currentPlayer.getText());
                     JButton newCard = new JButton();
+                    game.getPlayer1Hand().clear();
                     south.remove(cardInHand1);
                     south.remove(cardInHand2);
                     south.remove(cardInHand3);
                     south.remove(cardInHand4);
                     south.remove(cardInHand5);
+                    
                     south.revalidate();
                     game.player2NewTurn();
                     //game.getPlayer2Deck();
                     for(Card card: game.getThisPlayer().getHand())
-                {
-                    newCard = new JButton(card.getName());
-                    south.add(newCard);
-                    newCard.setVisible(true);
-                    south.revalidate();
-                }
-                    
-                   // cardInHand1.setVisible(true);
-                    //cardInHand2.setVisible(true);
-                   // cardInHand3.setVisible(true);
-                   // cardInHand4.setVisible(true);
-                    //cardInHand5.setVisible(true);
-                    
+                       {
+                          
+                          
+                           newCard = new JButton(card.getName());
+                           south.add(newCard);
+                           newCard.setVisible(true);
+                           south.revalidate();
+                           
+                          
+                       }
                     transferValue(newCard, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
                     transferValue(newCard, activePlayingCard2); //FOR PLAYER 2
                     transferValue(newCard, activePlayingCard3);
                     transferValue(newCard, activePlayingCard4);
                     transferValue(newCard, activePlayingCard5);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    south.remove(newCard);
-                    
-                }
             }
-        });
+        } });
         east.add(deck); //DECK IS DEFINED ABOVE - GLOBAL VARIABLE
         deck.setEnabled(false);
         deck.addActionListener(new ActionListener()
@@ -251,13 +244,31 @@ public class GameBoardGUI implements ActionListener
             public void actionPerformed(ActionEvent e)
             {
                 //DOES NOT WORK - NOT SURE WHY
-                
+           
                 //JButton newCard = new JButton(game.getThisPlayer().draw().getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
                 //south.add(newCard);
                 //newCard.setVisible(true);
                 
-                south.revalidate();
-                cardInHandCount = cardInHandCount + 1;
+                
+                    List <Card> area = game.getThisPlayer().getHand();
+                    for(int i=0; i < area.size(); i++)
+                    {
+                        JButton newCard = new JButton(area.get(i).getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
+                        infoCard(newCard,i);
+      
+                        south.add(newCard);
+                        newCard.setVisible(true);
+                
+                
+                
+                        south.revalidate();
+                        cardInHandCount = cardInHandCount + 1;
+                    }
+                
+                
+                
+               
+               
                 if (cardInHandCount == 5)
                 {
                     deck.setEnabled(false);
@@ -299,6 +310,7 @@ public class GameBoardGUI implements ActionListener
         infoCard(activePlayingCard3,2);
         infoCard(activePlayingCard4,3);
         infoCard(activePlayingCard5,4);
+        
         activePlayingCard1.setVisible(false); //SETTING ALL THE PLAYING CARDS TO INVISIBLE
         activePlayingCard2.setVisible(false);
         activePlayingCard3.setVisible(false);
@@ -326,6 +338,9 @@ public class GameBoardGUI implements ActionListener
             public void actionPerformed(ActionEvent e)
             {
                 hand.setVisible(false);
+                String value = hand.getText();
+                
+                game.getThisPlayer().remove(value);
                 field.setVisible(true);
                 
                 cardInHandCount = cardInHandCount - 1;
@@ -361,7 +376,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     * Create the main Frame's menu bar.
+     * Creates the main Frame's menu bar.
      */
     private void makeMenuBar(JFrame frame)
     {
@@ -408,7 +423,7 @@ public class GameBoardGUI implements ActionListener
     }
     
     /**
-     *
+     * This is our main testest for this class
      */
     public static void main(String[] args)
     {

@@ -81,6 +81,19 @@ public class Player{
 			playedMagic=true;
 		return result;}
 
+	public Card remove(String name){
+		for(int i=0;name!=currentHand.get(i).getName(); i++)
+			if(name!=currentHand.get(i).getName()){
+		Card result= currentHand.get(i);
+		currentHand.remove(i);
+		if(result instanceof CreatureCard)
+			playedMonster=true;
+		if(result instanceof MagicCard)
+			playedMagic=true;
+		return result;}
+		return null;
+		}
+		
 	public void newTurn(){
 		playedMonster=false;
 		playedMagic=false;}

@@ -4,7 +4,7 @@ import java.util.*;
  * It also keeps track of that players health. It also keeps track of if players have exhausted the cards 
  * they are allowed to play. 
  *
- * @author (Michael Arteaga, Joseph Carbone)
+ * @author (Michael Arteaga, Joseph Carbone, Peter Cipolone, Eric Oliver)
  * @version (Oct 24, 2014)
  */
 public class Player{

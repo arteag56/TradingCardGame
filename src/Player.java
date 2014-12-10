@@ -18,7 +18,7 @@ public class Player{
 	/**
 	 * Constructor for objects of class Player
 	 */
-	public Player() { // default constructor
+	public Player() { 	// default constructor
 		name = "[default]";
 		deck= new Deck(true);
 		playedMonster=false;
@@ -32,26 +32,32 @@ public class Player{
 		playedMagic=false;
 		currentHand = new ArrayList<Card>();
 	}
-	public String getName() {
+	
+	public String getName() {		//Accessor Methods
 		return name;
 	}
 	public int loseAPoint(){
 		return health--;
 	}
-	public List<Card> getHand() {
-		while(currentHand.size()<5)
-			draw();
+	public List<Card> getHand() { 	//returns the current hand (will always have 5 cards)
+		while(currentHand.size()<5) {
+			currentHand.add(draw());
+		}
 		return currentHand;
 	}
-
+	/**
+	 * Tells the GameBoard whether or not this player completed their move.
+	 * @return true 
+	 */
 	public boolean completedMove() {
-		return(playedMonster&&playedMagic);
+		return (playedMonster&&playedMagic);
 	}
-	/** @return The list of words generated
+	/** 
+	 * @return The list of words generated
 	 * by the constructor.
 	 */
 
-	public Map<String,Card> getDeck() {						
+	public Map<String,Card> getDeck() {					
 		return deck.getDeck();
 
 	}
@@ -62,16 +68,15 @@ public class Player{
 	public int getHealth() {
 		return health;
 	}
-	public Card draw(){
-		while(currentHand.size()<5){
-			Card result=deck.pickCard();
-			currentHand.add(result);
-			return result;
+	
+	private Card draw() {
+		if (deck.getDeck().isEmpty()) {
+			return null;
 		}
-		return currentHand.get(4);
+		return deck.pickCard();
 	}
 
-
+//might need to change
 	public Card remove(int key){
 		Card result= currentHand.get(key);
 		currentHand.remove(key);
@@ -80,6 +85,17 @@ public class Player{
 		if(result instanceof MagicCard)
 			playedMagic=true;
 		return result;}
+	
+	public Card playCard(String name) { //test
+		Card c = null;
+		for (int i = 0; i < currentHand.size(); i++) {
+			if (currentHand.get(i).equals("name")) {
+				c = currentHand.get(i);
+				currentHand.remove(i);
+			}
+		}
+		return c;
+	}
 
 	public Card remove(String name){
 		for(int i=0;name!=currentHand.get(i).getName(); i++)
@@ -106,15 +122,15 @@ public class Player{
 
 	public static void main(String[] args)
 	{
-		Player p = new Player();
-		p.getDeck();
-		System.out.println("THIS IS THE HAND " + p.getHand());
-		System.out.println("THIS CARD WAS REMOVED "+ p.remove(1).getName());
-		System.out.println("THIS IS NOW THE HAND" + p.getHand());
-		System.out.println("THE NEW CARD IS "+ p.draw().getName());
-		System.out.println("NOW THIS IS THE NEW HAND "+ p.getHand());	
-		System.out.println("PlayedMonster: "+p.playedMonster()+"\n"+ "PlayedMagic: "+p.playedMagic());
-		System.out.println("Completed Turn: "+p.completedMove());
+		Player p = new Player("Mike");
+		System.out.println(p.getHand());
+		System.out.println("////////");
+		System.out.println(p.getHand().remove(0));
+		System.out.println("/////////");
+		System.out.println(p.getHand());
+		
+		
+		
 	}
 
 

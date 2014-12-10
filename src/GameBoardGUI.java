@@ -135,7 +135,7 @@ public class GameBoardGUI implements ActionListener
         
         
         
-        //panel for the north side of the frame
+        //panel for the north side of the frame      ////////////////////////////////////////////////////////////
         JPanel north = new JPanel();
         contentPane.add(north, BorderLayout.NORTH);
         JLabel player1Health = new JLabel("Player 1 Health");
@@ -183,7 +183,7 @@ public class GameBoardGUI implements ActionListener
                     
                     south.revalidate();
                     game.player1NewTurn();
-                    //game.getPlayer1Deck();
+                    game.getPlayer1Deck();
                     for(Card card: game.getThisPlayer().getHand())
                     {
                           
@@ -218,7 +218,7 @@ public class GameBoardGUI implements ActionListener
                     
                     south.revalidate();
                     game.player2NewTurn();
-                    //game.getPlayer2Deck();
+                    game.getPlayer2Deck();
                     for(Card card: game.getThisPlayer().getHand())
                        {
                           
@@ -244,10 +244,7 @@ public class GameBoardGUI implements ActionListener
             public void actionPerformed(ActionEvent e)
             {
                 //DOES NOT WORK - NOT SURE WHY
-           
-                //JButton newCard = new JButton(game.getThisPlayer().draw().getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
-                //south.add(newCard);
-                //newCard.setVisible(true);
+                
                 
                 
                     List <Card> area = game.getThisPlayer().getHand();
@@ -305,11 +302,16 @@ public class GameBoardGUI implements ActionListener
         center.add(activePlayingCard8);
         center.add(activePlayingCard9);
         center.add(activePlayingCard10);
-        infoCard(activePlayingCard1,0); //GIVES INFORMATION ABOUT THE PLAYING CARDS IN THE FIELD FOR PLAYER 2
-        infoCard(activePlayingCard2,1);
-        infoCard(activePlayingCard3,2);
-        infoCard(activePlayingCard4,3);
-        infoCard(activePlayingCard5,4);
+        infoFieldCard(activePlayingCard1,0); //GIVES INFORMATION ABOUT THE PLAYING CARDS IN THE FIELD FOR PLAYER 2
+        infoFieldCard(activePlayingCard2,1);
+        infoFieldCard(activePlayingCard3,2);
+        infoFieldCard(activePlayingCard4,3);
+        infoFieldCard(activePlayingCard5,4);
+        infoFieldCard(activePlayingCard6,5);
+        infoFieldCard(activePlayingCard7,6);
+        infoFieldCard(activePlayingCard8,7);
+        infoFieldCard(activePlayingCard9,8);
+        infoFieldCard(activePlayingCard10,9);
         
         activePlayingCard1.setVisible(false); //SETTING ALL THE PLAYING CARDS TO INVISIBLE
         activePlayingCard2.setVisible(false);
@@ -340,7 +342,7 @@ public class GameBoardGUI implements ActionListener
                 hand.setVisible(false);
                 String value = hand.getText();
                 
-                game.getThisPlayer().remove(value);
+                game.removeCard(value);//////////////////////////////////////////////////////
                 field.setVisible(true);
                 
                 cardInHandCount = cardInHandCount - 1;
@@ -358,6 +360,18 @@ public class GameBoardGUI implements ActionListener
     public void infoCard(final JButton infoHand, int i)
     {
         infoHand.setToolTipText(game.getThisPlayer().getHand().get(i).toString());
+        infoHand.addMouseListener(new MouseAdapter()
+        {
+            public void mouseEntered(MouseEvent e)
+            {
+                infoHand.getToolTipText();
+            }
+        });
+    }
+    
+    /**gives information about the card on the field*/
+    public void infoFieldCard(final JButton infoHand, int i){
+    	infoHand.setToolTipText(game.getField().get(i).toString());
         infoHand.addMouseListener(new MouseAdapter()
         {
             public void mouseEntered(MouseEvent e)

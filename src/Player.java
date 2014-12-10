@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class Player{
 	private String name;
-	private int health = 5, removedCard=0;
+	private int health = 5, removedCard = 0;
 	private Deck deck;
 	private List<Card> currentHand;
 	private boolean playedMonster,playedMagic;
@@ -32,46 +32,59 @@ public class Player{
 		playedMagic=false;
 		currentHand = new ArrayList<Card>();
 	}
-	public String getName() {
+	public String getName() { //Accessors
 		return name;
 	}
+	public int getHealth() {
+		return health;
+	}
+	public void setName(String name) { //Mutators
+		this.name = name;
+	}
+	
+	/**
+	 * Draws card to hand to always have 5 cards
+	 * @return currentHand
+	 */
+	public List<Card> getHand() {
+		while(currentHand.size()<5){
+			currentHand.add(draw());
+		}
+		return currentHand;
+	}
+	
+	/**
+	 * Loses a heart point
+	 * @return health
+	 */
 	public int loseAPoint(){
 		return health--;
-	}
-	public List<Card> getHand() {
-		while(currentHand.size()<5)
-			draw();
-		return currentHand;
 	}
 	
 	public boolean completedMove() {
 		return(playedMonster&&playedMagic);
 	}
-	/** @return The list of words generated
-	 * by the constructor.
+	
+	
+	/**
+	 * Shows the cards this player has in their deck
+	 * @return deck
 	 */
-
-	public Map<String,Card> getDeck() {						
+	private Map<String,Card> getDeck() {						
 		return deck.getDeck();
 
 	}
 	/**
-	 * The player's health
-	 * @return health
+	 * Draws a card from the deck to their hands.
+	 * @return Card - from the deck
 	 */
-	public int getHealth() {
-		return health;
-	}
-	public Card draw(){
-		if(currentHand.size()<5){
-		Card result=deck.pickCard();
-		currentHand.add(result);
-		return result;}
-		return currentHand.get(4);
-		
+	private Card draw(){
+		if (deck.getDeck().isEmpty()) {
+			return null;
 		}
+		return deck.pickCard();
+	}
 		
-	
 	public Card remove(String name){
 		int x=0;
 		for(int i=0;i<5; i++){
@@ -89,6 +102,7 @@ public class Player{
 			}
 		return null;
 		}
+	
 	public int getRemovedCard(){
 		return removedCard;
 	}

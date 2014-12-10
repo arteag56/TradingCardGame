@@ -87,7 +87,7 @@ public class GameBoard
     {
         return player2.getName();
     }
-    
+
     public List<Card> getPlayer1Hand()
     {
         return player1.getHand();
@@ -150,11 +150,13 @@ public class GameBoard
      */
     public List<Card> getField()
     {
-        for(int i=0; i<10; i++)
-        {
-            field.add(null);
-        }
         return field;
+    }
+    
+    public void endTurn(String name){
+    	thisPlayer(name);
+    	thisPlayer.getHand();
+    	
     }
     
     /**
@@ -165,7 +167,7 @@ public class GameBoard
     {
         
         Card y = getThisPlayer().remove(x);
-        if(getThisPlayer().equals(getPlayer2Name()))
+        if(getThisPlayer().equals(getPlayer1Name()))
         {
             getField().add(getThisPlayer().getRemovedCard()+5,y);
             return y;

@@ -36,6 +36,7 @@ public class GameBoardGUI implements ActionListener
     private static JFileChooser fileChooser = new JFileChooser(System.getProperty("user.dir"));
     private JTextField currentPlayer = new JTextField(10);
     public String whoStarts;
+    
     /**
      * Constructor for objects of class GameBoardGUI
      */
@@ -62,6 +63,7 @@ public class GameBoardGUI implements ActionListener
         deck = new JButton("Deck");
         endTurn = new JButton("End Turn");
         attackButton = new JButton("Attack!");
+        
         makeFrame();
     }
     
@@ -167,42 +169,77 @@ public class GameBoardGUI implements ActionListener
                 if (currentPlayer.getText().equals(game.getPlayer1Name()))
                 {
                     game.thisPlayer(currentPlayer.getText());
+                    JButton newCard = new JButton();
+                    south.remove(cardInHand1);
+                    south.remove(cardInHand2);
+                    south.remove(cardInHand3);
+                    south.remove(cardInHand4);
+                    south.remove(cardInHand5);
+                    south.revalidate();
                     game.player1NewTurn();
                     game.getPlayer1Deck();
-                    game.getPlayer1Hand();
+                    for(Card card: game.getThisPlayer().getHand())
+                    {
+                           newCard = new JButton(card.getName());
+                           south.add(newCard);
+                           newCard.setVisible(true);
+                           south.revalidate();
+                    }
                     
-                    cardInHand1.setVisible(true);
-                    cardInHand2.setVisible(true);
-                    cardInHand3.setVisible(true);
-                    cardInHand4.setVisible(true);
-                    cardInHand5.setVisible(true);
+                    //cardInHand1.setVisible(true);
+                    //cardInHand2.setVisible(true);
+                    //cardInHand3.setVisible(true);
+                    //cardInHand4.setVisible(true);
+                    //cardInHand5.setVisible(true);
                     
-                    transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-                    transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
-                    transferValue(cardInHand3, activePlayingCard8);
-                    transferValue(cardInHand4, activePlayingCard9);
-                    transferValue(cardInHand5, activePlayingCard10);   
-                    
+                    transferValue(newCard, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(newCard, activePlayingCard7); //FOR PLAYER1
+                    transferValue(newCard, activePlayingCard8);
+                    transferValue(newCard, activePlayingCard9);
+                    transferValue(newCard, activePlayingCard10);   
+                    south.remove(newCard);
+                    south.remove(newCard);
+                    south.remove(newCard);
+                    south.remove(newCard);
+                    south.remove(newCard);
                     //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
                 }
                 else
                 {
                     game.thisPlayer(currentPlayer.getText());
+                    JButton newCard = new JButton();
+                    south.remove(cardInHand1);
+                    south.remove(cardInHand2);
+                    south.remove(cardInHand3);
+                    south.remove(cardInHand4);
+                    south.remove(cardInHand5);
+                    south.revalidate();
                     game.player2NewTurn();
                     game.getPlayer2Deck();
-                    game.getPlayer2Hand();
+                    for(Card card: game.getThisPlayer().getHand())
+                {
+                    newCard = new JButton(card.getName());
+                    south.add(newCard);
+                    newCard.setVisible(true);
+                    south.revalidate();
+                }
                     
-                    cardInHand1.setVisible(true);
-                    cardInHand2.setVisible(true);
-                    cardInHand3.setVisible(true);
-                    cardInHand4.setVisible(true);
-                    cardInHand5.setVisible(true);
+                   // cardInHand1.setVisible(true);
+                    //cardInHand2.setVisible(true);
+                   // cardInHand3.setVisible(true);
+                   // cardInHand4.setVisible(true);
+                    //cardInHand5.setVisible(true);
                     
-                    transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
-                    transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
-                    transferValue(cardInHand3, activePlayingCard3);
-                    transferValue(cardInHand4, activePlayingCard4);
-                    transferValue(cardInHand5, activePlayingCard5);
+                    transferValue(newCard, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(newCard, activePlayingCard2); //FOR PLAYER 2
+                    transferValue(newCard, activePlayingCard3);
+                    transferValue(newCard, activePlayingCard4);
+                    transferValue(newCard, activePlayingCard5);
+                    south.remove(newCard);
+                    south.remove(newCard);
+                    south.remove(newCard);
+                    south.remove(newCard);
+                    south.remove(newCard);
                     
                 }
             }
@@ -214,15 +251,18 @@ public class GameBoardGUI implements ActionListener
             public void actionPerformed(ActionEvent e)
             {
                 //DOES NOT WORK - NOT SURE WHY
+                
                 JButton newCard = new JButton(game.getThisPlayer().draw().getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
                 south.add(newCard);
                 newCard.setVisible(true);
+                
                 south.revalidate();
                 cardInHandCount = cardInHandCount + 1;
                 if (cardInHandCount == 5)
                 {
                     deck.setEnabled(false);
                 }
+                
             }
         });
         east.add(attackButton); //ATTACKBUTTON IS DEFINED ABOVE - GLOBAL VARIABLE

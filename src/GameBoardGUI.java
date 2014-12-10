@@ -170,6 +170,7 @@ public class GameBoardGUI implements ActionListener
                     game.player1NewTurn();
                     game.getPlayer1Deck();
                     game.getPlayer1Hand();
+                    
                     cardInHand1.setVisible(true);
                     cardInHand2.setVisible(true);
                     cardInHand3.setVisible(true);
@@ -181,34 +182,16 @@ public class GameBoardGUI implements ActionListener
                     transferValue(cardInHand3, activePlayingCard8);
                     transferValue(cardInHand4, activePlayingCard9);
                     transferValue(cardInHand5, activePlayingCard10);   
-                    if(activePlayingCard1.isSelected() == true)
-                    {
-                        activePlayingCard1.setVisible(true);
-                    }
-                    if(activePlayingCard2.isSelected() == true)
-                    {
-                        activePlayingCard2.setVisible(true);
-                    }
-                    if(activePlayingCard3.isSelected() == true)
-                    {
-                        activePlayingCard3.setVisible(true);
-                    }
-                    if(activePlayingCard4.isSelected() == true)
-                    {
-                        activePlayingCard4.setVisible(true);
-                    }
-                    if(activePlayingCard5.isSelected() == true)
-                    {
-                        activePlayingCard5.setVisible(true);
-                    }
+                    
                     //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
                 }
-                if (currentPlayer.getText().equals(game.getPlayer2Name()))
+                else
                 {
                     game.thisPlayer(currentPlayer.getText());
                     game.player2NewTurn();
                     game.getPlayer2Deck();
                     game.getPlayer2Hand();
+                    
                     cardInHand1.setVisible(true);
                     cardInHand2.setVisible(true);
                     cardInHand3.setVisible(true);
@@ -220,26 +203,7 @@ public class GameBoardGUI implements ActionListener
                     transferValue(cardInHand3, activePlayingCard3);
                     transferValue(cardInHand4, activePlayingCard4);
                     transferValue(cardInHand5, activePlayingCard5);
-                    if(activePlayingCard6.isSelected() == true)
-                    {
-                        activePlayingCard6.setVisible(true);
-                    }
-                    if(activePlayingCard7.isSelected() == true)
-                    {
-                        activePlayingCard7.setVisible(true);
-                    }
-                    if(activePlayingCard8.isSelected() == true)
-                    {
-                        activePlayingCard8.setVisible(true);
-                    }
-                    if(activePlayingCard9.isSelected() == true)
-                    {
-                        activePlayingCard9.setVisible(true);
-                    }
-                    if(activePlayingCard10.isSelected() == true)
-                    {
-                        activePlayingCard10.setVisible(true);
-                    }
+                    
                 }
             }
         });

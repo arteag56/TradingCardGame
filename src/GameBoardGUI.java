@@ -3,7 +3,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.io.*;
 import java.awt.Desktop;
-import java.util.List;
+
 /**
  * This class is the GUI for our program. It's job is to take the information from the user and execute it. 
  * All the components (labels, textfields, buttons) are created and executed in this class.
@@ -53,16 +53,16 @@ public class GameBoardGUI implements ActionListener
 		cardInHand3 = new JButton(game.getThisPlayer().getHand().get(2).getName());
 		cardInHand4 = new JButton(game.getThisPlayer().getHand().get(3).getName());
 		cardInHand5 = new JButton(game.getThisPlayer().getHand().get(4).getName());
-		activePlayingCard1 = new JButton(game.getPlayer1Hand().get(0).getName());
-		activePlayingCard2 = new JButton(cardInHand2.getText());
-		activePlayingCard3 = new JButton(cardInHand3.getText());
-		activePlayingCard4 = new JButton(cardInHand4.getText());
-		activePlayingCard5 = new JButton(cardInHand5.getText());
-		activePlayingCard6 = new JButton(game.getPlayer2Hand().get(0).getName());
-		activePlayingCard7 = new JButton(cardInHand2.getText());
-		activePlayingCard8 = new JButton(cardInHand3.getText());
-		activePlayingCard9 = new JButton(cardInHand4.getText());
-		activePlayingCard10 = new JButton(cardInHand5.getText());
+		activePlayingCard1 = new JButton(game.getPlayer2Hand().get(0).getName());
+		activePlayingCard2 = new JButton(game.getPlayer2Hand().get(1).getName());
+		activePlayingCard3 = new JButton(game.getPlayer2Hand().get(2).getName());
+		activePlayingCard4 = new JButton(game.getPlayer2Hand().get(3).getName());
+		activePlayingCard5 = new JButton(game.getPlayer2Hand().get(4).getName());
+		activePlayingCard6 = new JButton(game.getPlayer1Hand().get(0).getName());
+		activePlayingCard7 = new JButton(game.getPlayer1Hand().get(1).getName());
+		activePlayingCard8 = new JButton(game.getPlayer1Hand().get(2).getName());
+		activePlayingCard9 = new JButton(game.getPlayer1Hand().get(3).getName());
+		activePlayingCard10 = new JButton(game.getPlayer1Hand().get(4).getName());
 		//        deck = new JButton("Deck");
 		endTurn = new JButton("End Turn");
 		attackButton = new JButton("Attack!");

@@ -1,5 +1,4 @@
-import java.util.Scanner;
-import java.io.*;
+
 /**
  * Card class is a superclass for all cards used in the GameBoard
  * 

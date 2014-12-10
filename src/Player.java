@@ -36,6 +36,7 @@ public class Player{
 	public String getName() {		//Accessor Methods
 		return name;
 	}
+	
 	public int loseAPoint(){
 		return health--;
 	}
@@ -47,19 +48,23 @@ public class Player{
 	}
 	/**
 	 * Tells the GameBoard whether or not this player completed their move.
-	 * @return true 
+	 * @return true if player already played a magic and monster card
 	 */
 	public boolean completedMove() {
 		return (playedMonster&&playedMagic);
 	}
 	/** 
-	 * @return The list of words generated
-	 * by the constructor.
+	 * Player holds a deck.
+	 * @return Map
 	 */
 
-	public Map<String,Card> getDeck() {					
+	private Map<String,Card> getDeck() {					
 		return deck.getDeck();
 
+	}
+	
+	public boolean playedTurn() {
+		return false;
 	}
 	/**
 	 * The player's health
@@ -93,6 +98,12 @@ public class Player{
 				c = currentHand.get(i);
 				currentHand.remove(i);
 			}
+		}
+		if (c instanceof CreatureCard) {
+			playedMonster = true;
+		}
+		else {
+			playedMagic = true;
 		}
 		return c;
 	}

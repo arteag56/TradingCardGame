@@ -177,7 +177,7 @@ public class GameBoardGUI implements ActionListener
                     south.remove(cardInHand5);
                     south.revalidate();
                     game.player1NewTurn();
-                    game.getPlayer1Deck();
+                    //game.getPlayer1Deck();
                     for(Card card: game.getThisPlayer().getHand())
                     {
                            newCard = new JButton(card.getName());
@@ -215,7 +215,7 @@ public class GameBoardGUI implements ActionListener
                     south.remove(cardInHand5);
                     south.revalidate();
                     game.player2NewTurn();
-                    game.getPlayer2Deck();
+                    //game.getPlayer2Deck();
                     for(Card card: game.getThisPlayer().getHand())
                 {
                     newCard = new JButton(card.getName());
@@ -252,9 +252,9 @@ public class GameBoardGUI implements ActionListener
             {
                 //DOES NOT WORK - NOT SURE WHY
                 
-                JButton newCard = new JButton(game.getThisPlayer().draw().getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
-                south.add(newCard);
-                newCard.setVisible(true);
+                //JButton newCard = new JButton(game.getThisPlayer().draw().getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
+                //south.add(newCard);
+                //newCard.setVisible(true);
                 
                 south.revalidate();
                 cardInHandCount = cardInHandCount + 1;

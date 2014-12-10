@@ -73,6 +73,7 @@ public class Player{
 		if (deck.getDeck().isEmpty()) {
 			return null;
 		}
+		
 		return deck.pickCard();
 	}
 
@@ -97,17 +98,19 @@ public class Player{
 		return c;
 	}
 
-	public Card remove(String name){
-		for(int i=0;name!=currentHand.get(i).getName(); i++)
-			if(name.equals(currentHand.get(i).getName())){
-		Card result= currentHand.get(i);
-		currentHand.remove(i);
-		if(result instanceof CreatureCard)
-			playedMonster=true;
-		if(result instanceof MagicCard)
-			playedMagic=true;
-		return result;}
-		return null;
+		public Card remove(String name){
+		int x=0;
+		for(int i=0;i<5; i++){
+			x=i;
+		if(name.equals(currentHand.get(x).getName())){
+			Card result= currentHand.get(x);
+				currentHand.remove(x);
+			if(result instanceof CreatureCard)
+				playedMonster=true;
+			if(result instanceof MagicCard)
+				playedMagic=true;
+			return result;}}
+			return null;
 		}
 		
 	public void newTurn(){

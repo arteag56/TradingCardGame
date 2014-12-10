@@ -157,6 +157,10 @@ public class GameBoard
      */
     public List<Card> getField()
     {
+        for(int i=0; i<10; i++)
+        {
+            field.add(null);
+        }
         return field;
     }
     
@@ -168,7 +172,7 @@ public class GameBoard
     {
         
         Card y = getThisPlayer().remove(x);
-        if(getThisPlayer().equals(getPlayer1Name()))
+        if(getThisPlayer().equals(getPlayer2Name()))
         {
             getField().add(getThisPlayer().getRemovedCard()+5,y);
             return y;
@@ -177,5 +181,13 @@ public class GameBoard
         
         return y;
         
+    }
+    
+    /**
+     * This methods selects the cards and attacks them
+     */
+    public void attackMethod(CreatureCard a, CreatureCard b)
+    {
+        a.attacks(b);
     }
 }

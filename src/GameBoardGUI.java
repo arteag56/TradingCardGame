@@ -302,16 +302,7 @@ public class GameBoardGUI implements ActionListener
         center.add(activePlayingCard8);
         center.add(activePlayingCard9);
         center.add(activePlayingCard10);
-        infoFieldCard(activePlayingCard1,0); //GIVES INFORMATION ABOUT THE PLAYING CARDS IN THE FIELD FOR PLAYER 2
-        infoFieldCard(activePlayingCard2,1);
-        infoFieldCard(activePlayingCard3,2);
-        infoFieldCard(activePlayingCard4,3);
-        infoFieldCard(activePlayingCard5,4);
-        infoFieldCard(activePlayingCard6,5);
-        infoFieldCard(activePlayingCard7,6);
-        infoFieldCard(activePlayingCard8,7);
-        infoFieldCard(activePlayingCard9,8);
-        infoFieldCard(activePlayingCard10,9);
+
         
         activePlayingCard1.setVisible(false); //SETTING ALL THE PLAYING CARDS TO INVISIBLE
         activePlayingCard2.setVisible(false);
@@ -344,6 +335,7 @@ public class GameBoardGUI implements ActionListener
                 
                 game.removeCard(value);//////////////////////////////////////////////////////
                 field.setVisible(true);
+                infoFieldCard(field, game.getThisPlayer().getRemovedCard());
                 
                 cardInHandCount = cardInHandCount - 1;
                 if (cardInHandCount < 5)
@@ -371,7 +363,7 @@ public class GameBoardGUI implements ActionListener
     
     /**gives information about the card on the field*/
     public void infoFieldCard(final JButton infoHand, int i){
-    	infoHand.setToolTipText(game.getField().get(i).toString());
+    	try{infoHand.setToolTipText(game.getField().get(i).toString());
         infoHand.addMouseListener(new MouseAdapter()
         {
             public void mouseEntered(MouseEvent e)
@@ -379,6 +371,9 @@ public class GameBoardGUI implements ActionListener
                 infoHand.getToolTipText();
             }
         });
+    	}
+    	catch(IndexOutOfBoundsException obe)
+    	{System.out.println("Out of Bounds");}
     }
     
     /**

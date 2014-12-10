@@ -17,10 +17,7 @@ public class GameBoard
     private Random random;
     private Player thisPlayer;
     private List<Card> field = new ArrayList<Card>();
-    public static void main(String args[]) {
-        GameBoard game = new GameBoard();
-        System.out.println(game.whoStartsGame());
-    }
+    
     /**
      * Constructor for objects of class Board
      */
@@ -87,14 +84,7 @@ public class GameBoard
     {
         return player2.getName();
     }
-    public Map getPlayer1Deck()
-    {
-        return player1.getDeck();
-    }
-    public Map getPlayer2Deck()
-    {
-        return player2.getDeck();
-    }
+
     public List<Card> getPlayer1Hand()
     {
         return player1.getHand();
@@ -189,5 +179,20 @@ public class GameBoard
     public void attackMethod(CreatureCard a, CreatureCard b)
     {
         a.attacks(b);
+    }
+    
+    public static void main(String args[]) {
+        GameBoard game = new GameBoard();
+        Scanner in = new Scanner(System.in);
+        System.out.println(game.whoStartsGame());
+        System.out.println(game.getThisPlayer().getName());
+        System.out.println(game.nextTurn());
+        System.out.println(game.getThisPlayer().getHand());
+        //System.out.println(game.getPlayer1Hand());
+        System.out.println(game.getThisPlayer().getName() + "'s Turn");
+        //System.out.println(game.getPlayer2Hand());
+        System.out.println("Pick a monster to remove");
+        game.thisPlayer.remove(in.nextLine());
+        System.out.println(game.getThisPlayer().getHand());
     }
 }

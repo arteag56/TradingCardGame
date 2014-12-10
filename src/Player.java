@@ -41,7 +41,7 @@ public class Player{
 	public void setName(String name) { //Mutators
 		this.name = name;
 	}
-	
+
 	/**
 	 * Draws card to hand to always have 5 cards
 	 * @return currentHand
@@ -52,7 +52,7 @@ public class Player{
 		}
 		return currentHand;
 	}
-	
+
 	/**
 	 * Loses a heart point
 	 * @return health
@@ -60,11 +60,11 @@ public class Player{
 	public int loseAPoint(){
 		return health--;
 	}
-	
+
 	public boolean completedMove() {
 		return(playedMonster&&playedMagic);
 	}
-	
+
 	/**
 	 * Draws a card from the deck to their hands.
 	 * @return Card - from the deck
@@ -75,7 +75,7 @@ public class Player{
 		}
 		return deck.pickCard();
 	}
-	
+
 	/**
 	 * Shows the cards this player has in their deck
 	 * @return deck
@@ -84,51 +84,52 @@ public class Player{
 		return deck.getDeck();
 
 	}
-		
+	/**
+	 * Removes the card with the name given from the current hand
+	 * @param name
+	 * @return Card
+	 */
 	public Card remove(String name){
 		int x=0;
 		for(int i=0;i<5; i++){
 			x=i;
 			if(name.equals(currentHand.get(x).getName())){
 				Card result= currentHand.get(x);
-					currentHand.remove(x);
-					if(result instanceof CreatureCard)
-						playedMonster=true;
-					if(result instanceof MagicCard)
-						playedMagic=true;
-					return result;
-				}
-			removedCard=x;
+				currentHand.remove(x);
+				if(result instanceof CreatureCard)
+					playedMonster=true;
+				if(result instanceof MagicCard)
+					playedMagic=true;
+				return result;
 			}
-		return null;
+			removedCard=x;
 		}
-	
+		return null;
+	}
+
 	public int getRemovedCard(){
 		return removedCard;
 	}
-	
+
 	public void newTurn(){
 		playedMonster=false;
-		playedMagic=false;}
-	
-	public boolean playedMonster()
-	{return playedMonster;}
-	
-	public boolean playedMagic()
-	{return playedMagic;}
-	
-	public static void main(String[] args)
-	{
-		Player p = new Player();
-		p.getDeck();
-		System.out.println("THIS IS THE HAND " + p.getHand());
-		System.out.println("THIS CARD WAS REMOVED "+ p.remove(p.currentHand.get(1).getName()));
-		System.out.println("THIS IS NOW THE HAND" + p.getHand());
-		System.out.println("THE NEW CARD IS "+ p.draw().getName());
-		System.out.println("NOW THIS IS THE NEW HAND "+ p.getHand());	
-		System.out.println("PlayedMonster: "+p.playedMonster()+"\n"+ "PlayedMagic: "+p.playedMagic());
-		System.out.println("Completed Turn: "+p.completedMove());
+		playedMagic=false;
 	}
 
-	
+	public boolean playedMonster()
+	{return playedMonster;}
+
+	public boolean playedMagic()
+	{return playedMagic;}
+
+	public static void main(String[] args) {
+		Player p = new Player();
+		Player p2 = new Player();
+		System.out.println(p.getHand());
+		System.out.println("////////////");
+		System.out.println(p2.getHand());
+		
+	}
+
+
 }

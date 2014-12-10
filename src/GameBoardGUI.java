@@ -183,7 +183,7 @@ public class GameBoardGUI implements ActionListener
                     
                     south.revalidate();
                     game.player1NewTurn();
-                    game.getPlayer1Deck();
+                    //game.getPlayer1Deck();
                     for(Card card: game.getThisPlayer().getHand())
                     {
                           
@@ -218,7 +218,7 @@ public class GameBoardGUI implements ActionListener
                     
                     south.revalidate();
                     game.player2NewTurn();
-                    game.getPlayer2Deck();
+                    //game.getPlayer2Deck();
                     for(Card card: game.getThisPlayer().getHand())
                        {
                           

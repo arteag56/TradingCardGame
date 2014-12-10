@@ -1,7 +1,8 @@
 import java.util.*;
 /**
  * Class Player allows decks and hands to be created for specific players. 
- * It also keeps track of that players health. It also keeps track of 
+ * It also keeps track of that players health. It also keeps track of if players have exhausted the cards 
+ * they are allowed to play. 
  *
  * @author (Michael Arteaga, Joseph Carbone)
  * @version (Oct 24, 2014)
@@ -9,10 +10,10 @@ import java.util.*;
 public class Player{
 	private String name;
 	private int health = 5;
-	//private boolean completedMove;
 	private Deck deck;
 	private List<Card> currentHand;
 	private boolean playedMonster,playedMagic;
+
 
 	/**
 	 * Constructor for objects of class Player
@@ -34,20 +35,12 @@ public class Player{
 	public String getName() {
 		return name;
 	}
-
-	/**
-	 * The player's health
-	 * @return health
-	 */
-	public int getHealth() {
-		return health;
+	public int loseAPoint(){
+		return health--;
 	}
-
-	public void loseAPoint(){
-		health--;
-	}
-
 	public List<Card> getHand() {
+		while(currentHand.size()<5)
+			draw();
 		return currentHand;
 	}
 
@@ -58,20 +51,22 @@ public class Player{
 	 * by the constructor.
 	 */
 
-	public Map<String,Card> getDeck() {	
+	public Map<String,Card> getDeck() {						
 		return deck.getDeck();
 
 	}
-
+	/**
+	 * The player's health
+	 * @return health
+	 */
+	public int getHealth() {
+		return health;
+	}
 	public Card draw(){
-		while (currentHand.size() < 5) {
-			if (deck.getDeck().isEmpty()) {
-				System.out.println("Deck is out of cards");
-			}
-			else {
-				Card result = deck.pickCard();
-				currentHand.add(result);
-			}
+		while(currentHand.size()<5){
+			Card result=deck.pickCard();
+			currentHand.add(result);
+			return result;
 		}
 		return currentHand.get(4);
 	}
@@ -95,7 +90,7 @@ public class Player{
 
 	public boolean playedMagic()
 	{return playedMagic;}
-	
+
 	public static void main(String[] args)
 	{
 		Player p = new Player();
@@ -108,5 +103,6 @@ public class Player{
 		System.out.println("PlayedMonster: "+p.playedMonster()+"\n"+ "PlayedMagic: "+p.playedMagic());
 		System.out.println("Completed Turn: "+p.completedMove());
 	}
+
 
 }

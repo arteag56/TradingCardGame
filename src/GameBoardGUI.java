@@ -140,37 +140,64 @@ public class GameBoardGUI implements ActionListener
                     game.player1NewTurn();
                     game.getPlayer1Deck();
                     game.getPlayer1Hand();
+<<<<<<< HEAD
                     //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
                     //they also need to be set visible
                     
                     game.thisPlayer(currentPlayer.getText());
                     game.getThisPlayer().getHand();
+=======
+                    
+>>>>>>> 4c7ed9e6f7ec94c5b5b6d6a416fc739ba621e38e
                     cardInHand1.setVisible(true);
                     cardInHand2.setVisible(true);
                     cardInHand3.setVisible(true);
                     cardInHand4.setVisible(true);
                     cardInHand5.setVisible(true);
                     
+<<<<<<< HEAD
+=======
+                    transferValue(cardInHand1, activePlayingCard6); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(cardInHand2, activePlayingCard7); //FOR PLAYER1
+                    transferValue(cardInHand3, activePlayingCard8);
+                    transferValue(cardInHand4, activePlayingCard9);
+                    transferValue(cardInHand5, activePlayingCard10);   
+                    
+                    //south.add(game.getPlayer1Hand());//the hand needs to be added to the frame. 
+>>>>>>> 4c7ed9e6f7ec94c5b5b6d6a416fc739ba621e38e
                 }
-                if (currentPlayer.getText().equals(game.getPlayer2Name()))
+                else
                 {
                     game.thisPlayer(currentPlayer.getText());
                     game.player2NewTurn();
                     game.getPlayer2Deck();
                     game.getPlayer2Hand();
+<<<<<<< HEAD
                     game.thisPlayer(currentPlayer.getText());
                     game.getThisPlayer().getHand();
+=======
+                    
+>>>>>>> 4c7ed9e6f7ec94c5b5b6d6a416fc739ba621e38e
                     cardInHand1.setVisible(true);
                     cardInHand2.setVisible(true);
                     cardInHand3.setVisible(true);
                     cardInHand4.setVisible(true);
                     cardInHand5.setVisible(true);
                     
+<<<<<<< HEAD
                     transferValue(cardInHand1, activePlayingCard6);
                     transferValue(cardInHand2, activePlayingCard7);
                     transferValue(cardInHand3, activePlayingCard8);
                     transferValue(cardInHand4, activePlayingCard9);
                     transferValue(cardInHand5, activePlayingCard10);
+=======
+                    transferValue(cardInHand1, activePlayingCard1); //SENDING THE VALUE FROM THE CARD IN HAND TO THE CARD ON THE PLAYING FIELD
+                    transferValue(cardInHand2, activePlayingCard2); //FOR PLAYER 2
+                    transferValue(cardInHand3, activePlayingCard3);
+                    transferValue(cardInHand4, activePlayingCard4);
+                    transferValue(cardInHand5, activePlayingCard5);
+                    
+>>>>>>> 4c7ed9e6f7ec94c5b5b6d6a416fc739ba621e38e
                 }
                 
                 

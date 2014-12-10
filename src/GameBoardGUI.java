@@ -32,7 +32,7 @@ public class GameBoardGUI implements ActionListener
     JButton activePlayingCard8;
     JButton activePlayingCard9;
     JButton activePlayingCard10;
-    JButton deck;
+    //JButton deck;
     JButton endTurn;
     JButton attackButton;
     private int cardInHandCount = 5;
@@ -63,7 +63,7 @@ public class GameBoardGUI implements ActionListener
         activePlayingCard8 = new JButton(cardInHand3.getText());
         activePlayingCard9 = new JButton(cardInHand4.getText());
         activePlayingCard10 = new JButton(cardInHand5.getText());
-        deck = new JButton("Deck");
+        //deck = new JButton("Deck");
         endTurn = new JButton("End Turn");
         attackButton = new JButton("Attack!");
         
@@ -237,48 +237,48 @@ public class GameBoardGUI implements ActionListener
                     transferValue(newCard, activePlayingCard5);
             }
         } });
-        east.add(deck); //DECK IS DEFINED ABOVE - GLOBAL VARIABLE
-        deck.setEnabled(false);
-        deck.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
+        //east.add(deck); //DECK IS DEFINED ABOVE - GLOBAL VARIABLE
+        //deck.setEnabled(false);
+        //deck.addActionListener(new ActionListener()
+        //{
+          //  public void actionPerformed(ActionEvent e)
+            //{
                 //DOES NOT WORK - NOT SURE WHY
                 
                 
                 
-                    List <Card> area = game.getThisPlayer().getHand();
-                    for(int i=0; i < area.size(); i++)
-                    {
-                        JButton newCard = new JButton(area.get(i).getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
-                        infoCard(newCard,i);
+              //      List <Card> area = game.getThisPlayer().getHand();
+              //      for(int i=0; i < area.size(); i++)
+              //      {
+              //          JButton newCard = new JButton(area.get(i).getName()); //JUST GRABS THE VALUE OF THE LAST PLAYED CARD //NOT ASSOCIATED WITH THE GUI CLASS
+              //          infoCard(newCard,i);
       
-                        south.add(newCard);
-                        newCard.setVisible(true);
+              //          south.add(newCard);
+                 //       newCard.setVisible(true);
                 
                 
                 
-                        south.revalidate();
-                        cardInHandCount = cardInHandCount + 1;
-                    }
+              //          south.revalidate();
+              //          cardInHandCount = cardInHandCount + 1;
+              //      }
                 
                 
                 
                
                
-                if (cardInHandCount == 5)
-                {
-                    deck.setEnabled(false);
-                }
+                //if (cardInHandCount == 5)
+                //{
+                  //  deck.setEnabled(false);
+                //}
                 
-            }
-        });
+            //}
+        //});
         east.add(attackButton); //ATTACKBUTTON IS DEFINED ABOVE - GLOBAL VARIABLE
         attackButton.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                //STILL NEEDS TO BE IMPLEMENTED
+                //game.attackMethod(CreatureCard a, CreatureCard b);
             }
         });
         
@@ -340,7 +340,7 @@ public class GameBoardGUI implements ActionListener
                 cardInHandCount = cardInHandCount - 1;
                 if (cardInHandCount < 5)
                 {
-                    deck.setEnabled(true);
+                   // deck.setEnabled(true);
                 }
             }
         });

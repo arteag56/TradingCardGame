@@ -83,7 +83,7 @@ public class Player{
 
 	public Card remove(String name){
 		for(int i=0;name!=currentHand.get(i).getName(); i++)
-			if(name!=currentHand.get(i).getName()){
+			if(name.equals(currentHand.get(i).getName())){
 		Card result= currentHand.get(i);
 		currentHand.remove(i);
 		if(result instanceof CreatureCard)

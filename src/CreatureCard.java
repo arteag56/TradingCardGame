@@ -105,6 +105,9 @@ public class CreatureCard extends Card
         	if (card.isOffense()) {
         		monster.takesHit(attack + 20);
         	}
+        	else {
+        		System.out.println("Error: useMagicOffense()");
+        	}
         	
         }
     }
@@ -114,6 +117,9 @@ public class CreatureCard extends Card
             MagicCard card = (MagicCard) d;
             if(!card.isOffense()){
                 takesHit((monster.getAttackDamage())/2);
+            }
+            else {
+            	System.out.println("Error: useMagicDefense()");
             }
         }
         
@@ -137,8 +143,8 @@ public class CreatureCard extends Card
         //monster2.setCardNumber(30);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
-        monster1.attacks(monster2);
-        //monster1.useMagicDefense(special, monster2);
+        //monster2.attacks(monster1);
+        monster1.useMagicDefense(special, monster2);
         //monster1.useMagicOffense(special, monster2);
         System.out.println(monster1.toString());
         System.out.println(monster2.toString());
